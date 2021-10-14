@@ -598,7 +598,7 @@ elseif markdown == "html" then
 url = url.."&parse_mode=HTML" 
 end 
 keyboard = {}
-keyboard.inline_keyboard = {{{text = "مسح الرسالة",callback_data="/HideHelpList:"}}}
+keyboard.inline_keyboard = {{{text = '˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="t.me/TeamMiKasa"}}}
 url = url..'&reply_markup='..JSON.encode(keyboard)
 return GetApi(url) 
 end
@@ -4458,7 +4458,7 @@ Welcome To Source
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '⌔ Source Channel',url="https://t.me/TeamMiKasa"}},
-{{text = '⌔ Developer',url="t.me/DODDD"},{text = '⌔ Tws Mikasa',url="https://t.me/Yv4bot"}},{{text= '⌔ Support Source .',url="https://t.me/joinchat/lVOGAMnUsgczMjJi"}}
+{{text = '⌔ Developer',url="t.me/DODDD"},{text = '⌔ Tws Mikasa',url="https://t.me/Yv4bot"}},{{text= '⌔ Support Source .',url="https://t.me/DODDDD"}}
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeamMiKasa&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))

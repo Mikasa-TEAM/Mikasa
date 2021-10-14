@@ -1,6 +1,6 @@
 ------------------------------------------------
 -- This Source Was Developed By (ABS) @DODDD.--
---   This Is The Source Channel @TeamMiKasa .   --
+--   This Is The ˛ 𝙢𝓲𝙠𝙨𝙖ꪖ . @TeamMiKasa .   --
 --                 - Mikasa -                 --
 --         -- https://t.me/TeamMiKasa --         --
 ------------------------------------------------ 
@@ -1283,7 +1283,7 @@ local Text = [[
 ⌔︙م5 -› اوامر المطورين
 ⌔︙م6 -› اوامر الاعضاء
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]] 
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}}}
@@ -1345,7 +1345,7 @@ local Text = [[
 ⌔︙البوتات بالطرد
 ⌔︙البوتات بالتقيد
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -1415,7 +1415,7 @@ local Text = [[
 ⌔︙تقييد يوم + عدد الايام
 ⌔︙الغاء تقييد -› لالغاء التقييد بالوقت
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -1474,7 +1474,7 @@ local Text = [[
 ⌔︙ردود المدير • ردود المطور • التحقق
 ⌔︙ضافني • حساب العمر • الزخرفه • غنيلي
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -1527,7 +1527,7 @@ local Text = [[
 ⌔︙المنشئين الاساسيين 
 ⌔︙حذف جميع الرتب
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -1607,7 +1607,7 @@ local Text = [[
 ⌔︙ترحيب البوت • المغادره
 ⌔︙البوت الخدمي • التواصل
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -1649,7 +1649,7 @@ local Text = [[
 ⌔︙تحويل + بالرد -› صوره • ملصق • صوت • بصمه
 ⌔︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
@@ -4257,7 +4257,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,[[
 ━─━─━─ ⌔ ─━─━─━
 ⌔︙نقاطي • بيع نقاطي
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]], 1, 'md')
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙عذرا الالعاب معطله في المجموعه', 1, 'md')
@@ -4457,7 +4457,7 @@ Welcome To Source
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '⌔ Source Channel',url="https://t.me/TeamMiKasa"}},
+{{text = '⌔ ˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="https://t.me/TeamMiKasa"}},
 {{text = '⌔ Developer',url="t.me/DODDD"},{text = '⌔ Tws Mikasa',url="https://t.me/Yv4bot"}},{{text= '⌔ Support Source .',url="https://t.me/DODDDD"}}
 }
 local msg_id = msg.id_/2097152/0.5
@@ -8921,7 +8921,7 @@ local TXTE = "⌔︙اعدادات المجموعه -› ⤈\n━─━─━─
 .."⌔︙التكرار -› "..flood.."\n"
 .."⌔︙عدد التكرار -› "..Flood_Num.."\n"
 .."⌔︙عدد السبام -› "..spam_c.."\n"
-.."━─━─━─ ⌔ ─━─━─━\n⌔︙[Source Channel](https://t.me/TeamMiKasa)\n"
+.."━─━─━─ ⌔ ─━─━─━\n⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)\n"
 Dev_Abs(msg.chat_id_, msg.id_, 1, TXTE, 1, 'md')
 end
 end
@@ -10348,7 +10348,7 @@ local Text = [[
 ⌔︙م5 -› اوامر المطورين
 ⌔︙م6 -› اوامر الاعضاء
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]] 
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..msg.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..msg.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..msg.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..msg.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..msg.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..msg.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..msg.sender_user_id_}}}
@@ -10419,7 +10419,7 @@ local Text = [[
 ⌔︙البوتات بالطرد
 ⌔︙البوتات بالتقيد
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
@@ -10495,7 +10495,7 @@ local Text = [[
 ⌔︙تقييد يوم + عدد الايام
 ⌔︙الغاء تقييد -› لالغاء التقييد بالوقت
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
@@ -10560,7 +10560,7 @@ local Text = [[
 ⌔︙ردود المدير • ردود المطور • التحقق
 ⌔︙ضافني • حساب العمر • الزخرفه • غنيلي
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
@@ -10619,7 +10619,7 @@ local Text = [[
 ⌔︙المنشئين الاساسيين 
 ⌔︙حذف جميع الرتب
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
@@ -10705,7 +10705,7 @@ local Text = [[
 ⌔︙ترحيب البوت • المغادره
 ⌔︙البوت الخدمي • التواصل
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
@@ -10753,7 +10753,7 @@ local Text = [[
 ⌔︙تحويل + بالرد -› صوره • ملصق • صوت • بصمه
 ⌔︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
 ━─━─━─ ⌔ ─━─━─━
-⌔︙[Source Channel](https://t.me/TeamMiKasa)
+⌔︙[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeamMiKasa)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end
@@ -11096,7 +11096,7 @@ end
 end 
 ------------------------------------------------
 -- This Source Was Developed By (ABS) @DODDD.--
---   This Is The Source Channel @TeamMiKasa .   --
+--   This Is The ˛ 𝙢𝓲𝙠𝙨𝙖ꪖ . @TeamMiKasa .   --
 --                 - Mikasa -                 --
 --         -- https://t.me/TeamMiKasa --         --
 ------------------------------------------------ 

@@ -126,7 +126,7 @@ DevId = Config.DevId
 SudoIds = {Config.SudoIds,218385683,1214622341}
 Mikasa = Config.Mikasa
 TokenBot = Config.TokenBot
-NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'لاريكا')
+NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
 --     Source Mikasa     --
 FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \n━─━─━─ ⌔ ─━─━─━ ≈ ┉ ≈ ┉\n"..'\27[m'
 FilesNumber = 0
@@ -1675,8 +1675,8 @@ end
 DevAbs:del(Mikasa.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
 end
-if text and text:match('^'..(DevAbs:get(Mikasa..'Abs:NameBot') or "لاريكا")..' ') then
-data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(DevAbs:get(Mikasa..'Abs:NameBot') or "لاريكا")..' ','')
+if text and text:match('^'..(DevAbs:get(Mikasa..'Abs:NameBot') or "ميكاسا")..' ') then
+data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(DevAbs:get(Mikasa..'Abs:NameBot') or "ميكاسا")..' ','')
 end
 if data.message_.content_.text_ then
 local NewCmmd = DevAbs:get(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":"..data.message_.content_.text_)
@@ -1958,7 +1958,7 @@ end
 if ChatType == 'pv' then 
 if text == '/start' or text == 'رجوع ،🔙‘' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '⌔︙مرحبا عزيزي المطور \n⌔︙انت المطور الاساسي هنا \n⌔︙اليك ازرار سورس لاريكا \n⌔︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌔︙مرحبا عزيزي المطور \n⌔︙انت المطور الاساسي هنا \n⌔︙اليك ازرار سورس ميكاسا \n⌔︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'وضع اسم البوت','-› تحديث ⌁','وضع كليشه المطور'},
 {'-› المطورين ⌁','-› الاحصائيات ⌁'},
@@ -1986,7 +1986,7 @@ return false
 end end
 if text == '~ تعيين كلايش الاوامر ~' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '⌔︙اهلا بك مجددا عزيزي المطور \n⌔︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس لاريكا فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌔︙اهلا بك مجددا عزيزي المطور \n⌔︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ميكاسا فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'حذف كليشة الايدي','تعيين كليشة الايدي'},
 {'تعيين امر الاوامر'},
@@ -3365,7 +3365,7 @@ end end
 if SecondSudo(msg) then
 if text == 'جلب نسخه الكروبات' or text == 'جلب نسخه احتياطيه' or text == 'جلب النسخه الاحتياطيه' then
 local List = DevAbs:smembers(Mikasa..'Abs:Groups') 
-local BotName = (DevAbs:get(Mikasa.."Abs:NameBot") or 'لاريكا')
+local BotName = (DevAbs:get(Mikasa.."Abs:NameBot") or 'ميكاسا')
 local GetJson = '{"BotId": '..Mikasa..',"BotName": "'..BotName..'","GroupsList":{'  
 for k,v in pairs(List) do 
 LinkGroups = DevAbs:get(Mikasa.."Abs:Groups:Links"..v)
@@ -3559,19 +3559,19 @@ end
 --     Source Mikasa     --
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
-NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'لاريكا')
+NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
 local TeAmMikasa = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
-NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'لاريكا') 
+NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') 
 local TeAmMikasa = {"اسمي القميل "..NameBot.." 😚♥️","هلاا يروحيي وياكك "..NameBot.." 😻♥️"} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
-if text and text == (DevAbs:get(Mikasa..'Abs:NameBot') or 'لاريكا') then 
-NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'لاريكا')
+if text and text == (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') then 
+NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
 local TeAmMikasa = {'كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' '} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false 
@@ -9760,7 +9760,7 @@ if text == 'جلب نسخه السورس' then
 if not Sudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙للمطور الاساسي فقط ', 1, 'md')
 else
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './Mikasa.lua', '⌔︙نسخة ملف سورس لاريكا',dl_cb, nil)
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './Mikasa.lua', '⌔︙نسخة ملف سورس ميكاسا',dl_cb, nil)
 end end
 --     Source Mikasa     --
 if text == 'روابط الكروبات' or text == 'روابط المجموعات' then
@@ -10760,7 +10760,7 @@ end
 --     Source Mikasa     --
 if SecondSudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙جاري تحديث سورس لاريكا', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔︙جاري تحديث سورس ميكاسا', 1, 'md') 
 os.execute('rm -rf Mikasa.lua') 
 os.execute('wget https://raw.githubusercontent.com/TeAmMikasa/Mikasa/master/Mikasa.lua') 
 dofile('Mikasa.lua') 
@@ -10795,7 +10795,7 @@ if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n⌔︙قائمة ملفات متجر سورس لاريكا\n⌔︙الملفات المتوفره حاليا -› ⤈\n━─━─━─ ⌔ ─━─━─━\n"
+local TextS = "\n⌔︙قائمة ملفات متجر سورس ميكاسا\n⌔︙الملفات المتوفره حاليا -› ⤈\n━─━─━─ ⌔ ─━─━─━\n"
 local TextE = "━─━─━─ ⌔ ─━─━─━\n⌔︙علامة -› (✔) تعني الملف مفعل\n⌔︙علامة -› (✖️) تعني الملف معطل\n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do

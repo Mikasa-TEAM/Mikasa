@@ -22,7 +22,7 @@ UpTime  = io.popen([[uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if (
 --     Source Mikasa     --
 local AutoSet = function() 
 if not DevAbs:get(Server.."IdMikasa") then 
-io.write('\27[1;35m\nالان ارسل ايدي المطور الاساسي -› ⤈\n\27[0;33;49m') 
+io.write('\27[1;35m\nالان ارسل ايدي المطور الاساسي » ⤈\n\27[0;33;49m') 
 local DevId = io.read():gsub(' ','') 
 if tostring(DevId):match('%d+') then 
 io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m') 
@@ -33,7 +33,7 @@ end
 os.execute('lua Mikasa.lua') 
 end 
 if not DevAbs:get(Server.."TokenMikasa") then 
-io.write('\27[1;35m\nالان قم بارسال توكن البوت -› ⤈\n\27[0;33;49m') 
+io.write('\27[1;35m\nالان قم بارسال توكن البوت » ⤈\n\27[0;33;49m') 
 local TokenBot = io.read() 
 if TokenBot ~= '' then 
 local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getMe') 
@@ -395,7 +395,7 @@ send(chat,msg.id_,"꙳.︙جاري رفع الملف ... .")
 local File = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/getfile?file_id='..ID_FILE) ) 
 download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'..File.result.file_path, ''..File_Name) 
 else
-send(chat,msg.id_,"꙳.︙عذرا الملف ليس بصيغة -› Json يرجى رفع الملف الصحيح")
+send(chat,msg.id_,"꙳.︙عذرا الملف ليس بصيغة » Json يرجى رفع الملف الصحيح")
 end
 local info_file = io.open('./'..Mikasa..'.json', "r"):read('*a')
 local JsonInfo = JSON.decode(info_file)
@@ -707,15 +707,15 @@ for gmatch in string.gmatch(dp.first_name_, "[^%s]+") do
 dp.first_name_ = gmatch
 end
 if status == "WrongWay" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عذرا عزيزي -› ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عذرا عزيزي » ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "Reply" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙العضو -› ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙العضو » ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "ReplyBy" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙بواسطة -› ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙بواسطة » ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 else
@@ -763,7 +763,7 @@ if GetInfo.result.can_invite_users == true then INV = '✔️' else INV = '✖�
 if GetInfo.result.can_pin_messages == true then PIN = '✔️' else PIN = '✖️' end
 if GetInfo.result.can_restrict_members == true then BAN = '✔️' else BAN = '✖️' end
 if GetInfo.result.can_promote_members == true then VIP = '✔️' else VIP = '✖️' end 
-send(msg.chat_id_,msg.id_,'꙳.︙صلاحيات '..GetCustomTitle(user_id,msg.chat_id_)..' هي -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙حذف الرسائل -› '..DEL..'\n꙳.︙دعوة المستخدمين -› '..INV..'\n꙳.︙حظر المستخدمين -› '..BAN..'\n꙳.︙تثبيت الرسائل -› '..PIN..'\n꙳.︙تغيير المعلومات -› '..EDT..'\n꙳.︙اضافة مشرفين -› '..VIP..'\n≪━━━━━ꪑ𝙠━━━━━≫')
+send(msg.chat_id_,msg.id_,'꙳.︙صلاحيات '..GetCustomTitle(user_id,msg.chat_id_)..' هي » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙حذف الرسائل » '..DEL..'\n꙳.︙دعوة المستخدمين » '..INV..'\n꙳.︙حظر المستخدمين » '..BAN..'\n꙳.︙تثبيت الرسائل » '..PIN..'\n꙳.︙تغيير المعلومات » '..EDT..'\n꙳.︙اضافة مشرفين » '..VIP..'\n≪━━━━━ꪑ𝙠━━━━━≫')
 end
 end
 end
@@ -876,7 +876,7 @@ if DataText == '/delyes' and DevAbs:get(Mikasa..'yes'..data.sender_user_id_) == 
 DevAbs:del(Mikasa..'yes'..data.sender_user_id_, 'delyes')
 DevAbs:del(Mikasa..'no'..data.sender_user_id_, 'delno')
 if RankChecking(data.sender_user_id_, data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙لا استطيع طرد -› "..IdRank(data.sender_user_id_, data.chat_id_)) 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙لا استطيع طرد » "..IdRank(data.sender_user_id_, data.chat_id_)) 
 return false
 end
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=data.chat_id_,user_id_=data.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,da) 
@@ -927,12 +927,12 @@ DevAbs:srem(Mikasa..'Abs:Admins:'..data.chat_id_,data.sender_user_id_)
 DevAbs:srem(Mikasa..'Abs:VipMem:'..data.chat_id_,data.sender_user_id_)
 DevAbs:srem(Mikasa..'Abs:Cleaner:'..data.chat_id_,data.sender_user_id_)
 DevAbs:srem(Mikasa..'User:Donky:'..data.chat_id_,data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم تنزيلك من -› ⤈\n~ ( "..constructor..Managers..admins..vipmem..cleaner..donky.." ) ~ \n") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم تنزيلك من » ⤈\n~ ( "..constructor..Managers..admins..vipmem..cleaner..donky.." ) ~ \n") 
 else 
 if IdRank(data.sender_user_id_, data.chat_id_) == 'العضو' then
 EditMsg(Chat_Id2, Msg_Id2, "꙳.︙ليس لديك رتبه في البوت") 
 else 
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙لا استطيع تنزيل -› "..IdRank(data.sender_user_id_, data.chat_id_)) 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙لا استطيع تنزيل » "..IdRank(data.sender_user_id_, data.chat_id_)) 
 end
 end
 end
@@ -945,10 +945,10 @@ end
 if DataText == '/setyes' then
 local NewDev = DevAbs:get(Mikasa.."Abs:NewDev"..data.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = NewDev},function(arg,dp) 
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙المطور الجديد -› ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n꙳.︙تم تغير المطور الاساسي بنجاح") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙المطور الجديد » ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n꙳.︙تم تغير المطور الاساسي بنجاح") 
 end,nil)
 tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,dp) 
-SendText(NewDev,"꙳.︙بواسطة -› ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n꙳.︙لقد اصبحت انت مطور هذا البوت",0,'md')
+SendText(NewDev,"꙳.︙بواسطة » ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n꙳.︙لقد اصبحت انت مطور هذا البوت",0,'md')
 end,nil)
 local Create = function(data, file, uglify)  
 file = io.open(file, "w+")   
@@ -985,7 +985,7 @@ DevAbs:incrby(Mikasa..'Abs:GamesNumber'..data.chat_id_..dp.id_, 5)
 end,nil) 
 DevAbs:del(Mikasa..'Abs:ListRolet'..data.chat_id_) 
 DevAbs:del(Mikasa.."Abs:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙*صاحب الحظ* -› ["..UserName.."]\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*")
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙*صاحب الحظ* » ["..UserName.."]\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*")
 end
 if DataText == '/NoRolet' then
 DevAbs:del(Mikasa..'Abs:ListRolet'..data.chat_id_) 
@@ -995,7 +995,7 @@ EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم الغاء اللعبه لاعادة ا�
 end
 if DataText == '/ListRolet' then
 local List = DevAbs:smembers(Mikasa..'Abs:ListRolet'..data.chat_id_) 
-local Text = '꙳.︙قائمة الاعبين -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n' 
+local Text = '꙳.︙قائمة الاعبين » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n' 
 local Textt = '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙تم اكتمال العدد الكلي هل انت مستعد ؟'
 for k, v in pairs(List) do 
 Text = Text..k.."~ : [" ..v.."]\n"  
@@ -1018,153 +1018,153 @@ if DataText and DataText:match(tonumber(data.sender_user_id_)..':SetMem:(.*)') t
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetMem:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:VipMem:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المميزين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المميزين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetCleaner:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetCleaner:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:Cleaner:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنظفين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنظفين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetAdmin:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetAdmin:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:Admins:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة الادمنيه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة الادمنيه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetManager:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetManager:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:Managers:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المدراء')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المدراء')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:Constructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنشئين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنشئين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetBasicConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetBasicConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:BasicConstructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنشئين الاساسيين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المنشئين الاساسيين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetAbsConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetAbsConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:AbsConstructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المالكين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المالكين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetSudoBot:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetSudoBot:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:SudoBot:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المطورين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المطورين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetSecondSudo:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':SetSecondSudo:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:sadd(Mikasa..'Abs:SecondSudo:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المطورين الثانويين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم رفعه في قائمة المطورين الثانويين')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':RemMem:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemMem:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:VipMem:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المميزين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المميزين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemCleaner:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemCleaner:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Cleaner:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنظفين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنظفين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemAdmin:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemAdmin:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Admins:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة الادمنيه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة الادمنيه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemManager:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemManager:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Managers:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المدراء')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المدراء')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Constructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنشئين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنشئين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemBasicConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemBasicConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:BasicConstructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنشئين الاساسيين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المنشئين الاساسيين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemAbsConstructor:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemAbsConstructor:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:AbsConstructor:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المالكين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المالكين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemSudoBot:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemSudoBot:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:SudoBot:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المطورين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المطورين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemSecondSudo:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':RemSecondSudo:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:SecondSudo:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المطورين الثانويين')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تنزيله من قائمة المطورين الثانويين')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':Mute:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':Mute:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع كتم -› '..IdRank(dp.id_, data.chat_id_))
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع كتم » '..IdRank(dp.id_, data.chat_id_))
 else
 DevAbs:sadd(Mikasa..'Abs:Muted:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم كتمه من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم كتمه من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnMute:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':UnMute:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Muted:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء كتمه من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء كتمه من المجموعه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Ban:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':Ban:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع حظر -› '..IdRank(dp.id_, data.chat_id_))
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع حظر » '..IdRank(dp.id_, data.chat_id_))
 else
 DevAbs:sadd(Mikasa..'Abs:Ban:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم حظره من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم حظره من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnBan:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':UnBan:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 DevAbs:srem(Mikasa..'Abs:Ban:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء حظره من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء حظره من المجموعه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Tked:(.*)') then
 local AbsId = DataText:match(tonumber(data.sender_user_id_)..':Tked:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع تقيد -› '..IdRank(dp.id_, data.chat_id_))
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙لا تستطيع تقيد » '..IdRank(dp.id_, data.chat_id_))
 else
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..data.chat_id_.."&user_id="..dp.id_)
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تقيده من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم تقيده من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnTked:(.*)') then
@@ -1172,7 +1172,7 @@ local AbsId = DataText:match(tonumber(data.sender_user_id_)..':UnTked:(.*)')
 tdcli_function ({ID = "GetUser",user_id_ = AbsId},function(arg,dp) 
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..data.chat_id_.."&user_id="..dp.id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 DevAbs:srem(Mikasa..'Abs:Tkeed:'..data.chat_id_,dp.id_)
-EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء تقيده من المجموعه')
+EditMsg(Chat_Id2, Msg_Id2,'꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')\n꙳.︙تم الغاء تقيده من المجموعه')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':SetRtba:(.*)') then
@@ -1182,7 +1182,7 @@ if dp.first_name_ == false then
 Dev_Abs(data.chat_id_, data.id_, 1, "꙳.︙الحساب محذوف", 1, "md")
 return false  
 end
-local Text = '꙳.︙قم باستعمال الازرار لرفع العضو -› ⤈\n꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
+local Text = '꙳.︙قم باستعمال الازرار لرفع العضو » ⤈\n꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
 keyboard = {} 
 if Sudo(data) then
 keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:"..AbsId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:"..AbsId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:"..AbsId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:"..AbsId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:"..AbsId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:"..AbsId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":SetAbsConstructor:"..AbsId},{text="رفع مطور",callback_data=data.sender_user_id_..":SetSudoBot:"..AbsId}},{{text="رفع مطور ثانوي",callback_data=data.sender_user_id_..":SetSecondSudo:"..AbsId}},{{text = '˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="t.me/TeAmMikasa"}}}
@@ -1211,7 +1211,7 @@ if dp.first_name_ == false then
 Dev_Abs(data.chat_id_, data.id_, 1, "꙳.︙الحساب محذوف", 1, "md")
 return false  
 end
-local Text = '꙳.︙قم باستعمال الازرار لتنزيل العضو -› ⤈\n꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
+local Text = '꙳.︙قم باستعمال الازرار لتنزيل العضو » ⤈\n꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
 keyboard = {} 
 if Sudo(data) then
 keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:"..AbsId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:"..AbsId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:"..AbsId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:"..AbsId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:"..AbsId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:"..AbsId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":RemAbsConstructor:"..AbsId},{text="تنزيل مطور",callback_data=data.sender_user_id_..":RemSudoBot:"..AbsId}},{{text="تنزيل مطور ثانوي",callback_data=data.sender_user_id_..":RemSecondSudo:"..AbsId}},{{text = '˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="t.me/TeAmMikasa"}}}
@@ -1235,7 +1235,7 @@ end,nil)
 end
 if DataText and DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)') then
 local Abbs = DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)')
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙الكلمه -› "..Abbs.." تم حذفها") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙الكلمه » "..Abbs.." تم حذفها") 
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..Abbs..data.chat_id_)
 DevAbs:srem(Mikasa..'Abs:Manager:GpRedod'..data.chat_id_,Abbs)
 end
@@ -1243,7 +1243,7 @@ if DataText and DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.
 local Abbs = DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.*)')
 local List = DevAbs:smembers(Mikasa..'Abs:Text:GpTexts'..Abbs..data.chat_id_)
 if DevAbs:get(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم انهاء وحفظ -› "..#List.." من الردود المتعدده للامر -› "..Abbs) 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم انهاء وحفظ » "..#List.." من الردود المتعدده للامر » "..Abbs) 
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
 else
 EditMsg(Chat_Id2, Msg_Id2, "꙳.︙عذرا صلاحية الامر منتهيه !") 
@@ -1252,7 +1252,7 @@ end
 if DataText and DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
 local Abbs = DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)')
 if DevAbs:get(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر -› "..Abbs) 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر » "..Abbs) 
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..Abbs..data.chat_id_)
 DevAbs:del(Mikasa..'Abs:Add:GpTexts'..data.sender_user_id_..data.chat_id_)
@@ -1274,14 +1274,14 @@ local Abbs = DataText:match('/HelpList:(.*)')
 if tonumber(Abbs) == tonumber(data.sender_user_id_) then
 local Help = DevAbs:get(Mikasa..'Abs:Help')
 local Text = [[
-꙳.︙اهلا بك في قائمة الاوامر -› ⤈ 
+꙳.︙اهلا بك في قائمة الاوامر » ⤈ 
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙م1 -› اوامر الحمايه
-꙳.︙م2 -› اوامر الادمنيه
-꙳.︙م3 -› اوامر المدراء
-꙳.︙م4 -› اوامر المنشئين
-꙳.︙م5 -› اوامر المطورين
-꙳.︙م6 -› اوامر الاعضاء
+꙳.︙م1 » اوامر الحمايه
+꙳.︙م2 » اوامر الادمنيه
+꙳.︙م3 » اوامر المدراء
+꙳.︙م4 » اوامر المنشئين
+꙳.︙م5 » اوامر المطورين
+꙳.︙م6 » اوامر الاعضاء
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
 ]] 
@@ -1300,44 +1300,44 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 local Help = DevAbs:get(Mikasa..'Abs:Help1')
 local Text = [[
-꙳.︙اوامر حماية المجموعه -› ⤈
+꙳.︙اوامر حماية المجموعه » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙قفل • فتح -› الروابط
-꙳.︙قفل • فتح -› المعرفات
-꙳.︙قفل • فتح -› البوتات
-꙳.︙قفل • فتح -› المتحركه
-꙳.︙قفل • فتح -› الملصقات
-꙳.︙قفل • فتح -› الملفات
-꙳.︙قفل • فتح -› الصور
-꙳.︙قفل • فتح -› الفيديو
-꙳.︙قفل • فتح -› الاونلاين
-꙳.︙قفل • فتح -› الدردشه
-꙳.︙قفل • فتح -› التوجيه
-꙳.︙قفل • فتح -› الاغاني
-꙳.︙قفل • فتح -› الصوت
-꙳.︙قفل • فتح -› الجهات
-꙳.︙قفل • فتح -› الماركداون
-꙳.︙قفل • فتح -› التكرار
-꙳.︙قفل • فتح -› الهاشتاك
-꙳.︙قفل • فتح -› التعديل
-꙳.︙قفل • فتح -› التثبيت
-꙳.︙قفل • فتح -› الاشعارات
-꙳.︙قفل • فتح -› الكلايش
-꙳.︙قفل • فتح -› الدخول
-꙳.︙قفل • فتح -› الشبكات
-꙳.︙قفل • فتح -› المواقع
-꙳.︙قفل • فتح -› الفشار
-꙳.︙قفل • فتح -› الكفر
-꙳.︙قفل • فتح -› الطائفيه
-꙳.︙قفل • فتح -› الكل
-꙳.︙قفل • فتح -› العربيه
-꙳.︙قفل • فتح -› الانكليزيه
-꙳.︙قفل • فتح -› الفارسيه
-꙳.︙قفل • فتح -› التفليش
+꙳.︙قفل • فتح » الروابط
+꙳.︙قفل • فتح » المعرفات
+꙳.︙قفل • فتح » البوتات
+꙳.︙قفل • فتح » المتحركه
+꙳.︙قفل • فتح » الملصقات
+꙳.︙قفل • فتح » الملفات
+꙳.︙قفل • فتح » الصور
+꙳.︙قفل • فتح » الفيديو
+꙳.︙قفل • فتح » الاونلاين
+꙳.︙قفل • فتح » الدردشه
+꙳.︙قفل • فتح » التوجيه
+꙳.︙قفل • فتح » الاغاني
+꙳.︙قفل • فتح » الصوت
+꙳.︙قفل • فتح » الجهات
+꙳.︙قفل • فتح » الماركداون
+꙳.︙قفل • فتح » التكرار
+꙳.︙قفل • فتح » الهاشتاك
+꙳.︙قفل • فتح » التعديل
+꙳.︙قفل • فتح » التثبيت
+꙳.︙قفل • فتح » الاشعارات
+꙳.︙قفل • فتح » الكلايش
+꙳.︙قفل • فتح » الدخول
+꙳.︙قفل • فتح » الشبكات
+꙳.︙قفل • فتح » المواقع
+꙳.︙قفل • فتح » الفشار
+꙳.︙قفل • فتح » الكفر
+꙳.︙قفل • فتح » الطائفيه
+꙳.︙قفل • فتح » الكل
+꙳.︙قفل • فتح » العربيه
+꙳.︙قفل • فتح » الانكليزيه
+꙳.︙قفل • فتح » الفارسيه
+꙳.︙قفل • فتح » التفليش
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر حمايه اخرى -› ⤈
+꙳.︙اوامر حمايه اخرى » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙قفل • فتح + الامر -› ⤈
+꙳.︙قفل • فتح + الامر » ⤈
 ꙳.︙التكرار بالطرد
 ꙳.︙التكرار بالكتم
 ꙳.︙التكرار بالتقيد
@@ -1362,7 +1362,7 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 local Help = DevAbs:get(Mikasa..'Abs:Help2')
 local Text = [[
-꙳.︙اوامر الادمنيه -› ⤈
+꙳.︙اوامر الادمنيه » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙الاعدادت
 ꙳.︙تاك للكل 
@@ -1378,9 +1378,9 @@ local Text = [[
 ꙳.︙تنظيف التعديل
 ꙳.︙كللهم + الكلمه
 ꙳.︙اسم البوت + الامر
-꙳.︙ضع • حذف -› ترحيب
-꙳.︙ضع • حذف -› قوانين
-꙳.︙اضف • حذف -› صلاحيه
+꙳.︙ضع • حذف » ترحيب
+꙳.︙ضع • حذف » قوانين
+꙳.︙اضف • حذف » صلاحيه
 ꙳.︙الصلاحيات • حذف الصلاحيات
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙ضع سبام + العدد
@@ -1395,14 +1395,14 @@ local Text = [[
 ꙳.︙قائمه المنع
 ꙳.︙حذف قائمه المنع
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تفعيل • تعطيل -› الرابط
-꙳.︙تفعيل • تعطيل -› الالعاب
-꙳.︙تفعيل • تعطيل -› الترحيب
-꙳.︙تفعيل • تعطيل -› التاك للكل
-꙳.︙تفعيل • تعطيل -› كشف الاعدادات
+꙳.︙تفعيل • تعطيل » الرابط
+꙳.︙تفعيل • تعطيل » الالعاب
+꙳.︙تفعيل • تعطيل » الترحيب
+꙳.︙تفعيل • تعطيل » التاك للكل
+꙳.︙تفعيل • تعطيل » كشف الاعدادات
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙طرد المحذوفين
-꙳.︙طرد -› بالرد • بالمعرف • بالايدي
+꙳.︙طرد » بالرد • بالمعرف • بالايدي
 ꙳.︙كتم • الغاء كتم
 ꙳.︙تقيد • الغاء تقيد
 ꙳.︙حظر • الغاء حظر
@@ -1413,7 +1413,7 @@ local Text = [[
 ꙳.︙تقييد دقيقه + عدد الدقائق
 ꙳.︙تقييد ساعه + عدد الساعات
 ꙳.︙تقييد يوم + عدد الايام
-꙳.︙الغاء تقييد -› لالغاء التقييد بالوقت
+꙳.︙الغاء تقييد » لالغاء التقييد بالوقت
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
 ]]
@@ -1432,20 +1432,20 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 local Help = DevAbs:get(Mikasa..'Abs:Help3')
 local Text = [[
-꙳.︙اوامر المدراء -› ⤈
+꙳.︙اوامر المدراء » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙فحص البوت
 ꙳.︙ضع اسم + الاسم
-꙳.︙اضف • حذف -› رد
+꙳.︙اضف • حذف » رد
 ꙳.︙ردود المدير
 ꙳.︙حذف ردود المدير
-꙳.︙اضف • حذف -› رد متعدد
+꙳.︙اضف • حذف » رد متعدد
 ꙳.︙حذف رد من متعدد
 ꙳.︙الردود المتعدده
 ꙳.︙حذف الردود المتعدده
 ꙳.︙حذف قوائم المنع
-꙳.︙منع -› بالرد على ( ملصق • صوره • متحركه )
-꙳.︙حذف قائمه منع + -› ⤈
+꙳.︙منع » بالرد على ( ملصق • صوره • متحركه )
+꙳.︙حذف قائمه منع + » ⤈
 ( الصور • المتحركات • الملصقات )
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تنزيل الكل
@@ -1457,17 +1457,17 @@ local Text = [[
 ꙳.︙اعاده التثبيت
 ꙳.︙الغاء تثبيت الكل
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تغير رد + اسم الرتبه + النص -› ⤈
+꙳.︙تغير رد + اسم الرتبه + النص » ⤈
 ꙳.︙المطور • منشئ الاساسي
 ꙳.︙المنشئ • المدير • الادمن
 ꙳.︙المميز • المنظف • العضو
 ꙳.︙حذف ردود الرتب
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تغيير الايدي -› لتغيير الكليشه
-꙳.︙تعيين الايدي -› لتعيين الكليشه
-꙳.︙حذف الايدي -› لحذف الكليشه
+꙳.︙تغيير الايدي » لتغيير الكليشه
+꙳.︙تعيين الايدي » لتعيين الكليشه
+꙳.︙حذف الايدي » لحذف الكليشه
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙اطردني • الايدي بالصوره • الابراج
 ꙳.︙معاني الاسماء • اوامر النسب • انطق
 ꙳.︙الايدي • تحويل الصيغ • اوامر التحشيش
@@ -1491,38 +1491,38 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 local Help = DevAbs:get(Mikasa..'Abs:Help4')
 local Text = [[
-꙳.︙اوامر المنشئين -› ⤈
+꙳.︙اوامر المنشئين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تنزيل الكل
 ꙳.︙الميديا • امسح
 ꙳.︙تعين عدد الحذف
 ꙳.︙ترتيب الاوامر
-꙳.︙اضف • حذف -› امر
+꙳.︙اضف • حذف » امر
 ꙳.︙حذف الاوامر المضافه
 ꙳.︙الاوامر المضافه
-꙳.︙اضف نقاط -› بالرد • بالايدي
-꙳.︙اضف رسائل -› بالرد • بالايدي
+꙳.︙اضف نقاط » بالرد • بالايدي
+꙳.︙اضف رسائل » بالرد • بالايدي
 ꙳.︙رفع منظف • تنزيل منظف
 ꙳.︙المنظفين • حذف المنظفين
 ꙳.︙رفع مدير • تنزيل مدير
 ꙳.︙المدراء • حذف المدراء
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙نزلني • امسح
 ꙳.︙الحظر • الكتم
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المنشئين الاساسيين -› ⤈
+꙳.︙اوامر المنشئين الاساسيين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙وضع لقب + اللقب
-꙳.︙تفعيل • تعطيل -› الرفع
+꙳.︙تفعيل • تعطيل » الرفع
 ꙳.︙رفع منشئ • تنزيل منشئ
 ꙳.︙المنشئين • حذف المنشئين
-꙳.︙رفع • تنزيل -› مشرف
+꙳.︙رفع • تنزيل » مشرف
 ꙳.︙رفع بكل الصلاحيات
 ꙳.︙حذف القوائم
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المالكين -› ⤈
+꙳.︙اوامر المالكين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙رفع • تنزيل -› منشئ اساسي
+꙳.︙رفع • تنزيل » منشئ اساسي
 ꙳.︙حذف المنشئين الاساسيين 
 ꙳.︙المنشئين الاساسيين 
 ꙳.︙حذف جميع الرتب
@@ -1544,7 +1544,7 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 local Help = DevAbs:get(Mikasa..'Abs:Help5')
 local Text = [[
-꙳.︙اوامر المطورين -› ⤈
+꙳.︙اوامر المطورين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙الكروبات
 ꙳.︙المطورين
@@ -1557,14 +1557,14 @@ local Text = [[
 ꙳.︙رفع مالك • تنزيل مالك
 ꙳.︙المالكين • حذف المالكين
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙رفع • تنزيل -› مدير عام
+꙳.︙رفع • تنزيل » مدير عام
 ꙳.︙حذف • المدراء العامين 
-꙳.︙رفع • تنزيل -› ادمن عام
+꙳.︙رفع • تنزيل » ادمن عام
 ꙳.︙حذف • الادمنيه العامين 
-꙳.︙رفع • تنزيل -› مميز عام
+꙳.︙رفع • تنزيل » مميز عام
 ꙳.︙حذف • المميزين عام 
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المطور الاساسي -› ⤈
+꙳.︙اوامر المطور الاساسي » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تحديث
 ꙳.︙الملفات
@@ -1584,25 +1584,25 @@ local Text = [[
 ꙳.︙حظر عام • الغاء العام
 ꙳.︙كتم عام • الغاء العام
 ꙳.︙قائمه العام • حذف قائمه العام
-꙳.︙وضع • حذف -› اسم البوت
-꙳.︙اضف • حذف -› رد عام
+꙳.︙وضع • حذف » اسم البوت
+꙳.︙اضف • حذف » رد عام
 ꙳.︙ردود المطور • حذف ردود المطور
-꙳.︙تعيين • حذف • جلب -› رد الخاص
+꙳.︙تعيين • حذف • جلب » رد الخاص
 ꙳.︙جلب نسخه الكروبات
 ꙳.︙رفع النسخه + بالرد على الملف
-꙳.︙تعيين • حذف -› قناة الاشتراك
+꙳.︙تعيين • حذف » قناة الاشتراك
 ꙳.︙جلب كليشه الاشتراك
-꙳.︙تغيير • حذف -› كليشه الاشتراك
-꙳.︙رفع • تنزيل -› مطور
+꙳.︙تغيير • حذف » كليشه الاشتراك
+꙳.︙رفع • تنزيل » مطور
 ꙳.︙المطورين • حذف المطورين
-꙳.︙رفع • تنزيل -› مطور ثانوي
+꙳.︙رفع • تنزيل » مطور ثانوي
 ꙳.︙الثانويين • حذف الثانويين
-꙳.︙تعيين • حذف -› كليشة الايدي
-꙳.︙اذاعه للكل بالتوجيه -› بالرد
+꙳.︙تعيين • حذف » كليشة الايدي
+꙳.︙اذاعه للكل بالتوجيه » بالرد
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تفعيل ملف + اسم الملف
 ꙳.︙تعطيل ملف + اسم الملف
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙الاذاعه • الاشتراك الاجباري
 ꙳.︙ترحيب البوت • المغادره
 ꙳.︙البوت الخدمي • التواصل
@@ -1621,7 +1621,7 @@ local Abbs = DataText:match('/HelpList6:(.*)')
 if tonumber(Abbs) == tonumber(data.sender_user_id_) then
 local Help = DevAbs:get(Mikasa..'Abs:Help6')
 local Text = [[
-꙳.︙اوامر الاعضاء -› ⤈
+꙳.︙اوامر الاعضاء » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙السورس • موقعي • رتبتي • معلوماتي 
 ꙳.︙رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
@@ -1639,14 +1639,14 @@ local Text = [[
 ꙳.︙زخرفه + اسمك
 ꙳.︙برج + نوع البرج
 ꙳.︙معنى اسم + الاسم
-꙳.︙بوسه • بوسها -› بالرد
+꙳.︙بوسه • بوسها » بالرد
 ꙳.︙احسب + تاريخ ميلادك
 ꙳.︙رفع مطي • تنزيل مطي • المطايه
-꙳.︙هينه • هينها -› بالرد • بالمعرف
-꙳.︙صيحه • صيحها -› بالرد • بالمعرف
-꙳.︙صلاحياته -› بالرد • بالمعرف • بالايدي
-꙳.︙ايدي • كشف  -› بالرد • بالمعرف • بالايدي
-꙳.︙تحويل + بالرد -› صوره • ملصق • صوت • بصمه
+꙳.︙هينه • هينها » بالرد • بالمعرف
+꙳.︙صيحه • صيحها » بالرد • بالمعرف
+꙳.︙صلاحياته » بالرد • بالمعرف • بالايدي
+꙳.︙ايدي • كشف  » بالرد • بالمعرف • بالايدي
+꙳.︙تحويل + بالرد » صوره • ملصق • صوت • بصمه
 ꙳.︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
@@ -1702,7 +1702,7 @@ end
 if Constructor(msg) then
 if text == "الاوامر المضافه" and ChCheck(msg) then
 local List = DevAbs:smembers(Mikasa.."List:Cmd:Group:New"..msg.chat_id_.."") 
-t = "꙳.︙قائمة الاوامر المضافه -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+t = "꙳.︙قائمة الاوامر المضافه » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 Cmds = DevAbs:get(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 if Cmds then 
@@ -1743,7 +1743,7 @@ DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل ا�
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
 DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
-send(msg.chat_id_, msg.id_,"꙳.︙تم ترتيب الاوامر بالشكل التالي -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙ايدي -› ا\n꙳.︙تنزيل الكل -› تك\n꙳.︙رفع مميز -› م\n꙳.︙رفع ادمن -› اد \n꙳.︙رفع مدير -› مد \n꙳.︙رفع منشئ -› من \n꙳.︙رفع منشئ اساسي -› اس  \n꙳.︙تفعيل الايدي بالصوره -› تفع\n꙳.︙تعطيل الايدي بالصوره -› تعط\n≪━━━━━ꪑ𝙠━━━━━≫")  
+send(msg.chat_id_, msg.id_,"꙳.︙تم ترتيب الاوامر بالشكل التالي » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙ايدي » ا\n꙳.︙تنزيل الكل » تك\n꙳.︙رفع مميز » م\n꙳.︙رفع ادمن » اد \n꙳.︙رفع مدير » مد \n꙳.︙رفع منشئ » من \n꙳.︙رفع منشئ اساسي » اس  \n꙳.︙تفعيل الايدي بالصوره » تفع\n꙳.︙تعطيل الايدي بالصوره » تعط\n≪━━━━━ꪑ𝙠━━━━━≫")  
 end
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
 DevAbs:set(Mikasa.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
@@ -1763,7 +1763,7 @@ if #List == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لاتوجد صلاحيات مضافه", 1, 'html')
 return false
 end
-t = "꙳.︙قائمة الصلاحيات المضافه -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+t = "꙳.︙قائمة الصلاحيات المضافه » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 var = DevAbs:get(Mikasa.."Comd:New:rt:Abs:"..v..msg.chat_id_)
 if var then
@@ -1836,19 +1836,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevAbs:get(Mikasa.."Comd:New:rt:Abs:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS) 
 DevAbs:sadd(Mikasa..'Abs:VipMem:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
 DevAbs:sadd(Mikasa..'Abs:Admins:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)  
 DevAbs:sadd(Mikasa..'Abs:Managers:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -1862,19 +1862,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevAbs:get(Mikasa.."Comd:New:rt:Abs:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:VipMem:'..msg.chat_id_, result.sender_user_id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:Admins:'..msg.chat_id_, result.sender_user_id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:Managers:'..msg.chat_id_, result.sender_user_id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -1888,19 +1888,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevAbs:get(Mikasa.."Comd:New:rt:Abs:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:sadd(Mikasa..'Abs:VipMem:'..msg.chat_id_, result.id_)
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:sadd(Mikasa..'Abs:Admins:'..msg.chat_id_, result.id_)
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:sadd(Mikasa..'Abs:Managers:'..msg.chat_id_, result.id_)
 DevAbs:set(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*المعرف غير صحيح*", 1, 'md')
@@ -1916,19 +1916,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevAbs:get(Mikasa.."Comd:New:rt:Abs:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:VipMem:'..msg.chat_id_, result.id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:Admins:'..msg.chat_id_, result.id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(Mikasa..'Abs:Managers:'..msg.chat_id_, result.id_)
 DevAbs:del(Mikasa.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو -› ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙العضو » ❨ ['..result.title_..'](t.me/'..(text1[3] or 'TeAmMikasa')..')'..' ❩\n꙳.︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*المعرف غير صحيح*", 1, 'md')
@@ -1960,24 +1960,24 @@ if text == '/start' or text == 'رجوع ،🔙‘' then
 if SecondSudo(msg) then 
 local Sudo_Welcome = '꙳.︙مرحبا عزيزي المطور \n꙳.︙انت المطور الاساسي هنا \n꙳.︙اليك ازرار سورس ميكاسا \n꙳.︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
-{'وضع اسم البوت','-› تحديث ⌁','وضع كليشه المطور'},
-{'-› المطورين ⌁','-› الاحصائيات ⌁'},
-{'-› المجموعات ⌁','روابط الكروبات','-› المشتركين ⌁'},
-{'-› تعطيل التواصل ⌁','-› تفعيل التواصل ⌁'},
-{'تنظيف الكروبات','-› قائمه العام ⌁','تنظيف المشتركين'},
-{'-› تغير المطور الاساسي ⌁'},
+{'وضع اسم البوت','» تحديث ⌁','وضع كليشه المطور'},
+{'» المطورين ⌁','» الاحصائيات ⌁'},
+{'» المجموعات ⌁','روابط الكروبات','» المشتركين ⌁'},
+{'» تعطيل التواصل ⌁','» تفعيل التواصل ⌁'},
+{'تنظيف الكروبات','» قائمه العام ⌁','تنظيف المشتركين'},
+{'» تغير المطور الاساسي ⌁'},
 {'تعطيل ترحيب البوت','تفعيل ترحيب البوت'},
-{'-› تغير معلومات الترحيب ⌁'},
-{'-› تعطيل المغادره ⌁','-› تفعيل المغادره ⌁'},
-{'-› تعطيل الاذاعه ⌁','-› تفعيل الاذاعه ⌁'},
-{'-› اذاعه بالتثبيت ⌁'},
-{'-› اذاعه عام ⌁','-› اذاعه خاص ⌁'},
-{'-› اذاعه عام بالتوجيه ⌁','-› اذاعه خاص بالتوجيه ⌁'},
+{'» تغير معلومات الترحيب ⌁'},
+{'» تعطيل المغادره ⌁','» تفعيل المغادره ⌁'},
+{'» تعطيل الاذاعه ⌁','» تفعيل الاذاعه ⌁'},
+{'» اذاعه بالتثبيت ⌁'},
+{'» اذاعه عام ⌁','» اذاعه خاص ⌁'},
+{'» اذاعه عام بالتوجيه ⌁','» اذاعه خاص بالتوجيه ⌁'},
 {'~ تعيين كلايش الاوامر ~'},
 {'تعطيل البوت الخدمي','تفعيل البوت الخدمي'},
 {'جلب نسخه السورس','تحديث السورس','جلب نسخه الكروبات'},
-{'-› حذف رد عام ⌁','-› الردود العام ⌁','-› اضف رد عام ⌁'},
-{'-› حذف رد الخاص ⌁','-› تعيين رد الخاص ⌁'},
+{'» حذف رد عام ⌁','» الردود العام ⌁','» اضف رد عام ⌁'},
+{'» حذف رد الخاص ⌁','» تعيين رد الخاص ⌁'},
 {'حذف قناة الاشتراك','قناة الاشتراك','تعيين قناة الاشتراك'},
 {'حذف كليشه الاشتراك','كليشه الاشتراك','تغير كليشه الاشتراك'},
 }
@@ -2006,7 +2006,7 @@ local start = DevAbs:get(Mikasa.."Abs:Start:Bot")
 if start then 
 Start_Source = start
 else
-Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر -› تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر » تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
 SendInline(msg.chat_id_,Start_Source,nil,inline)
 end,nil)
@@ -2022,7 +2022,7 @@ tdcli_function({ID="ForwardMessages",chat_id_=DevId,from_chat_id_= msg.sender_us
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
 if data and data.messages_ and data.messages_[0] ~= false and data.ID ~= "Error" then
 if data and data.messages_ and data.messages_[0].content_.sticker_ then
-SendText(DevId,'꙳.︙تم ارسال الملصق من -› ⤈\n['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')',0,'md') 
+SendText(DevId,'꙳.︙تم ارسال الملصق من » ⤈\n['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')',0,'md') 
 return false
 end;end;end,nil);end,nil);end,nil);end
 if SecondSudo(msg) and msg.reply_to_message_id_ ~= 0  then    
@@ -2032,13 +2032,13 @@ id_user = result.forward_info_.sender_user_id_
 end 
 tdcli_function ({ID = "GetUser",user_id_ = id_user},function(arg,data) 
 if text == 'حظر' or text == 'حضر' then
-local Text = '꙳.︙العضو -› ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n꙳.︙تم حظره من التواصل'
+local Text = '꙳.︙العضو » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n꙳.︙تم حظره من التواصل'
 SendText(DevId,Text,msg.id_/2097152/0.5,'md') 
 DevAbs:sadd(Mikasa..'Abs:Ban:Pv',data.id_)  
 return false  
 end 
 if text == 'الغاء الحظر' or text == 'الغاء حظر' then
-local Text = '꙳.︙العضو -› ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n꙳.︙تم الغاء حظره من التواصل'
+local Text = '꙳.︙العضو » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n꙳.︙تم الغاء حظره من التواصل'
 SendText(DevId,Text,msg.id_/2097152/0.5,'md') 
 DevAbs:srem(Mikasa..'Abs:Ban:Pv',data.id_)  
 return false  
@@ -2051,19 +2051,19 @@ return false
 end 
 if text then
 Dev_Abs(id_user, 0, 1, text, 1, "md")  
-Text = '꙳.︙تم ارسال الرساله الى -› ⤈'
+Text = '꙳.︙تم ارسال الرساله الى » ⤈'
 elseif msg.content_.ID == 'MessageSticker' then    
 sendSticker(id_user, msg.id_, 0, 1,nil, msg.content_.sticker_.sticker_.persistent_id_)   
-Text = '꙳.︙تم ارسال الملصق الى -› ⤈'
+Text = '꙳.︙تم ارسال الملصق الى » ⤈'
 elseif msg.content_.ID == 'MessagePhoto' then    
 sendPhoto(id_user, msg.id_, 0, 1,nil, msg.content_.photo_.sizes_[0].photo_.persistent_id_,(msg.content_.caption_ or ''))    
-Text = '꙳.︙تم ارسال الصوره الى -› ⤈'
+Text = '꙳.︙تم ارسال الصوره الى » ⤈'
 elseif msg.content_.ID == 'MessageAnimation' then    
 sendDocument(id_user, msg.id_, 0, 1,nil, msg.content_.animation_.animation_.persistent_id_)    
-Text = '꙳.︙تم ارسال المتحركه الى -› ⤈'
+Text = '꙳.︙تم ارسال المتحركه الى » ⤈'
 elseif msg.content_.ID == 'MessageVoice' then    
 sendVoice(id_user, msg.id_, 0, 1,nil, msg.content_.voice_.voice_.persistent_id_)    
-Text = '꙳.︙تم ارسال البصمه الى -› ⤈'
+Text = '꙳.︙تم ارسال البصمه الى » ⤈'
 end     
 SendText(DevId, Text..'\n'..'['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')',0,'md') 
 end,nil);
@@ -2085,12 +2085,12 @@ DevAbs:del(Mikasa..'Abs:Start:Bots'..msg.sender_user_id_)
 return false
 end
 if SecondSudo(msg) then
-if text == 'تعيين رد الخاص' or text == 'ضع كليشه ستارت' or text == '-› تعيين رد الخاص ⌁' then 
+if text == 'تعيين رد الخاص' or text == 'ضع كليشه ستارت' or text == '» تعيين رد الخاص ⌁' then 
 DevAbs:set(Mikasa..'Abs:Start:Bots'..msg.sender_user_id_,true) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙ارسل لي كليشة الستارت الان', 1, 'md')
 return false
 end
-if text == 'حذف رد الخاص' or text == 'حذف كليشه ستارت' or text == '-› حذف رد الخاص ⌁' then 
+if text == 'حذف رد الخاص' or text == 'حذف كليشه ستارت' or text == '» حذف رد الخاص ⌁' then 
 DevAbs:del(Mikasa..'Start:Bot') 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم حذف كليشة الستارت بنجاح', 1, 'md')
 end
@@ -2099,18 +2099,18 @@ local start = DevAbs:get(Mikasa.."Abs:Start:Bot")
 if start then 
 Start_Source = start
 else
-Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر -› تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر » تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
 Dev_Abs(msg.chat_id_, msg.id_, 1, Start_Source, 1, 'md')
 return false
 end
-if text == 'تفعيل التواصل' or text == '-› تفعيل التواصل ⌁' then   
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل التواصل بنجاح'
+if text == 'تفعيل التواصل' or text == '» تفعيل التواصل ⌁' then   
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل التواصل بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Texting:Pv') 
 end
-if text == 'تعطيل التواصل' or text == '-› تعطيل التواصل ⌁' then  
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل التواصل بنجاح'
+if text == 'تعطيل التواصل' or text == '» تعطيل التواصل ⌁' then  
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل التواصل بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Texting:Pv',true) 
 end
@@ -2204,7 +2204,7 @@ local NameChat = NameChat:gsub("*","")
 local NameChat = NameChat:gsub("{","") 
 local NameChat = NameChat:gsub("}","") 
 if not Sudo(msg) and not Bot(msg) then
-SendText(DevId,"꙳.︙تم طرد البوت من المجموعه -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة -› "..Name.."\n꙳.︙اسم المجموعه -› ["..NameChat.."]\n꙳.︙ايدي المجموعه -› ⤈ \n❨ `"..msg.chat_id_.."` ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت -› "..os.date("%I:%M%p").."\n꙳.︙التاريخ -› "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"꙳.︙تم طرد البوت من المجموعه » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة » "..Name.."\n꙳.︙اسم المجموعه » ["..NameChat.."]\n꙳.︙ايدي المجموعه » ⤈ \n❨ `"..msg.chat_id_.."` ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت » "..os.date("%I:%M%p").."\n꙳.︙التاريخ » "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
@@ -2276,7 +2276,7 @@ if DevAbs:sismember(Mikasa..'Abs:Groups',msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙المجموعه بالتاكيد مفعله', 1, 'md')
 else
 if tonumber(data.member_count_) < tonumber(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0) and not SecondSudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد اعضاء المجموعه اقل من -› *'..(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد اعضاء المجموعه اقل من » *'..(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
 ReplyStatus(msg,result.id_,"ReplyBy","꙳.︙تم تفعيل المجموعه "..dp.title_)  
@@ -2305,7 +2305,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevAbs:set(Mikasa.."Abs:Groups:Links"..msg.chat_id_,LinkGroup) 
-SendText(DevId,"꙳.︙تم تفعيل مجموعه جديده -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة -› "..Name.."\n꙳.︙موقعه في المجموعه -› "..status.."\n꙳.︙اسم المجموعه -› ["..NameChat.."]\n꙳.︙عدد اعضاء المجموعه -› ❨ *"..NumMem.."* ❩\n꙳.︙ايدي المجموعه -› ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه -› ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت -› "..os.date("%I:%M%p").."\n꙳.︙التاريخ -› "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"꙳.︙تم تفعيل مجموعه جديده » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة » "..Name.."\n꙳.︙موقعه في المجموعه » "..status.."\n꙳.︙اسم المجموعه » ["..NameChat.."]\n꙳.︙عدد اعضاء المجموعه » ❨ *"..NumMem.."* ❩\n꙳.︙ايدي المجموعه » ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه » ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت » "..os.date("%I:%M%p").."\n꙳.︙التاريخ » "..os.date("%Y/%m/%d").."",0,'md')
 end
 end end
 end,nil)
@@ -2339,7 +2339,7 @@ if DevAbs:get(Mikasa..'Abs:Lock:Robot'..msg.chat_id_) then
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..dp.id_)
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, dp.id_)
-local Text = '꙳.︙اهلا عزيزي -› ['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')\n꙳.︙يجب علينا التأكد أنك لست روبوت\n꙳.︙تم تقيدك اضغط الزر بالاسفل لفكه'
+local Text = '꙳.︙اهلا عزيزي » ['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')\n꙳.︙يجب علينا التأكد أنك لست روبوت\n꙳.︙تم تقيدك اضغط الزر بالاسفل لفكه'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اضغط هنا لفك تقيدك",callback_data="/UnTkeed"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -2393,7 +2393,7 @@ if text and text:match("^(.*)$") then
 local DelGpRedRedods = DevAbs:get(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 local GetGpTexts = DevAbs:get(Mikasa..'Abs:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRedRedods == 'DelGpRedRedods' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الرد -› '..msg.content_.text_..' للكلمه -› '..GetGpTexts..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الرد » '..msg.content_.text_..' للكلمه » '..GetGpTexts..' تم حذفها',  1, "html")
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 DevAbs:srem(Mikasa..'Abs:Text:GpTexts'..GetGpTexts..msg.chat_id_,msg.content_.text_)
 return false
@@ -2402,7 +2402,7 @@ end
 if text and text:match("^(.*)$") then
 local DelGpRed = DevAbs:get(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRed == 'DelGpRedod' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه -› '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه » '..msg.content_.text_..' تم حذفها',  1, "html")
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..msg.content_.text_..msg.chat_id_)
 DevAbs:srem(Mikasa..'Abs:Manager:GpRedod'..msg.chat_id_,msg.content_.text_)
@@ -2412,7 +2412,7 @@ end
 if text and text:match("^(.*)$") then
 local DelGpRed = DevAbs:get(Mikasa..'Abs:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRed == 'DelGpRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه -› '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه » '..msg.content_.text_..' تم حذفها',  1, "html")
 DevAbs:del(Mikasa..'Abs:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Gif:GpRed'..msg.content_.text_..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Voice:GpRed'..msg.content_.text_..msg.chat_id_)
@@ -2429,7 +2429,7 @@ end
 if text and text:match("^(.*)$") then
 local DelAllRed = DevAbs:get(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_)
 if DelAllRed == 'DelAllRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه -› '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الكلمه » '..msg.content_.text_..' تم حذفها',  1, "html")
 DevAbs:del(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_)
 DevAbs:del(Mikasa.."Abs:Gif:AllRed"..msg.content_.text_)
 DevAbs:del(Mikasa.."Abs:Voice:AllRed"..msg.content_.text_)
@@ -2450,7 +2450,7 @@ if SaveGpRedod == 'SaveGpRedod' then
 local GetGpTexts = DevAbs:get(Mikasa..'Abs:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
 local List = DevAbs:smembers(Mikasa..'Abs:Text:GpTexts'..GetGpTexts..msg.chat_id_)
 if text == "الغاء" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر -› "..GetGpTexts ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر » "..GetGpTexts ,  1, "md")
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..GetGpTexts..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
@@ -2460,11 +2460,11 @@ end
 Text = text:gsub('"',""):gsub('"',""):gsub("`",""):gsub("*","")
 DevAbs:sadd(Mikasa..'Abs:Text:GpTexts'..GetGpTexts..msg.chat_id_,Text)
 if #List == 4 then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ -› 5 من الردود المتعدده للامر -› "..GetGpTexts ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ » 5 من الردود المتعدده للامر » "..GetGpTexts ,  1, "md")
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-local Abs = "꙳.︙تم حفظ الرد رقم -› "..(#List+1).."\n꙳.︙قم بارسال الرد رقم -› "..(#List+2)
+local Abs = "꙳.︙تم حفظ الرد رقم » "..(#List+1).."\n꙳.︙قم بارسال الرد رقم » "..(#List+2)
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="انهاء وحفظ "..(#List+1).." من الردود",callback_data="/EndRedod:"..msg.sender_user_id_..GetGpTexts}},{{text="الغاء وحذف التخزين",callback_data="/DelRedod:"..msg.sender_user_id_..GetGpTexts}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -2681,7 +2681,7 @@ DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
 end;end;end, nil)
 msgm = msgm - 1048576
 end
-Text = '꙳.︙العضو -› '..GetName..' \n꙳.︙قام بالتكرار المحدد تم طرده '
+Text = '꙳.︙العضو » '..GetName..' \n꙳.︙قام بالتكرار المحدد تم طرده '
 SendText(msg.chat_id_,Text,0,'md')
 return false  
 end 
@@ -2703,7 +2703,7 @@ DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
 end;end;end, nil)
 msgm = msgm - 1048576
 end
-Text = '꙳.︙العضو -› '..GetName..' \n꙳.︙قام بالتكرار المحدد تم تقيده '
+Text = '꙳.︙العضو » '..GetName..' \n꙳.︙قام بالتكرار المحدد تم تقيده '
 SendText(msg.chat_id_,Text,0,'md')
 return false  
 end  
@@ -2720,7 +2720,7 @@ DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
 end;end;end, nil)
 msgm = msgm - 1048576
 end
-Text = '꙳.︙العضو -› '..GetName..' \n꙳.︙قام بالتكرار المحدد تم كتمه '
+Text = '꙳.︙العضو » '..GetName..' \n꙳.︙قام بالتكرار المحدد تم كتمه '
 SendText(msg.chat_id_,Text,0,'md')
 return false  
 end
@@ -2785,7 +2785,7 @@ if DevAbs:get(Mikasa..'Abs:viewget'..msg.sender_user_id_) then
 if not msg.forward_info_ then
 DevAbs:del(Mikasa..'Abs:viewget'..msg.sender_user_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد مشاهدات المنشور هي -› ('..msg.views_..')', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد مشاهدات المنشور هي » ('..msg.views_..')', 1, 'md')
 DevAbs:del(Mikasa..'Abs:viewget'..msg.sender_user_id_)
 end
 end
@@ -2936,8 +2936,8 @@ tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = Mikasa,offset_ = 0,limit
 for i=0,#msg.content_.members_ do    
 BotWelcome = msg.content_.members_[i].id_    
 if BotWelcome and BotWelcome == tonumber(Mikasa) then 
-if DevAbs:sismember(Mikasa..'Abs:Groups',msg.chat_id_) then BotText = "مفعله في السابق\n꙳.︙ارسل -› الاوامر واستمتع بالمميزيات" else BotText = "معطله يجب رفعي مشرف\n꙳.︙بعد ذلك يرجى ارسال امر -› تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا" end 
-if DevAbs:get(Mikasa.."Abs:Text:BotWelcome") then AbsText = DevAbs:get(Mikasa.."Abs:Text:BotWelcome") else AbsText = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙حالة المجموعه -› "..BotText.."\n≪━━━━━ꪑ𝙠━━━━━≫" end 
+if DevAbs:sismember(Mikasa..'Abs:Groups',msg.chat_id_) then BotText = "مفعله في السابق\n꙳.︙ارسل » الاوامر واستمتع بالمميزيات" else BotText = "معطله يجب رفعي مشرف\n꙳.︙بعد ذلك يرجى ارسال امر » تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا" end 
+if DevAbs:get(Mikasa.."Abs:Text:BotWelcome") then AbsText = DevAbs:get(Mikasa.."Abs:Text:BotWelcome") else AbsText = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙حالة المجموعه » "..BotText.."\n≪━━━━━ꪑ𝙠━━━━━≫" end 
 if DevAbs:get(Mikasa.."Abs:Photo:BotWelcome") then AbsPhoto = DevAbs:get(Mikasa.."Abs:Photo:BotWelcome") elseif abbas.photos_[0] then AbsPhoto = abbas.photos_[0].sizes_[1].photo_.persistent_id_ else AbsPhoto = nil end 
 if AbsPhoto ~= nil then
 sendPhoto(msg.chat_id_,msg.id_,0,1,nil,AbsPhoto,AbsText)
@@ -3457,7 +3457,7 @@ GetJson = GetJson..'}}'
 local File = io.open('./'..Mikasa..'.json', "w")
 File:write(GetJson)
 File:close()
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './'..Mikasa..'.json', '꙳.︙يحتوي الملف على -› '..#List..' مجموعه',dl_cb, nil)
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './'..Mikasa..'.json', '꙳.︙يحتوي الملف على » '..#List..' مجموعه',dl_cb, nil)
 io.popen('rm -rf ./'..Mikasa..'.json')
 end
 if text and (text == 'رفع النسخه' or text == 'رفع النسخه الاحتياطيه' or text == 'رفع نسخه الاحتياطيه') and tonumber(msg.reply_to_message_id_) > 0 then   
@@ -3481,11 +3481,11 @@ return false  end
 local GETNUM = DevAbs:get(Mikasa.."GAMES"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 DevAbs:del(Mikasa.."SET:GAME"..msg.chat_id_)   
-Dev_Abs( msg.chat_id_, msg.id_, 1,'꙳.︙*المحيبس باليد رقم* -› '..NUM..'\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
+Dev_Abs( msg.chat_id_, msg.id_, 1,'꙳.︙*المحيبس باليد رقم* » '..NUM..'\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 DevAbs:del(Mikasa.."SET:GAME"..msg.chat_id_)   
-Dev_Abs( msg.chat_id_, msg.id_, 1,'꙳.︙*المحيبس باليد رقم* -› '..GETNUM..'\n꙳.︙*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
+Dev_Abs( msg.chat_id_, msg.id_, 1,'꙳.︙*المحيبس باليد رقم* » '..GETNUM..'\n꙳.︙*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
 end
 end
 end
@@ -3508,7 +3508,7 @@ send(msg.chat_id_, msg.id_, '꙳.︙عذرا لا يمكنك وضع معرف م�
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
-send(msg.chat_id_, msg.id_,'꙳.︙البوت ادمن في القناة \n꙳.︙تم تفعيل الاشتراك الاجباري \n꙳.︙ايدي القناة -› '..data.id_..'\n꙳.︙معرف القناة -› [@'..data.type_.channel_.username_..']')
+send(msg.chat_id_, msg.id_,'꙳.︙البوت ادمن في القناة \n꙳.︙تم تفعيل الاشتراك الاجباري \n꙳.︙ايدي القناة » '..data.id_..'\n꙳.︙معرف القناة » [@'..data.type_.channel_.username_..']')
 DevAbs:set(Mikasa..'Abs:ChId',data.id_)
 else
 send(msg.chat_id_, msg.id_,'꙳.︙عذرا البوت ليس ادمن في القناة')
@@ -3560,27 +3560,27 @@ end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
-local TeAmMikasa = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
+local TeAmMikasa = {'* كول حبيبي ؟ اني *'..NameBot..' ','*وياك القميل*'*..NameBot..*' ','*اسمي القميل *'*..NameBot..*' '}
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') 
-local TeAmMikasa = {"اسمي القميل "..NameBot.." 😚♥️","هلاا يروحيي وياكك "..NameBot.." 😻♥️"} 
+local TeAmMikasa = {"*اسمي القميل *"*..NameBot..*" 😚♥️","*هلاا يروحيي وياكك *"*..NameBot..*" 😻♥️"} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
 if text and text == (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') then 
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
-local TeAmMikasa = {'كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' '} 
+local TeAmMikasa = {'*كول حبيبي ؟ اني *'*..NameBot..*' ','* وياك القميل* '*..NameBot..*' '} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false 
 end
 if text =='نقاطي' and ChCheck(msg) then 
 if tonumber((DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙لم تربح اي نقطه\n꙳.︙ارسل -› الالعاب للعب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙لم تربح اي نقطه\n꙳.︙ارسل » الالعاب للعب', 1, 'md')
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙عدد النقاط التي ربحتها -› '..(DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙عدد النقاط التي ربحتها » '..(DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
 end
 end
 if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then DevAbs:del(Mikasa..'Abs:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم حذف جميع رسائلك', 1, 'md') end
@@ -3708,13 +3708,13 @@ name = string.gsub(name,'⏰','⏰')
 name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
-TeAmMikasa = '꙳.︙اول واحد يدز هذا السمايل يربح -› '..name
+TeAmMikasa = '꙳.︙اول واحد يدز هذا السمايل يربح » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› سمايلات للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » سمايلات للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3766,13 +3766,13 @@ name = string.gsub(name,'حاسوب','س ا ح و ب')
 name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
-TeAmMikasa = '꙳.︙اول واحد يرتبها يربح -› '..name
+TeAmMikasa = '꙳.︙اول واحد يرتبها يربح » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› ترتيب للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » ترتيب للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3833,13 +3833,13 @@ name = string.gsub(name,'الثلج','انا ابن الماء فان تركون
 name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احفض الماء فمن اكون ؟')
 name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
 name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
-TeAmMikasa = '꙳.︙اول واحد يحلها يربح -› '..name
+TeAmMikasa = '꙳.︙اول واحد يحلها يربح » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› حزوره للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » حزوره للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3876,13 +3876,13 @@ name = string.gsub(name,'زرافه','🦒')
 name = string.gsub(name,'قنفذ','🦔')
 name = string.gsub(name,'تفاحه','🍎')
 name = string.gsub(name,'باذنجان','🍆')
-TeAmMikasa = '꙳.︙ما معنى هذا السمايل :؟ -› '..name
+TeAmMikasa = '꙳.︙ما معنى هذا السمايل :؟ » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum2'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› المعاني للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » المعاني للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3919,13 +3919,13 @@ name = string.gsub(name,'موعطشان','عطشان')
 name = string.gsub(name,'خوش ولد','موخوش ولد')
 name = string.gsub(name,'اني','مطي')
 name = string.gsub(name,'هادئ','عصبي')
-TeAmMikasa = '꙳.︙ما هو عكس كلمة -› '..name
+TeAmMikasa = '꙳.︙ما هو عكس كلمة » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum3'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› العكس للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » العكس للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3971,7 +3971,7 @@ return false
 end end
 if text == DevAbs:get(Mikasa..'Abs:GameNum4'..msg.chat_id_) and not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› المختلف للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » المختلف للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -4005,7 +4005,7 @@ name = string.gsub(name,'شهر','امشي ___ ولا تعبر نهر')
 name = string.gsub(name,'شكه','يامن تعب يامن ___ يا من على الحاضر لكة')
 name = string.gsub(name,'القرد',' ___ بعين امه غزال')
 name = string.gsub(name,'يكحله','اجه ___ عماها')
-TeAmMikasa = '꙳.︙اكمل المثال التالي -› ['..name..']'
+TeAmMikasa = '꙳.︙اكمل المثال التالي » ['..name..']'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
@@ -4013,7 +4013,7 @@ if text == DevAbs:get(Mikasa..'Abs:GameNum5'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevAbs:del(Mikasa..'Abs:GameNum5'..msg.chat_id_)
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› امثله للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » امثله للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 end
 DevAbs:set(Mikasa..'Abs:Games:Ids'..msg.chat_id_,true)
@@ -4037,7 +4037,7 @@ name = string.gsub(name,'15','25 - 10 = ?')
 name = string.gsub(name,'39','44 - 5 = ?')
 name = string.gsub(name,'5','12 + 1 - 8 = ?')
 name = string.gsub(name,'16','16 + 16 - 16 = ?')
-TeAmMikasa = '꙳.︙اكمل المعادله التاليه -› ⤈\n{'..name..'} '
+TeAmMikasa = '꙳.︙اكمل المعادله التاليه » ⤈\n{'..name..'} '
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
@@ -4045,7 +4045,7 @@ if text == DevAbs:get(Mikasa..'Abs:GameNum6'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevAbs:del(Mikasa..'Abs:GameNum6'..msg.chat_id_)
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› رياضيات للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » رياضيات للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 end
 DevAbs:set(Mikasa..'Abs:Games:Ids'..msg.chat_id_,true)
@@ -4068,7 +4068,7 @@ name = string.gsub(name,'تمساح','crocodile')
 name = string.gsub(name,'شاطئ','Beach')
 name = string.gsub(name,'غبي','Stupid')
 name = string.gsub(name,'صداقه','Friendchip')
-TeAmMikasa = '꙳.︙ما معنى كلمة -› '..name
+TeAmMikasa = '꙳.︙ما معنى كلمة » '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 return false
 end end
@@ -4076,7 +4076,7 @@ if text == DevAbs:get(Mikasa..'Abs:GameNum7'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevAbs:del(Mikasa..'Abs:GameNum7'..msg.chat_id_)
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› انكليزيه للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » انكليزيه للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 end
 DevAbs:set(Mikasa..'Abs:Games:Ids'..msg.chat_id_,true)
@@ -4126,7 +4126,7 @@ if text == DevAbs:get(Mikasa..'Abs:GameNum8'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Games:Ids'..msg.chat_id_) then 
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevAbs:del(Mikasa..'Abs:GameNum8'..msg.chat_id_)
-TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل -› الاسئله للعب مره اخرى'
+TeAmMikasa = '꙳.︙مبروك لقد ربحت في اللعبه \n꙳.︙ارسل » الاسئله للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,TeAmMikasa, 1, 'md')
 end
 DevAbs:set(Mikasa..'Abs:Games:Ids'..msg.chat_id_,true)
@@ -4143,13 +4143,13 @@ if tonumber(NUM) == tonumber(GETNUM) then
 DevAbs:del(Mikasa..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
 DevAbs:del(Mikasa.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
 DevAbs:incrby(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙*التخمين الصحيح هو* -› '..NUM..'\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙*التخمين الصحيح هو* » '..NUM..'\n꙳.︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 DevAbs:incrby(Mikasa..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
 if tonumber(DevAbs:get(Mikasa..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
 DevAbs:del(Mikasa..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
 DevAbs:del(Mikasa.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙*التخمين الصحيح هو* -› '..GETNUM..'\n꙳.︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙*التخمين الصحيح هو* » '..GETNUM..'\n꙳.︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
 else
 if tonumber(DevAbs:get(Mikasa..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
 SetNum = 'محاولتان فقط'
@@ -4165,7 +4165,7 @@ if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) th
 if not DevAbs:get(Mikasa..'Abs:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
 DevAbs:set(Mikasa.."GAMES:NUM"..msg.chat_id_,Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙اهلا بك عزيزي في لعبة التخمين -› ⤈\n ≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n꙳.︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙اهلا بك عزيزي في لعبة التخمين » ⤈\n ≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n꙳.︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
 DevAbs:setex(Mikasa.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
 return false  
 end
@@ -4185,7 +4185,7 @@ if text == "1" then
 Text = "꙳.︙لا استطيع بدء اللعبه بلاعب واحد فقط"
 else
 DevAbs:set(Mikasa.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
-Text = '꙳.︙تم بدء تسجيل اللسته يرجى ارسال المعرفات \n꙳.︙الفائز يحصل على 5 نقاط عدد المطلوبين -› '..text..' لاعب'
+Text = '꙳.︙تم بدء تسجيل اللسته يرجى ارسال المعرفات \n꙳.︙الفائز يحصل على 5 نقاط عدد المطلوبين » '..text..' لاعب'
 end
 DevAbs:del(Mikasa.."Abs:StartRolet"..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_,msg.id_,Text)
@@ -4193,7 +4193,7 @@ return false
 end
 if text and text:match('^(@[%a%d_]+)$') and DevAbs:get(Mikasa.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
 if DevAbs:sismember(Mikasa..'Abs:ListRolet'..msg.chat_id_,text) then
-send(msg.chat_id_,msg.id_,'꙳.︙المعرف -› ['..text..'] موجود اساسا')
+send(msg.chat_id_,msg.id_,'꙳.︙المعرف » ['..text..'] موجود اساسا')
 return false
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text},function(extra, res, success) 
@@ -4208,13 +4208,13 @@ local CountUser = CountAdd - CountAll
 if tonumber(CountAll) == tonumber(CountAdd) then 
 DevAbs:del(Mikasa.."Abs:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
 DevAbs:setex(Mikasa.."Abs:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
-local Text = "꙳.︙تم ادخال المعرف -› ["..text.."]\n꙳.︙وتم اكتمال العدد الكلي هل انت مستعد ؟"
+local Text = "꙳.︙تم ادخال المعرف » ["..text.."]\n꙳.︙وتم اكتمال العدد الكلي هل انت مستعد ؟"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}},{{text="اللاعبين",callback_data="/ListRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end 
-local Text = "꙳.︙تم ادخال المعرف -› ["..text.."] وتبقى -› "..CountUser.." لاعبين ليكتمل العدد ارسل المعرف الاخر"
+local Text = "꙳.︙تم ادخال المعرف » ["..text.."] وتبقى » "..CountUser.." لاعبين ليكتمل العدد ارسل المعرف الاخر"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="الغاء",callback_data="/NoRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -4238,22 +4238,22 @@ end
 if text and (text == 'الالعاب' or text == 'العاب' or text == 'اللعبه') and ChCheck(msg) then
 if not DevAbs:get(Mikasa..'Abs:Lock:Games'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1,[[
-꙳.︙قائمة العاب المجموعه -› ⤈
+꙳.︙قائمة العاب المجموعه » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙لعبة التخمين -› خمن
-꙳.︙لعبة الامثله -› امثله
-꙳.︙لعبة العكس -› العكس
-꙳.︙لعبة الاسئله -› اسئله
-꙳.︙لعبة الروليت -› روليت
-꙳.︙لعبة الحزوره -› حزوره
-꙳.︙لعبة الترتيب -› ترتيب
-꙳.︙لعبة المعاني -› معاني
-꙳.︙لعبة التويت -› كت تويت
-꙳.︙لعبة المختلف -› المختلف
-꙳.︙لعبة السمايلات -› سمايلات
-꙳.︙لعبة المحيبس -› المحيبس
-꙳.︙لعبة الرياضيات -› رياضيات
-꙳.︙لعبة الانكليزيه -› انكليزيه
+꙳.︙لعبة التخمين » خمن
+꙳.︙لعبة الامثله » امثله
+꙳.︙لعبة العكس » العكس
+꙳.︙لعبة الاسئله » اسئله
+꙳.︙لعبة الروليت » روليت
+꙳.︙لعبة الحزوره » حزوره
+꙳.︙لعبة الترتيب » ترتيب
+꙳.︙لعبة المعاني » معاني
+꙳.︙لعبة التويت » كت تويت
+꙳.︙لعبة المختلف » المختلف
+꙳.︙لعبة السمايلات » سمايلات
+꙳.︙لعبة المحيبس » المحيبس
+꙳.︙لعبة الرياضيات » رياضيات
+꙳.︙لعبة الانكليزيه » انكليزيه
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙نقاطي • بيع نقاطي
 ≪━━━━━ꪑ𝙠━━━━━≫
@@ -4263,7 +4263,7 @@ else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عذرا الالعاب معطله في المجموعه', 1, 'md')
 end
 end
-if text == "الالعاب المتطوره" or text == "الالعاب الاحترافيه" or text == "-› الالعاب المتطوره ⌔" then
+if text == "الالعاب المتطوره" or text == "الالعاب الاحترافيه" or text == "» الالعاب المتطوره ⌔" then
 if not DevAbs:get(Mikasa..'Abs:Lock:Gamesinline'..msg.chat_id_) then
 Text =[[
 *꙳.︙قائمه الالعاب المتطوره اضغط للعب*
@@ -4294,7 +4294,7 @@ end end
 --     Source Mikasa     --
 if text == 'بيع نقاطي' and ChCheck(msg) then
 if tonumber((DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙لم تربح اي نقطه\n꙳.︙ارسل -› الالعاب للعب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙لم تربح اي نقطه\n꙳.︙ارسل » الالعاب للعب', 1, 'md')
 else
 DevAbs0 = (DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) * 50)
 DevAbs:incrby(Mikasa..'Abs:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_,DevAbs0)
@@ -4352,7 +4352,7 @@ rtpa = 'الادمن'
 elseif da.status_.ID == "ChatMemberStatusMember" then
 rtpa = 'عضو'
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙موقعك -› '..rtpa, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙موقعك » '..rtpa, 1, 'md')
 end,nil)
 end
 --     Source Mikasa     --
@@ -4364,7 +4364,7 @@ local cont = (tonumber(DevAbs:get(Mikasa..'Abs:ContactNumber'..msg.chat_id_..':'
 local user_nkt = tonumber(DevAbs:get(Mikasa..'Abs:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
 if result.username_ then username = '@'..result.username_ else username = 'لا يوجد' end
 if result.last_name_ then lastname = result.last_name_ else lastname = '' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙اسمك -› ❨ ['..result.first_name_..'] ❩\n꙳.︙معرفك -› ❨ ['..username..'] ❩\n꙳.︙ايديك -› ❨ `'..result.id_..'` ❩\n꙳.︙نقاطك -› ❨ '..user_nkt..' ❩\n꙳.︙رسائلك -› ❨ '..user_msgs..' ❩\n꙳.︙جهاتك -› ❨ '..cont..' ❩\n꙳.︙تفاعلك -› '..formsgs(msguser)..'\n꙳.︙رتبتك -› '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙اسمك » ❨ ['..result.first_name_..'] ❩\n꙳.︙معرفك » ❨ ['..username..'] ❩\n꙳.︙ايديك » ❨ `'..result.id_..'` ❩\n꙳.︙نقاطك » ❨ '..user_nkt..' ❩\n꙳.︙رسائلك » ❨ '..user_msgs..' ❩\n꙳.︙جهاتك » ❨ '..cont..' ❩\n꙳.︙تفاعلك » '..formsgs(msguser)..'\n꙳.︙رتبتك » '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
 end
 getUser(msg.sender_user_id_,get_me)
 end
@@ -4386,7 +4386,7 @@ else
 if DevAbs:get(Mikasa..'Abs:ChId') then
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAbs:get(Mikasa.."Abs:ChId"))
 local GetInfo = JSON.decode(Check)
-send(msg.chat_id_, msg.id_,"꙳.︙الاشتراك الاجباري مفعل \n꙳.︙على القناة -› [@"..GetInfo.result.username.."]")
+send(msg.chat_id_, msg.id_,"꙳.︙الاشتراك الاجباري مفعل \n꙳.︙على القناة » [@"..GetInfo.result.username.."]")
 else
 DevAbs:setex(Mikasa..'DevAbs4'..msg.sender_user_id_,360,true)
 send(msg.chat_id_, msg.id_,"꙳.︙لاتوجد قناة لتفعيل الاشتراك\n꙳.︙ارسل لي معرف قناة الاشتراك الان")
@@ -4399,7 +4399,7 @@ if not SecondSudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط ', 1, 'md')
 else
 DevAbs:del(Mikasa..'Abs:ChId')
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الاشتراك الاجباري'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الاشتراك الاجباري'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 return false  
@@ -4417,7 +4417,7 @@ if text == 'جلب قناة الاشتراك' or text == 'قناة الاشتر�
 if DevAbs:get(Mikasa..'Abs:ChId') then
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAbs:get(Mikasa.."Abs:ChId"))
 local GetInfo = JSON.decode(Check)
-send(msg.chat_id_, msg.id_, "꙳.︙قناة الاشتراك -› [@"..GetInfo.result.username.."]")
+send(msg.chat_id_, msg.id_, "꙳.︙قناة الاشتراك » [@"..GetInfo.result.username.."]")
 else
 send(msg.chat_id_, msg.id_, "꙳.︙لاتوجد قناة في الاشتراك الاجباري")
 end
@@ -4439,7 +4439,7 @@ local PvList = DevAbs:smembers(Mikasa.."Abs:Users")
 for k,v in pairs(PvList) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = result.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏في -› ❨ '..#GpList..' ❩ مجموعه \n꙳.︙والى -› ❨ '..#PvList..' ❩ مشترك \n ✓', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏في » ❨ '..#GpList..' ❩ مجموعه \n꙳.︙والى » ❨ '..#PvList..' ❩ مشترك \n ✓', 1, 'md')
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),TeAmMikasa)
 end
@@ -4482,12 +4482,12 @@ end
 --     Source Mikasa     --
 if text == 'تعطيل اطردني' and Manager(msg) and ChCheck(msg) then
 DevAbs:set(Mikasa.."Abs:Kick:Me"..msg.chat_id_, true)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر اطردني'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر اطردني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل اطردني' and Manager(msg) and ChCheck(msg) then
 DevAbs:del(Mikasa.."Abs:Kick:Me"..msg.chat_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر اطردني'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر اطردني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 --     Source Mikasa     --
@@ -4507,22 +4507,22 @@ end
 --     Source Mikasa     --
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 DevAbs:set(Mikasa.."Abs:Del:Me"..msg.chat_id_, true)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر نزلني'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 DevAbs:del(Mikasa.."Abs:Del:Me"..msg.chat_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر نزلني'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 --     Source Mikasa     --
 if text and (text == 'تفعيل التاك' or text == 'تفعيل التاك للكل' or text == 'تفعيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر تاك للكل'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل امر تاك للكل'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:TagAll'..msg.chat_id_)
 end
 if text and (text == 'تعطيل التاك' or text == 'تعطيل التاك للكل' or text == 'تعطيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر تاك للكل'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل امر تاك للكل'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:TagAll'..msg.chat_id_,true)
 end
@@ -4569,18 +4569,18 @@ end
 --     Source Mikasa     --
 if text == "رسائلي" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then
 local user_msgs = DevAbs:get(Mikasa..'Abs:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد رسائلك هنا -› *❨ "..user_msgs.." ❩*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد رسائلك هنا » *❨ "..user_msgs.." ❩*", 1, 'md')
 end
 if text == "التفاعل" and ChCheck(msg) then
 local EntryNumber = (DevAbs:get(Mikasa..'Abs:EntryNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
 local ExitNumber = (DevAbs:get(Mikasa..'Abs:ExitNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
 local MsgNumberDay = (DevAbs:get(Mikasa..'Abs:MsgNumberDay'..msg.chat_id_..':'..os.date('%d')) or 0)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙انضمام الاعضاء اليوم -› *"..EntryNumber.."*\n꙳.︙مغادرة الاعضاء اليوم -› *"..ExitNumber.."*\n꙳.︙عدد الرسائل اليوم -› *"..MsgNumberDay.."*\n꙳.︙نسبة التفاعل اليوم -› *"..math.random(40,100).."%*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙انضمام الاعضاء اليوم » *"..EntryNumber.."*\n꙳.︙مغادرة الاعضاء اليوم » *"..ExitNumber.."*\n꙳.︙عدد الرسائل اليوم » *"..MsgNumberDay.."*\n꙳.︙نسبة التفاعل اليوم » *"..math.random(40,100).."%*", 1, 'md')
 end
 --     Source Mikasa     --
 if text == "معرفي" and ChCheck(msg) then
 function get_username(extra,result,success)
-text = '꙳.︙معرفك -› ❨ User ❩'
+text = '꙳.︙معرفك » ❨ User ❩'
 local text = text:gsub('User',('@'..result.username_ or ''))
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
@@ -4588,7 +4588,7 @@ getUser(msg.sender_user_id_,get_username)
 end
 if text == "اسمي" and ChCheck(msg) then
 function get_firstname(extra,result,success)
-text = '꙳.︙اسمك -› firstname lastname'
+text = '꙳.︙اسمك » firstname lastname'
 local text = text:gsub('firstname',(result.first_name_ or ''))
 local text = text:gsub('lastname',(result.last_name_ or ''))
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -4599,11 +4599,11 @@ end
 if text == "اهمس" or text == "همسه" or text == "اريد بوت الهمسه" or text == "دزلي بوت الهمسه" or  text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙@cCVCcBoT', 1, 'md') end
 if text == "رابط حذف" or text == "رابط الحذف" or text == "اريد رابط الحذف" or  text == "شمرلي رابط الحذف" or text == "اريد رابط حذف" then local inline = {{{text="اضغط هنا",url="https://t.me/cClCcBoT"}}} SendInline(msg.chat_id_,'꙳.︙اضغط للحصول على الرابط',nil,inline) return false end
 if text == "بوت الحذف" or text == "اريد بوت الحذف" or text == "اريد بوت حذف" or text == "بوت حذف" or text == "بوت حذف حسابات" or text == "راح احذف" then local inline = {{{text="اضغط هنا",url="https://t.me/cClCcBoT"}}} SendInline(msg.chat_id_,'꙳.︙اضغط للحصول على البوت',nil,inline) return false end
-if text == "جهاتي" and ChCheck(msg) or text == "اضافاتي" and ChCheck(msg) then add = (tonumber(DevAbs:get(Mikasa..'Abs:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد جهاتك المضافه -› *❨ "..add.." ❩* ", 1, 'md') end
-if text == "تعديلاتي" or text == "سحكاتي" and ChCheck(msg) then local edit_msg = DevAbs:get(Mikasa..'Abs:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد تعديلاتك -› *❨ "..edit_msg.." ❩* ", 1, 'md') end
-if text == "ايديي" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙ايديك -› ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
-if text == "رتبتي" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رتبتك -› '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
-if text == "ايدي المجموعه" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ايدي المجموعه -› `"..msg.chat_id_.."`", 1, 'md') end
+if text == "جهاتي" and ChCheck(msg) or text == "اضافاتي" and ChCheck(msg) then add = (tonumber(DevAbs:get(Mikasa..'Abs:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد جهاتك المضافه » *❨ "..add.." ❩* ", 1, 'md') end
+if text == "تعديلاتي" or text == "سحكاتي" and ChCheck(msg) then local edit_msg = DevAbs:get(Mikasa..'Abs:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد تعديلاتك » *❨ "..edit_msg.." ❩* ", 1, 'md') end
+if text == "ايديي" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙ايديك » ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
+if text == "رتبتي" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رتبتك » '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
+if text == "ايدي المجموعه" and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ايدي المجموعه » `"..msg.chat_id_.."`", 1, 'md') end
 if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then DevAbs:del(Mikasa..'Abs:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
 if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then DevAbs:del(Mikasa..'Abs:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
 --     Source Mikasa     --
@@ -4808,7 +4808,7 @@ if DevAbs:sismember(Mikasa..'Abs:Cleaner:'..msg.chat_id_, result.sender_user_id_
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.sender_user_id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تنزيله من -› ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
+ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تنزيله من » ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙لم تتم ترقيته مسبقا")  
 end
@@ -4902,7 +4902,7 @@ if DevAbs:sismember(Mikasa..'Abs:Cleaner:'..msg.chat_id_, result.id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.id_,"Reply","꙳.︙تم تنزيله من -› ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
+ReplyStatus(msg,result.id_,"Reply","꙳.︙تم تنزيله من » ⤈\n~ ( "..secondsudo..sudobot..managerall..adminall..vpall..basicconstructor..constructor..manager..admins..vipmem..cleaner.." ) ~")  
 else 
 ReplyStatus(msg,result.id_,"Reply","꙳.︙لم تتم ترقيته مسبقا")  
 end 
@@ -5667,7 +5667,7 @@ if dp.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الحساب محذوف", 1, "md")
 return false  
 end
-local Text = '꙳.︙قم باستعمال الازرار لرفع العضو -› ⤈\n꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
+local Text = '꙳.︙قم باستعمال الازرار لرفع العضو » ⤈\n꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
 if Sudo(msg) then
 inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":SetAbsConstructor:"..result.sender_user_id_},{text="رفع مطور",callback_data=msg.sender_user_id_..":SetSudoBot:"..result.sender_user_id_}},{{text="رفع مطور ثانوي",callback_data=msg.sender_user_id_..":SetSecondSudo:"..result.sender_user_id_}},{{text = '˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="t.me/TeAmMikasa"}}}
 elseif SecondSudo(msg) then
@@ -5701,7 +5701,7 @@ if dp.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الحساب محذوف", 1, "md")
 return false  
 end
-local Text = '꙳.︙قم باستعمال الازرار لتنزيل العضو -› ⤈\n꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
+local Text = '꙳.︙قم باستعمال الازرار لتنزيل العضو » ⤈\n꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
 if Sudo(msg) then
 inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":RemAbsConstructor:"..result.sender_user_id_},{text="تنزيل مطور",callback_data=msg.sender_user_id_..":RemSudoBot:"..result.sender_user_id_}},{{text="تنزيل مطور ثانوي",callback_data=msg.sender_user_id_..":RemSecondSudo:"..result.sender_user_id_}},{{text = '˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .',url="t.me/TeAmMikasa"}}}
 elseif SecondSudo(msg) then
@@ -5734,7 +5734,7 @@ if dp.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الحساب محذوف", 1, "md")
 return false  
 end
-local Text = '꙳.︙قم باستعمال الازرار للتحكم العضو -› ⤈\n꙳.︙العضو -› ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
+local Text = '꙳.︙قم باستعمال الازرار للتحكم العضو » ⤈\n꙳.︙العضو » ['..dp.first_name_..'](t.me/'..(dp.username_ or 'TeAmMikasa')..')'
 inline = {
 {{text="رفع رتبه",callback_data=msg.sender_user_id_..":SetRtba:"..result.sender_user_id_},{text="تنزيل رتبه",callback_data=msg.sender_user_id_..":RemRtba:"..result.sender_user_id_}},
 {{text="كتم",callback_data=msg.sender_user_id_..":Mute:"..result.sender_user_id_},{text="الغاء كتم",callback_data=msg.sender_user_id_..":UnMute:"..result.sender_user_id_}},
@@ -5797,7 +5797,7 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatM
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 https.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
-ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم اضافة -› "..Abs.." كلقب له")  
+ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم اضافة » "..Abs.." كلقب له")  
 https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&custom_title="..Abs)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
@@ -5813,7 +5813,7 @@ function ReplyGet(extra, result, success)
 if GetCustomTitle(msg.sender_user_id_,msg.chat_id_) == false then
 send(msg.chat_id_, msg.id_,'꙳.︙ليس لديه لقب هنا') 
 else
-send(msg.chat_id_, msg.id_,'꙳.︙لقبه -› '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)) 
+send(msg.chat_id_, msg.id_,'꙳.︙لقبه » '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)) 
 end
 end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5824,7 +5824,7 @@ if text == 'لقبي' then
 if GetCustomTitle(msg.sender_user_id_,msg.chat_id_) == false then
 send(msg.chat_id_, msg.id_,'꙳.︙ليس لديك لقب هنا') 
 else
-send(msg.chat_id_, msg.id_,'꙳.︙لقبك -› '..GetCustomTitle(msg.sender_user_id_,msg.chat_id_)) 
+send(msg.chat_id_, msg.id_,'꙳.︙لقبك » '..GetCustomTitle(msg.sender_user_id_,msg.chat_id_)) 
 end
 end
 if text == 'نبذتي' or text == 'بايو' then
@@ -5872,33 +5872,33 @@ end end end
 if Constructor(msg) then
 if text == "تفعيل الحظر" and ChCheck(msg) or text == "تفعيل الطرد" and ChCheck(msg) then
 DevAbs:del(Mikasa.."Abs:Lock:KickBan"..msg.chat_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الطرد والحظر'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الطرد والحظر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 if text == "تعطيل الحظر" and ChCheck(msg) or text == "تعطيل الطرد" and ChCheck(msg) then
 DevAbs:set(Mikasa.."Abs:Lock:KickBan"..msg.chat_id_,"true")
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الطرد والحظر'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الطرد والحظر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 if text == "تفعيل الكتم" and ChCheck(msg) or text == "تفعيل التقييد" and ChCheck(msg) then
 DevAbs:del(Mikasa.."Abs:Lock:MuteTked"..msg.chat_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الكتم والتقيد'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الكتم والتقيد'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 if text == "تعطيل الكتم" and ChCheck(msg) or text == "تعطيل التقييد" and ChCheck(msg) then
 DevAbs:set(Mikasa.."Abs:Lock:MuteTked"..msg.chat_id_,"true")
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الكتم والتقيد'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الكتم والتقيد'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 end
 if BasicConstructor(msg) then
 if text == "تفعيل الرفع" and ChCheck(msg) or text == "تفعيل الترقيه" and ChCheck(msg) then
 DevAbs:del(Mikasa.."Abs:Lock:ProSet"..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم تفعيل رفع -› الادمن • المميز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم تفعيل رفع » الادمن • المميز', 1, 'md')
 end
 if text == "تعطيل الرفع" and ChCheck(msg) or text == "تعطيل الترقيه" and ChCheck(msg) then
 DevAbs:set(Mikasa.."Abs:Lock:ProSet"..msg.chat_id_,"true")
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم تعطيل رفع -› الادمن • المميز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم تعطيل رفع » الادمن • المميز', 1, 'md')
 end
 end
 --     Source Mikasa     --
@@ -5911,7 +5911,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الطرد والحظ�
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -5939,7 +5939,7 @@ return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد -› '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد » '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -5966,7 +5966,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الطرد والحظ�
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد -› '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع طرد » '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -5993,7 +5993,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الطرد والحظ�
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6022,7 +6022,7 @@ return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر -› '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر » '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6050,7 +6050,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الطرد والحظ�
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر -› '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع حظر » '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6107,7 +6107,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الكتم والتق�
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 if DevAbs:sismember(Mikasa..'Abs:Muted:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙هو بالفعل مكتوم من المجموعه")  
@@ -6129,7 +6129,7 @@ return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم -› '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم » '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 if DevAbs:sismember(Mikasa..'Abs:Muted:'..msg.chat_id_, result.id_) then
 ReplyStatus(msg,result.id_,"Reply","꙳.︙هو بالفعل مكتوم من المجموعه")  
@@ -6150,7 +6150,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الكتم والتق�
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم -› '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع كتم » '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 if DevAbs:sismember(Mikasa..'Abs:Muted:'..msg.chat_id_, user) then
 ReplyStatus(msg,user,"Reply","꙳.︙هو بالفعل مكتوم من المجموعه")  
@@ -6209,7 +6209,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الكتم والتق�
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, result.sender_user_id_)
@@ -6228,7 +6228,7 @@ return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_)
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, result.id_)
@@ -6246,7 +6246,7 @@ send(msg.chat_id_, msg.id_,'꙳.︙لقد تم تعطيل الكتم والتق�
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..user)
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, user)
@@ -6444,7 +6444,7 @@ end
 end
 end
 --     Source Mikasa     --
-if (text == "تغير المطور الاساسي" or text == "نقل ملكيه البوت" or text == "تغيير المطور الاساسي" or text == "-› تغير المطور الاساسي ⌁") and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
+if (text == "تغير المطور الاساسي" or text == "نقل ملكيه البوت" or text == "تغيير المطور الاساسي" or text == "» تغير المطور الاساسي ⌁") and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 send(msg.chat_id_, msg.id_,'꙳.︙يجب التاكد ان المطور الجديد ارسل start لخاص البوت بعد ذلك يمكنك ارسال ايدي المطور')
 DevAbs:setex(Mikasa.."Abs:EditDev"..msg.sender_user_id_,300,true)
 end
@@ -6459,8 +6459,8 @@ tdcli_function ({ID = "GetUser",user_id_ = text},function(arg,dp)
 if dp.first_name_ ~= false then
 DevAbs:del(Mikasa.."Abs:EditDev"..msg.sender_user_id_)
 DevAbs:set(Mikasa.."Abs:NewDev"..msg.sender_user_id_,dp.id_)
-if dp.username_ ~= false then DevUser = '\n꙳.︙المعرف -› [@'..dp.username_..']' else DevUser = '' end
-local Text = '꙳.︙الايدي -› '..dp.id_..DevUser..'\n꙳.︙الاسم -› ['..dp.first_name_..'](tg://user?id='..dp.id_..')\n꙳.︙تم حفظ المعلومات بنجاح\n꙳.︙استخدم الازرار للتاكيد -› ⤈'
+if dp.username_ ~= false then DevUser = '\n꙳.︙المعرف » [@'..dp.username_..']' else DevUser = '' end
+local Text = '꙳.︙الايدي » '..dp.id_..DevUser..'\n꙳.︙الاسم » ['..dp.first_name_..'](tg://user?id='..dp.id_..')\n꙳.︙تم حفظ المعلومات بنجاح\n꙳.︙استخدم الازرار للتاكيد » ⤈'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/setyes"},{text="لا",callback_data="/setno"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -6505,10 +6505,10 @@ local mutept = text:match('^تقييد دقيقه (%d+)$') or text:match('^كت�
 local Minutes = string.gsub(mutept, 'm', '')
 local num1 = tonumber(Minutes) * 60 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة -› "..mutept.." د") 
+ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة » "..mutept.." د") 
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end 
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -6520,10 +6520,10 @@ local mutept = text:match('^تقييد ساعه (%d+)$') or text:match('^كتم 
 local hour = string.gsub(mutept, 'h', '')
 local num1 = tonumber(hour) * 3600 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة -› "..mutept.." س") 
+ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة » "..mutept.." س") 
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -6535,10 +6535,10 @@ local mutept = text:match('^تقييد يوم (%d+)$') or text:match('^كتم ي
 local day = string.gsub(mutept, 'd', '')
 local num1 = tonumber(day) * 86400 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد -› '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا تستطيع تقيد » '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة -› "..mutept.." ي") 
+ReplyStatus(msg,result.sender_user_id_,"Reply","꙳.︙تم تقيده لمدة » "..mutept.." ي") 
 DevAbs:sadd(Mikasa..'Abs:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -6597,7 +6597,7 @@ end
 tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100",""),message_id_ = msg.reply_to_message_id_,disable_notification_ = 1},function(arg,data) 
 if data.ID == "Ok" then
 DevAbs:set(Mikasa..'Abs:PinnedMsg'..msg.chat_id_,msg.reply_to_message_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تثبيت الرساله بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تثبيت الرساله بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false  
 end
@@ -6616,7 +6616,7 @@ end
 if Admin(msg) then
 if text == "المميزين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:VipMem:'..msg.chat_id_)
-text = "꙳.︙قائمة المميزين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المميزين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6634,7 +6634,7 @@ if Manager(msg) then
 if text == "الادمنيه" and ChCheck(msg) or text == "الادمنية" and ChCheck(msg) then 
 local abs =  'Abs:Admins:'..msg.chat_id_
 local List = DevAbs:smembers(Mikasa..abs)
-text = "꙳.︙قائمة الادمنيه -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة الادمنيه » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6651,7 +6651,7 @@ end end
 if Constructor(msg) then
 if text == "المدراء" and ChCheck(msg) or text == "مدراء" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Managers:'..msg.chat_id_)
-text = "꙳.︙قائمة المدراء -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المدراء » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6666,7 +6666,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المنظفين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Cleaner:'..msg.chat_id_)
-text = "꙳.︙قائمة المنظفين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المنظفين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6683,7 +6683,7 @@ end end
 if BasicConstructor(msg) then
 if text == "المنشئين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Constructor:'..msg.chat_id_)
-text = "꙳.︙قائمة المنشئين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المنشئين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6700,7 +6700,7 @@ end end
 if AbsConstructor(msg) then
 if text == "المالكين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:AbsConstructor:'..msg.chat_id_)
-text = "꙳.︙قائمة المالكين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المالكين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6715,7 +6715,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المنشئين الاساسيين" and ChCheck(msg) or text == "منشئين اساسيين" and ChCheck(msg) or text == "المنشئين الاساسين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:BasicConstructor:'..msg.chat_id_)
-text = "꙳.︙قائمة المنشئين الاساسيين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المنشئين الاساسيين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6745,9 +6745,9 @@ if abbas.photos_[0] then
 keyboard = {} 
 keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or "t.me/TeAmMikasa")}}}
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..abbas.photos_[0].sizes_[1].photo_.persistent_id_..'&caption=' .. URL.escape("꙳.︙مالك المجموعه -› ⤈").."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..abbas.photos_[0].sizes_[1].photo_.persistent_id_..'&caption=' .. URL.escape("꙳.︙مالك المجموعه » ⤈").."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
-SendText(msg.chat_id_,"꙳.︙مالك المجموعه -› ["..dp.first_name_.."](tg://user?id="..dp.id_..")",msg.id_/2097152/0.5,'md')
+SendText(msg.chat_id_,"꙳.︙مالك المجموعه » ["..dp.first_name_.."](tg://user?id="..dp.id_..")",msg.id_/2097152/0.5,'md')
 end
 end,nil)  
 end,nil)   
@@ -6759,7 +6759,7 @@ end
 if Admin(msg) then
 if text == "المكتومين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Muted:'..msg.chat_id_)
-text = "꙳.︙قائمة المكتومين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المكتومين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6775,7 +6775,7 @@ end
 --     Source Mikasa     --
 if text == "المقيدين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Tkeed:'..msg.chat_id_)
-text = "꙳.︙قائمة المقيدين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المقيدين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6791,7 +6791,7 @@ end
 --     Source Mikasa     --
 if text == "المحظورين" and ChCheck(msg) or text == "المحضورين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:Ban:'..msg.chat_id_)
-text = "꙳.︙قائمة المحظورين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المحظورين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6806,7 +6806,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "قائمه المنع" and ChCheck(msg) then
 local List = DevAbs:hkeys(Mikasa..'Abs:Filters:'..msg.chat_id_)
-text = "꙳.︙قائمة المنع -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المنع » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k, v in pairs(List) do
 text = text..k..'~ ❨ '..v..' ❩\n'
 end
@@ -6819,7 +6819,7 @@ end
 --     Source Mikasa     --
 if text == "المطايه" and ChCheck(msg) or text == "المطاية" and ChCheck(msg) then
 local List = DevAbs:smembers(Mikasa..'User:Donky:'..msg.chat_id_)
-text = "꙳.︙قائمة مطاية المجموعه 😹💔 -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة مطاية المجموعه 😹💔 » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6835,7 +6835,7 @@ end
 --     Source Mikasa     --
 if text == "المطورين الثانويين" and SecondSudo(msg) or text == "الثانويين" and SecondSudo(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:SecondSudo:')
-text = "꙳.︙قائمة المطورين الثانويين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المطورين الثانويين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6850,11 +6850,11 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source Mikasa     --
 if SudoBot(msg) then
-if text == "قائمه العام" and ChCheck(msg) or text == "المحظورين عام" and ChCheck(msg) or text == "المكتومين عام" and ChCheck(msg) or text == "-› قائمه العام ⌁" and ChCheck(msg) then 
+if text == "قائمه العام" and ChCheck(msg) or text == "المحظورين عام" and ChCheck(msg) or text == "المكتومين عام" and ChCheck(msg) or text == "» قائمه العام ⌁" and ChCheck(msg) then 
 local BanAll = DevAbs:smembers(Mikasa..'Abs:BanAll:')
 local MuteAll = DevAbs:smembers(Mikasa..'Abs:MuteAll:')
 if #BanAll ~= 0 then 
-text = "꙳.︙قائمة المحظورين عام -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المحظورين عام » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(BanAll) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6866,7 +6866,7 @@ else
 text = ""
 end
 if #MuteAll ~= 0 then 
-text = text.."꙳.︙قائمة المكتومين عام -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = text.."꙳.︙قائمة المكتومين عام » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(MuteAll) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6885,9 +6885,9 @@ end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source Mikasa     --
-if text == "المطورين" and ChCheck(msg) or text == "-› المطورين ⌁" and ChCheck(msg) then 
+if text == "المطورين" and ChCheck(msg) or text == "» المطورين ⌁" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:SudoBot:')
-text = "꙳.︙قائمة المطورين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المطورين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local sudouser = DevAbs:get(Mikasa..'Abs:Sudos'..v) 
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
@@ -6904,7 +6904,7 @@ end
 --     Source Mikasa     --
 if text == "المدراء العامين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:ManagerAll:')
-text = "꙳.︙قائمة المدراء العامين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المدراء العامين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6920,7 +6920,7 @@ end
 --     Source Mikasa     --
 if text == "المميزين عام" and ChCheck(msg) or text == "المميزين العامين" and ChCheck(msg) then 
 local List = DevAbs:smembers(Mikasa..'Abs:VipAll:')
-text = "꙳.︙قائمة المميزين العام -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة المميزين العام » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6937,7 +6937,7 @@ end
 if text == "الادمنيه العامين" and ChCheck(msg) then 
 local abs =  'Abs:AdminAll:'
 local List = DevAbs:smembers(Mikasa..abs)
-text = "꙳.︙قائمة الادمنيه العامين -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
+text = "꙳.︙قائمة الادمنيه العامين » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local username = DevAbs:get(Mikasa..'Save:UserName'..v)
 if username then
@@ -6965,7 +6965,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙حساب المنشئ محذوف", 1, 
 return false  
 end
 local UserName = (dp.username_ or "TeAmMikasa")
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم رفع مالك المجموعه -› ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم رفع مالك المجموعه » ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
 DevAbs:sadd(Mikasa.."Abs:AbsConstructor:"..msg.chat_id_,dp.id_)
 end,nil)   
 end,nil)   
@@ -7023,12 +7023,12 @@ end
 end
 --     Source Mikasa     --
 if text and (text == "تفعيل تحويل الصيغ" or text == "تفعيل التحويل") and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل تحويل الصيغ'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل تحويل الصيغ'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Thwel:Abs'..msg.chat_id_) 
 end
 if text and (text == "تعطيل تحويل الصيغ" or text == "تعطيل التحويل") and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل تحويل الصيغ'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل تحويل الصيغ'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Thwel:Abs'..msg.chat_id_,true)  
 end
@@ -7083,17 +7083,17 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n꙳.︙القيود -› '..Tkeed
+Tked = '\n꙳.︙القيود » '..Tkeed
 else 
 Tked = '' 
 end
 if DevAbs:sismember(Mikasa..'Abs:SudoBot:',result.sender_user_id_) and SudoBot(msg) then
-sudobot = '\n꙳.︙عدد الكروبات -› '..(DevAbs:get(Mikasa..'Abs:Sudos'..result.sender_user_id_) or 0)..'' 
+sudobot = '\n꙳.︙عدد الكروبات » '..(DevAbs:get(Mikasa..'Abs:Sudos'..result.sender_user_id_) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(result.sender_user_id_,msg.chat_id_) ~= false then
-CustomTitle = '\n꙳.︙لقبه -› '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)
+CustomTitle = '\n꙳.︙لقبه » '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
@@ -7101,10 +7101,10 @@ if data.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '꙳.︙اسمه -› ['..data.first_name_..'](tg://user?id='..result.sender_user_id_..')\n꙳.︙ايديه -› ❨ `'..result.sender_user_id_..'` ❩\n꙳.︙رتبته -› '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله -› ❨ '..user_msgs..' ❩\n꙳.︙تفاعله -› '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه -› ❨ '..user_nkt..' ❩'..Tked
+Text = '꙳.︙اسمه » ['..data.first_name_..'](tg://user?id='..result.sender_user_id_..')\n꙳.︙ايديه » ❨ `'..result.sender_user_id_..'` ❩\n꙳.︙رتبته » '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله » ❨ '..user_msgs..' ❩\n꙳.︙تفاعله » '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه » ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه -› [@'..data.username_..']\n꙳.︙ايديه -› ❨ `'..result.sender_user_id_..'` ❩\n꙳.︙رتبته -› '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله -› ❨ '..user_msgs..' ❩\n꙳.︙تفاعله -› '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه -› ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه » [@'..data.username_..']\n꙳.︙ايديه » ❨ `'..result.sender_user_id_..'` ❩\n꙳.︙رتبته » '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله » ❨ '..user_msgs..' ❩\n꙳.︙تفاعله » '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه » ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 end 
@@ -7119,11 +7119,11 @@ return false  end
 if res.type_.ID == "ChannelChatInfo" then 
 if res.type_.channel_.is_supergroup_ == false then
 local ch = 'قناة'
-local chn = '꙳.︙نوع الحساب -› ❨ '..ch..' ❩\n꙳.︙الايدي -› ❨ `'..res.id_..'` ❩\n꙳.︙المعرف -› ❨ [@'..username..'] ❩\n꙳.︙الاسم -› ❨ ['..res.title_..'] ❩'
+local chn = '꙳.︙نوع الحساب » ❨ '..ch..' ❩\n꙳.︙الايدي » ❨ `'..res.id_..'` ❩\n꙳.︙المعرف » ❨ [@'..username..'] ❩\n꙳.︙الاسم » ❨ ['..res.title_..'] ❩'
 Dev_Abs(msg.chat_id_, msg.id_, 1,chn, 1, 'md')
 else
 local gr = 'مجموعه'
-local grr = '꙳.︙نوع الحساب -› ❨ '..gr..' ❩\n꙳.︙الايدي -› ❨ '..res.id_..' ❩\n꙳.︙المعرف -› ❨ [@'..username..'] ❩\n꙳.︙الاسم -› ❨ ['..res.title_..'] ❩'
+local grr = '꙳.︙نوع الحساب » ❨ '..gr..' ❩\n꙳.︙الايدي » ❨ '..res.id_..' ❩\n꙳.︙المعرف » ❨ [@'..username..'] ❩\n꙳.︙الاسم » ❨ ['..res.title_..'] ❩'
 Dev_Abs(msg.chat_id_, msg.id_, 1,grr, 1, 'md')
 end
 return false  end
@@ -7145,24 +7145,24 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n꙳.︙القيود -› '..Tkeed
+Tked = '\n꙳.︙القيود » '..Tkeed
 else 
 Tked = '' 
 end
 if DevAbs:sismember(Mikasa..'Abs:SudoBot:',res.id_) and SudoBot(msg) then
-sudobot = '\n꙳.︙عدد الكروبات -› '..(DevAbs:get(Mikasa..'Abs:Sudos'..res.id_) or 0)..'' 
+sudobot = '\n꙳.︙عدد الكروبات » '..(DevAbs:get(Mikasa..'Abs:Sudos'..res.id_) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(res.id_,msg.chat_id_) ~= false then
-CustomTitle = '\n꙳.︙لقبه -› '..GetCustomTitle(res.id_,msg.chat_id_)
+CustomTitle = '\n꙳.︙لقبه » '..GetCustomTitle(res.id_,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
 if data.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الحساب محذوف', 1, 'md')
 return false  end
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه -› [@'..data.username_..']\n꙳.︙ايديه -› ❨ `'..res.id_..'` ❩\n꙳.︙رتبته -› '..IdRank(res.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله -› ❨ '..user_msgs..' ❩\n꙳.︙تفاعله -› '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه -› ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه » [@'..data.username_..']\n꙳.︙ايديه » ❨ `'..res.id_..'` ❩\n꙳.︙رتبته » '..IdRank(res.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله » ❨ '..user_msgs..' ❩\n꙳.︙تفاعله » '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه » ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end,nil)
 end 
 end,nil)
@@ -7191,17 +7191,17 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n꙳.︙القيود -› '..Tkeed
+Tked = '\n꙳.︙القيود » '..Tkeed
 else 
 Tked = '' 
 end
 if DevAbs:sismember(Mikasa..'Abs:SudoBot:',iduser) and SudoBot(msg) then
-sudobot = '\n꙳.︙عدد الكروبات -› '..(DevAbs:get(Mikasa..'Abs:Sudos'..iduser) or 0)..'' 
+sudobot = '\n꙳.︙عدد الكروبات » '..(DevAbs:get(Mikasa..'Abs:Sudos'..iduser) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(iduser,msg.chat_id_) ~= false then
-CustomTitle = '\n꙳.︙لقبه -› '..GetCustomTitle(iduser,msg.chat_id_)
+CustomTitle = '\n꙳.︙لقبه » '..GetCustomTitle(iduser,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
@@ -7209,10 +7209,10 @@ if data.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '꙳.︙اسمه -› ['..data.first_name_..'](tg://user?id='..iduser..')\n꙳.︙ايديه -› ❨ `'..iduser..'` ❩\n꙳.︙رتبته -› '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله -› ❨ '..user_msgs..' ❩\n꙳.︙تفاعله -› '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه -› ❨ '..user_nkt..' ❩'..Tked
+Text = '꙳.︙اسمه » ['..data.first_name_..'](tg://user?id='..iduser..')\n꙳.︙ايديه » ❨ `'..iduser..'` ❩\n꙳.︙رتبته » '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله » ❨ '..user_msgs..' ❩\n꙳.︙تفاعله » '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه » ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه -› [@'..data.username_..']\n꙳.︙ايديه -› ❨ `'..iduser..'` ❩\n꙳.︙رتبته -› '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله -› ❨ '..user_msgs..' ❩\n꙳.︙تفاعله -› '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه -› ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙معرفه » [@'..data.username_..']\n꙳.︙ايديه » ❨ `'..iduser..'` ❩\n꙳.︙رتبته » '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n꙳.︙رسائله » ❨ '..user_msgs..' ❩\n꙳.︙تفاعله » '..formsgs(user_msgs)..CustomTitle..'\n꙳.︙نقاطه » ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 return false 
@@ -7225,7 +7225,7 @@ if DevAbs:sismember(Mikasa..'Abs:Ban:'..msg.chat_id_,result.sender_user_id_) the
 if DevAbs:sismember(Mikasa..'Abs:BanAll:',result.sender_user_id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevAbs:sismember(Mikasa..'Abs:MuteAll:',result.sender_user_id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevAbs:sismember(Mikasa..'Abs:Tkeed:',result.sender_user_id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الحظر العام -› '..banall..'\n꙳.︙الكتم العام -› '..muteall..'\n꙳.︙الحظر -› '..banned..'\n꙳.︙الكتم -› '..muted..'\n꙳.︙التقيد -› '..tkeed, 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الحظر العام » '..banall..'\n꙳.︙الكتم العام » '..muteall..'\n꙳.︙الحظر » '..banned..'\n꙳.︙الكتم » '..muted..'\n꙳.︙التقيد » '..tkeed, 1, 'md')  
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),kshf_by_reply) 
 end
@@ -7238,7 +7238,7 @@ if DevAbs:sismember(Mikasa..'Abs:Ban:'..msg.chat_id_,result.id_) then banned = '
 if DevAbs:sismember(Mikasa..'Abs:BanAll:',result.id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevAbs:sismember(Mikasa..'Abs:MuteAll:',result.id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevAbs:sismember(Mikasa..'Abs:Tkeed:',result.id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الحظر العام -› '..banall..'\n꙳.︙الكتم العام -› '..muteall..'\n꙳.︙الحظر -› '..banned..'\n꙳.︙الكتم -› '..muted..'\n꙳.︙التقيد -› '..tkeed, 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الحظر العام » '..banall..'\n꙳.︙الكتم العام » '..muteall..'\n꙳.︙الحظر » '..banned..'\n꙳.︙الكتم » '..muted..'\n꙳.︙التقيد » '..tkeed, 1, 'md')  
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙*المعرف غير صحيح*', 1, 'md')  
 end
@@ -7407,7 +7407,7 @@ end
 --     Source Mikasa     --
 if SecondSudo(msg) then
 if text and text:match("^تعيين الايدي العام$") or text and text:match("^تعين الايدي العام$") or text and text:match("^تعيين كليشة الايدي$") then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رجائا اتبع التعليمات للتعيين \n꙳.︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رجائا اتبع التعليمات للتعيين \n꙳.︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
 DevAbs:set("Mikasa:New:id:"..Mikasa..msg.sender_user_id_,'TeAmMikasa')
 return "TeAmMikasa"
 end
@@ -7429,7 +7429,7 @@ end
 end
 --     Source Mikasa     --
 if text and text:match("^تعيين الايدي$") and ChCheck(msg) or text and text:match("^تعين الايدي$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رجائا اتبع التعليمات للتعيين \n꙳.︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙رجائا اتبع التعليمات للتعيين \n꙳.︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
 DevAbs:set("Mikasa:New:id:"..Mikasa..msg.chat_id_..msg.sender_user_id_,'TeAmMikasa')
 return "TeAmMikasa"
 end
@@ -7485,7 +7485,7 @@ newpicid = newpicid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 newpicid = newpicid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 newpicid = newpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
-newpicid = "꙳.︙"..Description.."\n꙳.︙معرفك -› ❨ "..username.." ❩\n꙳.︙ايديك -› ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك -› "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك -› ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك -› ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك -› "..formsgs(msguser).."\n꙳.︙نقاطك -› ❨ "..user_nkt.." ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+newpicid = "꙳.︙"..Description.."\n꙳.︙معرفك » ❨ "..username.." ❩\n꙳.︙ايديك » ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك » "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك » ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك » ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك » "..formsgs(msguser).."\n꙳.︙نقاطك » ❨ "..user_nkt.." ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n"
 end 
 if not DevAbs:get(Mikasa.."Abs:GpIds:Text"..msg.chat_id_) then 
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, abbas.photos_[0].sizes_[1].photo_.persistent_id_,newpicid,msg.id_,msg.id_.."")
@@ -7523,7 +7523,7 @@ newallid = newallid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 newallid = newallid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 newallid = newallid:gsub('#Description',(Description or 'لا يوجد'))
 else
-newallid = "꙳.︙معرفك -› ❨ "..username.." ❩\n꙳.︙ايديك -› ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك -› "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك -› ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك -› ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك -› "..formsgs(msguser).."\n꙳.︙نقاطك -› ❨ "..user_nkt.." ❩"
+newallid = "꙳.︙معرفك » ❨ "..username.." ❩\n꙳.︙ايديك » ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك » "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك » ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك » ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك » "..formsgs(msguser).."\n꙳.︙نقاطك » ❨ "..user_nkt.." ❩"
 end 
 if not DevAbs:get(Mikasa.."Abs:GpIds:Text"..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, newallid, 1, 'html')
@@ -7565,13 +7565,13 @@ notpicid = notpicid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 notpicid = notpicid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 notpicid = notpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
-notpicid = "꙳.︙لا استطيع عرض صورتك لانك قمت بحظر البوت او انك لاتمتلك صوره في بروفايلك\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙معرفك -› ❨ "..username.." ❩\n꙳.︙ايديك -› ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك -› "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك -› ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك -› ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك -› "..formsgs(msguser).."\n꙳.︙نقاطك -› ❨ "..user_nkt.." ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+notpicid = "꙳.︙لا استطيع عرض صورتك لانك قمت بحظر البوت او انك لاتمتلك صوره في بروفايلك\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙معرفك » ❨ "..username.." ❩\n꙳.︙ايديك » ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك » "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك » ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك » ❨ "..edit_msg.." ❩\n꙳.︙تفاعلك » "..formsgs(msguser).."\n꙳.︙نقاطك » ❨ "..user_nkt.." ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n"
 end 
 if not DevAbs:get(Mikasa..'Abs:Lock:Id'..msg.chat_id_) then
 if not DevAbs:get(Mikasa..'Abs:Lock:Id:Photo'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, notpicid, 1, 'html')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙معرفك -› ❨ "..username.." ❩\n꙳.︙ايديك -› ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك -› "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك -› ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك -› ❨ "..edit_msg.." ❩\n꙳.︙رسائلك -› ❨ "..user_msgs.." ❩\n꙳.︙تفاعلك -› "..formsgs(msguser).."\n꙳.︙نقاطك -› ❨ "..user_nkt.." ❩", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙معرفك » ❨ "..username.." ❩\n꙳.︙ايديك » ❨ "..msg.sender_user_id_.." ❩\n꙳.︙رتبتك » "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n꙳.︙رسائلك » ❨ "..user_msgs.." ❩\n꙳.︙سحكاتك » ❨ "..edit_msg.." ❩\n꙳.︙رسائلك » ❨ "..user_msgs.." ❩\n꙳.︙تفاعلك » "..formsgs(msguser).."\n꙳.︙نقاطك » ❨ "..user_nkt.." ❩", 1, 'md')
 end
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عذرا الايدي معطل', 1, 'md')
@@ -7690,14 +7690,14 @@ local TextSpam = text:match("ضع تكرار (%d+)$") or text:match("وضع تك
 if tonumber(TextSpam) < 2 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بتحديد عدد اكبر من 2 للتكرار', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد التكرار -› '..TextSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد التكرار » '..TextSpam, 1, 'md')
 DevAbs:hset(Mikasa.."Abs:Spam:Group:User"..msg.chat_id_ ,"Num:Spam" ,TextSpam) 
 end
 end
 if text and (text:match("^ضع زمن التكرار (%d+)$") or text:match("^وضع زمن التكرار (%d+)$")) then  
 local TextSpam = text:match("ضع زمن التكرار (%d+)$") or text:match("وضع زمن التكرار (%d+)$")
 DevAbs:hset(Mikasa.."Abs:Spam:Group:User"..msg.chat_id_ ,"Num:Spam:Time" ,TextSpam) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع زمن التكرار -› '..TextSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع زمن التكرار » '..TextSpam, 1, 'md')
 end
 --     Source Mikasa     --
 if Manager(msg) then
@@ -7705,7 +7705,7 @@ if text and text == 'تفعيل الايدي بالصوره' and ChCheck(msg) th
 if not DevAbs:get(Mikasa..'Abs:Lock:Id:Photo'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الايدي بالصوره بالتاكيد مفعل', 1, 'md')
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الايدي بالصوره'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الايدي بالصوره'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Id:Photo'..msg.chat_id_)
 end end
@@ -7713,7 +7713,7 @@ if text and text == 'تعطيل الايدي بالصوره' and ChCheck(msg) th
 if DevAbs:get(Mikasa..'Abs:Lock:Id:Photo'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الايدي بالصوره بالتاكيد معطل', 1, 'md')
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الايدي بالصوره'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الايدي بالصوره'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Id:Photo'..msg.chat_id_,true)
 end end 
@@ -7722,7 +7722,7 @@ if text and text == 'تفعيل الايدي' and ChCheck(msg) then
 if not DevAbs:get(Mikasa..'Abs:Lock:Id'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الايدي بالتاكيد مفعل ', 1, 'md')
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الايدي بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الايدي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Id'..msg.chat_id_)
 end end 
@@ -7730,7 +7730,7 @@ if text and text == 'تعطيل الايدي' and ChCheck(msg) then
 if DevAbs:get(Mikasa..'Abs:Lock:Id'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙الايدي بالتاكيد معطل ', 1, 'md')
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الايدي بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الايدي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Id'..msg.chat_id_,true)
 end end
@@ -7746,7 +7746,7 @@ if not DevAbs:get(Mikasa.."Abs:Groups:Links"..msg.chat_id_)  then
 if LinkGp.ok == true then 
 LinkGroup = LinkGp.result
 DevAbs:set(Mikasa.."Abs:Groups:Links"..msg.chat_id_,LinkGroup) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم انشاء رابط جديد ارسل -› الرابط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم انشاء رابط جديد ارسل » الرابط', 1, 'md')
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙ليست لدي صلاحية دعوة المستخدمين عبر الرابط يرجى التحقق من الصلاحيات', 1, 'md')
 end
@@ -7759,12 +7759,12 @@ end
 --     Source Mikasa     --
 if Admin(msg) then
 if text and text:match("^تفعيل الترحيب$") and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الترحيب بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الترحيب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa.."Abs:Lock:Welcome"..msg.chat_id_,true)
 end
 if text and text:match("^تعطيل الترحيب$") and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الترحيب بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الترحيب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa.."Abs:Lock:Welcome"..msg.chat_id_)
 end
@@ -7781,7 +7781,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم حفظ كليشة الترحيب'
 return false   
 end
 if text and text:match("^ضع ترحيب$") and ChCheck(msg) or text and text:match("^وضع ترحيب$") and ChCheck(msg) or text and text:match("^اضف ترحيب$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙ارسل لي الترحيب الان\n꙳.︙تستطيع اضافة مايلي -› ⤈\n꙳.︙دالة عرض الاسم -› firstname\n꙳.︙دالة عرض المعرف -› username', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙ارسل لي الترحيب الان\n꙳.︙تستطيع اضافة مايلي » ⤈\n꙳.︙دالة عرض الاسم » firstname\n꙳.︙دالة عرض المعرف » username', 1, 'md')
 DevAbs:set(Mikasa..'Abs:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الترحيب$") and ChCheck(msg) or text and text:match("^حذف ترحيب$") and ChCheck(msg) then
@@ -7793,7 +7793,7 @@ local Welcomes = DevAbs:get(Mikasa..'Abs:Groups:Welcomes'..msg.chat_id_)
 if Welcomes then
 Dev_Abs(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لم يتم وضع الترحيب \n꙳.︙ارسل -› ضع ترحيب للحفظ ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لم يتم وضع الترحيب \n꙳.︙ارسل » ضع ترحيب للحفظ ', 1, 'md')
 end
 end
 --     Source Mikasa     --
@@ -7824,7 +7824,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم الغاء امر المنع', 1,
 DevAbs:del(Mikasa.."Abs:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 return false  
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم منع الكلمه -› "..text, 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم منع الكلمه » "..text, 1, 'html')
 DevAbs:del(Mikasa.."Abs:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 DevAbs:hset(Mikasa..'Abs:Filters:'..msg.chat_id_, text,'newword')
 return false
@@ -7841,28 +7841,28 @@ DevAbs:del(Mikasa.."Abs:SetFilters"..msg.sender_user_id_..msg.chat_id_)
 return false  
 end   
 if not DevAbs:hget(Mikasa..'Abs:Filters:'..msg.chat_id_, text) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الكلمه -› "..text.." غير ممنوعه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الكلمه » "..text.." غير ممنوعه", 1, 'html')
 DevAbs:del(Mikasa.."Abs:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 else
 DevAbs:hdel(Mikasa..'Abs:Filters:'..msg.chat_id_, text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الكلمه -› "..text.." تم الغاء منعها", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙الكلمه » "..text.." تم الغاء منعها", 1, 'html')
 DevAbs:del(Mikasa.."Abs:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 end
 return false
 end
 --     Source Mikasa     --
 if SudoBot(msg) then
-if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "-› الاحصائيات ⌁" then
+if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "» الاحصائيات ⌁" then
 local gps = DevAbs:scard(Mikasa.."Abs:Groups") local users = DevAbs:scard(Mikasa.."Abs:Users") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙احصائيات البوت -› ⤈\n꙳.︙عدد المشتركين -› ❨ '..users..' ❩\n꙳.︙عدد المجموعات -› ❨ '..gps..' ❩', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙احصائيات البوت » ⤈\n꙳.︙عدد المشتركين » ❨ '..users..' ❩\n꙳.︙عدد المجموعات » ❨ '..gps..' ❩', 1, 'md')
 end
-if text and text == "المشتركين" and ChCheck(msg) or text and text == "-› المشتركين ⌁" then
+if text and text == "المشتركين" and ChCheck(msg) or text and text == "» المشتركين ⌁" then
 local users = DevAbs:scard(Mikasa.."Abs:Users")
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المشتركين -› ❨ '..users..' ❩', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المشتركين » ❨ '..users..' ❩', 1, 'md')
 end
-if text and text == "المجموعات" and ChCheck(msg) or text and text == "-› المجموعات ⌁" then
+if text and text == "المجموعات" and ChCheck(msg) or text and text == "» المجموعات ⌁" then
 local gps = DevAbs:scard(Mikasa.."Abs:Groups")
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المجموعات -› ❨ '..gps..' ❩', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المجموعات » ❨ '..gps..' ❩', 1, 'md')
 end
 end
 --     Source Mikasa     --
@@ -7900,7 +7900,7 @@ if sendok == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙*لا يوجد مشتركين وهميين*', 1, 'md')
 else
 local ok = #pv - sendok
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المشتركين الان -› { '..#pv..' }\n꙳.︙تم حذف -› { '..sendok..' } من المشتركين\n꙳.︙العدد الحقيقي الان  -› ( '..ok..' ) \n', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد المشتركين الان » { '..#pv..' }\n꙳.︙تم حذف » { '..sendok..' } من المشتركين\n꙳.︙العدد الحقيقي الان  » ( '..ok..' ) \n', 1, 'md')
 end
 end
 end,nil)
@@ -7941,14 +7941,14 @@ local Mikasagp3 = #group - Mikasagp2
 if q == 0 then
 Mikasagp2 = ''
 else
-Mikasagp2 = '\n꙳.︙تم حذف -› { '..q..' } مجموعه من البوت'
+Mikasagp2 = '\n꙳.︙تم حذف » { '..q..' } مجموعه من البوت'
 end
 if w == 0 then
 Mikasagp1 = ''
 else
-Mikasagp1 = '\n꙳.︙تم حذف -› { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
+Mikasagp1 = '\n꙳.︙تم حذف » { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙عدد الكروبات الان -› { '..#group..' }'..Mikasagp1..Mikasagp2..'\n꙳.︙العدد الحقيقي الان  -› ( '..Mikasagp3..' ) \n ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'꙳.︙عدد الكروبات الان » { '..#group..' }'..Mikasagp1..Mikasagp2..'\n꙳.︙العدد الحقيقي الان  » ( '..Mikasagp3..' ) \n ', 1, 'md')
 end end
 end,nil)
 end
@@ -7957,12 +7957,12 @@ end
 end
 --     Source Mikasa     --
 if text and (text == "تفعيل امسح" or text == "تفعيل المسح التلقائي" or text == "تفعيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل امسح مع ميزة الحذف التلقائي للميديا'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل امسح مع ميزة الحذف التلقائي للميديا'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Clean'..msg.chat_id_,true)  
 end
 if text and (text == "تعطيل امسح" or text == "تعطيل المسح التلقائي" or text == "تعطيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل امسح مع ميزة الحذف التلقائي للميديا'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل امسح مع ميزة الحذف التلقائي للميديا'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Clean'..msg.chat_id_) 
 end
@@ -7971,7 +7971,7 @@ local Num = text:match("تعين عدد المسح (%d+)$") or text:match("تع�
 if tonumber(Num) < 50 or tonumber(Num) > 200 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بتحديد عدد اكبر من 50 واصغر من 200 للحذف التلقائي', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع -› *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع » *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
 DevAbs:set(Mikasa..'Abs:CleanNum'..msg.chat_id_,Num) 
 end end 
 if msg and DevAbs:get(Mikasa..'Abs:Lock:Clean'..msg.chat_id_) then
@@ -7993,7 +7993,7 @@ if DevAbs:get(Mikasa..'Abs:Lock:Clean'..msg.chat_id_) then
 if text == "الميديا" and ChCheck(msg) or text == "عدد الميديا" and ChCheck(msg) then 
 local M = DevAbs:scard(Mikasa.."Abs:cleaner"..msg.chat_id_)
 if M ~= 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد الميديا -› "..M.."\n꙳.︙الحذف التلقائي -› "..(DevAbs:get(Mikasa..'Abs:CleanNum'..msg.chat_id_) or 200), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد الميديا » "..M.."\n꙳.︙الحذف التلقائي » "..(DevAbs:get(Mikasa..'Abs:CleanNum'..msg.chat_id_) or 200), 1, 'md') 
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لاتوجد ميديا هنا", 1, 'md') 
 end end
@@ -8538,7 +8538,7 @@ if tonumber(SetSpam) < 40 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙اختر عدد اكبر من 40 حرف ', 1, 'md')
 else
 DevAbs:set(Mikasa..'Abs:Spam:Text'..msg.chat_id_,SetSpam)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد السبام -›'..SetSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد السبام »'..SetSpam, 1, 'md')
 end
 end
 end
@@ -8554,47 +8554,47 @@ if GetInfo.result.can_invite_users == true then INV = '✔️' else INV = '✖�
 if GetInfo.result.can_pin_messages == true then PIN = '✔️' else PIN = '✖️' end
 if GetInfo.result.can_restrict_members == true then BAN = '✔️' else BAN = '✖️' end
 if GetInfo.result.can_promote_members == true then VIP = '✔️' else VIP = '✖️' end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙صلاحيات البوت هي -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙حذف الرسائل -› '..DEL..'\n꙳.︙دعوة المستخدمين -› '..INV..'\n꙳.︙حظر المستخدمين -› '..BAN..'\n꙳.︙تثبيت الرسائل -› '..PIN..'\n꙳.︙تغيير المعلومات -› '..EDT..'\n꙳.︙اضافة مشرفين -› '..VIP..'\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙صلاحيات البوت هي » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙حذف الرسائل » '..DEL..'\n꙳.︙دعوة المستخدمين » '..INV..'\n꙳.︙حظر المستخدمين » '..BAN..'\n꙳.︙تثبيت الرسائل » '..PIN..'\n꙳.︙تغيير المعلومات » '..EDT..'\n꙳.︙اضافة مشرفين » '..VIP..'\n≪━━━━━ꪑ𝙠━━━━━≫', 1, 'md')
 end end
 if text and text:match("^تغير رد المطور (.*)$") then
 local Text = text:match("^تغير رد المطور (.*)$") 
 DevAbs:set(Mikasa.."Abs:SudoBot:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المطور الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المطور الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") then
 local Text = text:match("^تغير رد منشئ الاساسي (.*)$") 
 DevAbs:set(Mikasa.."Abs:BasicConstructor:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنشئ الاساسي الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنشئ الاساسي الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنشئ (.*)$") then
 local Text = text:match("^تغير رد المنشئ (.*)$") 
 DevAbs:set(Mikasa.."Abs:Constructor:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنشئ الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنشئ الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المدير (.*)$") then
 local Text = text:match("^تغير رد المدير (.*)$") 
 DevAbs:set(Mikasa.."Abs:Managers:Rd"..msg.chat_id_,Text) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المدير الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المدير الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد الادمن (.*)$") then
 local Text = text:match("^تغير رد الادمن (.*)$") 
 DevAbs:set(Mikasa.."Abs:Admins:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد الادمن الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد الادمن الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المميز (.*)$") then
 local Text = text:match("^تغير رد المميز (.*)$") 
 DevAbs:set(Mikasa.."Abs:VipMem:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المميز الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المميز الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنظف (.*)$") then
 local Text = text:match("^تغير رد المنظف (.*)$") 
 DevAbs:set(Mikasa.."Abs:Cleaner:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنظف الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد المنظف الى » "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد العضو (.*)$") then
 local Text = text:match("^تغير رد العضو (.*)$") 
 DevAbs:set(Mikasa.."Abs:mem:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد العضو الى -› "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تغير رد العضو الى » "..Text, 1, 'md')
 end
 if text == "حذف ردود الرتب" or text == "مسح ردود الرتب" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حذف جميع ردود الرتب", 1, 'md')
@@ -8612,7 +8612,7 @@ end
 if text == "كشف البوتات" and ChCheck(msg) then 
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(extra,result,success)
 local admins = result.members_  
-text = '꙳.︙*قائمة البوتات* -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
+text = '꙳.︙*قائمة البوتات* » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 local n = 0
 local t = 0
 for i=0 , #admins do 
@@ -8630,8 +8630,8 @@ if #admins == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*لاتوجد بوتات هنا*", 1, 'md')
 return false end
 if #admins == i then 
-local a = '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙*عدد البوتات هنا* -› '..n..'\n'
-local f = '꙳.︙*عدد البوتات المرفوعه* -› '..t..'\n꙳.︙*ملاحضه علامة الـ*✯ *تعني ان البوت ادمن في هذه المجموعه*'
+local a = '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙*عدد البوتات هنا* » '..n..'\n'
+local f = '꙳.︙*عدد البوتات المرفوعه* » '..t..'\n꙳.︙*ملاحضه علامة الـ*✯ *تعني ان البوت ادمن في هذه المجموعه*'
 Dev_Abs(msg.chat_id_, msg.id_, 1, text..a..f, 1, 'md')
 end
 end,nil)
@@ -8655,7 +8655,7 @@ end
 if (c - x) == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*لاتوجد بوتات هنا*", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*عدد البوتات هنا* -› "..c.."\n꙳.︙*عدد البوتات المرفوعه* -› "..x.."\n꙳.︙*تم طرد* -› "..(c - x).." *من البوتات*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙*عدد البوتات هنا* » "..c.."\n꙳.︙*عدد البوتات المرفوعه* » "..x.."\n꙳.︙*تم طرد* » "..(c - x).." *من البوتات*", 1, 'md')
 end 
 end,nil)  
 end 
@@ -8794,7 +8794,7 @@ if not BasicConstructor(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمنشئ الاساسي فقط', 1, 'md')
 else
 DevAbs:del(Mikasa..'Abs:Ban:'..msg.chat_id_) DevAbs:del(Mikasa..'Abs:Admins:'..msg.chat_id_) DevAbs:del(Mikasa..'User:Donky:'..msg.chat_id_) DevAbs:del(Mikasa..'Abs:VipMem:'..msg.chat_id_) DevAbs:del(Mikasa..'Abs:Filters:'..msg.chat_id_) DevAbs:del(Mikasa..'Abs:Muted:'..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حذف -› ❨ قائمة المنع • المحظورين • المكتومين • الادمنيه • المميزين • المطايه ❩ بنجاح \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حذف » ❨ قائمة المنع • المحظورين • المكتومين • الادمنيه • المميزين • المطايه ❩ بنجاح \n ✓", 1, 'md')
 end end
 --     Source Mikasa     --
 if text and text:match("^حذف جميع الرتب$") and ChCheck(msg) or text and text:match("^مسح جميع الرتب$") and ChCheck(msg) or text and text:match("^تنزيل جميع الرتب$") and ChCheck(msg) then
@@ -8820,7 +8820,7 @@ DevAbs:del(Mikasa..'Abs:Managers:'..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:Admins:'..msg.chat_id_)
 DevAbs:del(Mikasa..'Abs:VipMem:'..msg.chat_id_)
 DevAbs:del(Mikasa..'User:Donky:'..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حذف جميع الرتب التاليه -› ❨ "..basicconstructort..constructort..Managerst..adminst..vipmemt..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حذف جميع الرتب التاليه » ❨ "..basicconstructort..constructort..Managerst..adminst..vipmemt..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لاتوجد رتب هنا", 1, 'md')
 end 
@@ -8888,39 +8888,39 @@ if DevAbs:get(Mikasa..'Abs:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوح�
 if DevAbs:get(Mikasa..'Abs:Lock:Farsi'..msg.chat_id_) then lock_farsi = 'مقفله' else lock_farsi = 'مفتوحه' end
 local Flood_Num = DevAbs:hget(Mikasa.."Abs:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
 --     Source Mikasa     --
-local TXTE = "꙳.︙اعدادات المجموعه -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
-.."꙳.︙الروابط -› "..mute_links.."\n"
-.."꙳.︙المعرف -› "..lock_tag.."\n"
-.."꙳.︙البوتات -› "..lock_bots.."\n"
-.."꙳.︙المتحركه -› "..mute_gifs.."\n"
-.."꙳.︙الملصقات -› "..lock_sticker.."\n"
-.."꙳.︙الملفات -› "..lock_file.."\n"
-.."꙳.︙الصور -› "..mute_photo.."\n"
-.."꙳.︙الفيديو -› "..mute_video.."\n"
-.."꙳.︙الاونلاين -› "..mute_in.."\n"
-.."꙳.︙الدردشه -› "..mute_text.."\n"
-.."꙳.︙التوجيه -› "..lock_forward.."\n"
-.."꙳.︙الاغاني -› "..mute_music.."\n"
-.."꙳.︙الصوت -› "..mute_voice.."\n"
-.."꙳.︙الجهات -› "..lock_contact.."\n"
-.."꙳.︙الماركداون -› "..markdown.."\n"
-.."꙳.︙الهاشتاك -› "..lock_htag.."\n"
-.."꙳.︙التعديل -› "..mute_edit.."\n"
-.."꙳.︙التثبيت -› "..lock_pin.."\n"
-.."꙳.︙الاشعارات -› "..lock_tgservice.."\n"
-.."꙳.︙الكلايش -› "..lock_spam.."\n"
-.."꙳.︙الدخول -› "..lock_Join.."\n"
-.."꙳.︙الشبكات -› "..lock_wp.."\n"
-.."꙳.︙المواقع -› "..lock_location.."\n"
-.."꙳.︙الفشار -› "..lock_fshar.."\n"
-.."꙳.︙الكفر -› "..lock_kaf.."\n"
-.."꙳.︙الطائفيه -› "..lock_taf.."\n"
-.."꙳.︙العربيه -› "..lock_arabic.."\n"
-.."꙳.︙الانكليزيه -› "..lock_english.."\n"
-.."꙳.︙الفارسيه -› "..lock_farsi.."\n"
-.."꙳.︙التكرار -› "..flood.."\n"
-.."꙳.︙عدد التكرار -› "..Flood_Num.."\n"
-.."꙳.︙عدد السبام -› "..spam_c.."\n"
+local TXTE = "꙳.︙اعدادات المجموعه » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+.."꙳.︙الروابط » "..mute_links.."\n"
+.."꙳.︙المعرف » "..lock_tag.."\n"
+.."꙳.︙البوتات » "..lock_bots.."\n"
+.."꙳.︙المتحركه » "..mute_gifs.."\n"
+.."꙳.︙الملصقات » "..lock_sticker.."\n"
+.."꙳.︙الملفات » "..lock_file.."\n"
+.."꙳.︙الصور » "..mute_photo.."\n"
+.."꙳.︙الفيديو » "..mute_video.."\n"
+.."꙳.︙الاونلاين » "..mute_in.."\n"
+.."꙳.︙الدردشه » "..mute_text.."\n"
+.."꙳.︙التوجيه » "..lock_forward.."\n"
+.."꙳.︙الاغاني » "..mute_music.."\n"
+.."꙳.︙الصوت » "..mute_voice.."\n"
+.."꙳.︙الجهات » "..lock_contact.."\n"
+.."꙳.︙الماركداون » "..markdown.."\n"
+.."꙳.︙الهاشتاك » "..lock_htag.."\n"
+.."꙳.︙التعديل » "..mute_edit.."\n"
+.."꙳.︙التثبيت » "..lock_pin.."\n"
+.."꙳.︙الاشعارات » "..lock_tgservice.."\n"
+.."꙳.︙الكلايش » "..lock_spam.."\n"
+.."꙳.︙الدخول » "..lock_Join.."\n"
+.."꙳.︙الشبكات » "..lock_wp.."\n"
+.."꙳.︙المواقع » "..lock_location.."\n"
+.."꙳.︙الفشار » "..lock_fshar.."\n"
+.."꙳.︙الكفر » "..lock_kaf.."\n"
+.."꙳.︙الطائفيه » "..lock_taf.."\n"
+.."꙳.︙العربيه » "..lock_arabic.."\n"
+.."꙳.︙الانكليزيه » "..lock_english.."\n"
+.."꙳.︙الفارسيه » "..lock_farsi.."\n"
+.."꙳.︙التكرار » "..flood.."\n"
+.."꙳.︙عدد التكرار » "..Flood_Num.."\n"
+.."꙳.︙عدد السبام » "..spam_c.."\n"
 .."≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)\n"
 Dev_Abs(msg.chat_id_, msg.id_, 1, TXTE, 1, 'md')
 end
@@ -8956,7 +8956,7 @@ end
 if text == 'رقمي' and ChCheck(msg) then
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
 if result.phone_number_  then
-MyNumber = "꙳.︙رقمك -› +"..result.phone_number_
+MyNumber = "꙳.︙رقمك » +"..result.phone_number_
 else
 MyNumber = "꙳.︙رقمك موضوع لجهات اتصالك فقط"
 end
@@ -8965,12 +8965,12 @@ end,nil)
 end
 --     Source Mikasa     --
 if text == "تفعيل انطق" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل ميزة انطق'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل ميزة انطق'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Antk:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل انطق" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل ميزة انطق'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل ميزة انطق'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Antk:Abs'..msg.chat_id_,true)  
 end
@@ -8985,12 +8985,12 @@ end
 end
 --     Source Mikasa     --
 if text == "تفعيل الزخرفه" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الزخرفه بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Zrf:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل الزخرفه" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الزخرفه بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Zrf:Abs'..msg.chat_id_,true)  
 end
@@ -9002,7 +9002,7 @@ return false
 end 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "꙳.︙قائمة الزخرفه -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+t = "꙳.︙قائمة الزخرفه » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
@@ -9023,7 +9023,7 @@ if text and text:match("^زخرفه (.*)$") and ChCheck(msg) or text and text:ma
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "꙳.︙قائمة الزخرفه -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+t = "꙳.︙قائمة الزخرفه » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
@@ -9034,12 +9034,12 @@ end
 end
 --     Source Mikasa     --
 if text == "تفعيل الابراج" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الابراج بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الابراج بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Brg:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل الابراج" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الابراج بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الابراج بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Brg:Abs'..msg.chat_id_,true)  
 end
@@ -9054,19 +9054,19 @@ end
 end
 --     Source Mikasa     --
 if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل اوامر النسب'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل اوامر النسب'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) 
 end
 if text and (text == "تعطيل اوامر النسب" or text == "تعطيل نسبه الحب" or text == "تعطيل نسبه الكره" or text == "تعطيل نسبه الرجوله" or text == "تعطيل نسبه الانوثه" or text == "تعطيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل اوامر النسب'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل اوامر النسب'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_,true)  
 end
 if not DevAbs:get(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) then
 if text == "نسبه الحب" and ChCheck(msg) or text == "نسبة الحب" and ChCheck(msg) then
 DevAbs:set(Mikasa..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال -› جاك وروز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال » جاك وروز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الحب" and text ~= "نسبة الحب" and DevAbs:get(Mikasa..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
@@ -9083,7 +9083,7 @@ end
 if not DevAbs:get(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) then
 if text == "نسبه الكره" and ChCheck(msg) or text == "نسبة الكره" and ChCheck(msg) then
 DevAbs:set(Mikasa..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال -› جاك وروز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال » جاك وروز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الكره" and text ~= "نسبة الكره" and DevAbs:get(Mikasa..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
@@ -9100,7 +9100,7 @@ end
 if not DevAbs:get(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله") and ChCheck(msg) then
 DevAbs:set(Mikasa..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال -› جاك', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال » جاك', 1, 'md')
 end
 end
 if text and text ~= "نسبه الرجوله" and text ~= "نسبة الرجوله" and text ~= "نسبه رجوله" and text ~= "نسبة رجوله" and DevAbs:get(Mikasa..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
@@ -9117,7 +9117,7 @@ end
 if not DevAbs:get(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الانوثه" or text == "نسبة الانوثه" or text == "نسبه انوثه" or text == "نسبة انوثه") and ChCheck(msg) then
 DevAbs:set(Mikasa..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال -› روز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال » روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الانوثه" and text ~= "نسبة الانوثه" and text ~= "نسبه انوثه" and text ~= "نسبة انوثه" and DevAbs:get(Mikasa..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
@@ -9134,7 +9134,7 @@ end
 if not DevAbs:get(Mikasa..'Abs:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الغباء" or text == "نسبة الغباء") and ChCheck(msg) then
 DevAbs:set(Mikasa..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال -› جاك او روز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال » جاك او روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الغباء" and text ~= "نسبة الغباء" and DevAbs:get(Mikasa..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
@@ -9150,12 +9150,12 @@ return false
 end
 --     Source Mikasa     --
 if text == "تفعيل حساب العمر" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل حساب العمر'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل حساب العمر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Age:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل حساب العمر" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل حساب العمر'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل حساب العمر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Age:Abs'..msg.chat_id_,true)  
 end
@@ -9170,12 +9170,12 @@ end
 end
 --     Source Mikasa     --
 if text == "تفعيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل معاني الاسماء'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل معاني الاسماء'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Mean:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل معاني الاسماء'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل معاني الاسماء'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Mean:Abs'..msg.chat_id_,true)  
 end
@@ -9190,12 +9190,12 @@ end
 end
 --     Source Mikasa     --
 if text == "تفعيل غنيلي" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل غنيلي بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل غنيلي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Audios:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل غنيلي" and Manager(msg) and ChCheck(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل غنيلي بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل غنيلي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Audios:Abs'..msg.chat_id_,true)  
 end
@@ -9214,7 +9214,7 @@ https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id='..m
 end
 end
 end
-if text and (text == "متحركه" or text == "-› متحركه ᥀") and not DevAbs:get(Mikasa..'Abs:gif:Abs'..msg.chat_id_) and SourceCh(msg) then
+if text and (text == "متحركه" or text == "» متحركه ᥀") and not DevAbs:get(Mikasa..'Abs:gif:Abs'..msg.chat_id_) and SourceCh(msg) then
 Abs = math.random(2,1075); 
 local Text ='*᥀︙تم اختيار المتحركه لك*'
 keyboard = {}  
@@ -9224,7 +9224,7 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendanimation?chat_id=' .. msg.chat_id_ .. '&animation=https://t.me/GifMikasa/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
-if text and (text == "ميمز" or text == "-› ميمز ᥀") and not DevAbs:get(Mikasa..'Abs:memz:Abs'..msg.chat_id_) and SourceCh(msg) then
+if text and (text == "ميمز" or text == "» ميمز ᥀") and not DevAbs:get(Mikasa..'Abs:memz:Abs'..msg.chat_id_) and SourceCh(msg) then
 Abs = math.random(2,1201); 
 local Text ='*᥀︙تم اختيار مقطع الميمز لك*'
 keyboard = {}  
@@ -9237,107 +9237,107 @@ end
 --     Source Mikasa     --
 if Admin(msg) then
 if DevAbs:get(Mikasa..'Abs:LockSettings'..msg.chat_id_) then 
-if text == "الروابط" then if DevAbs:get(Mikasa..'Abs:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الروابط -› "..mute_links.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "المعرف" or text == "المعرفات" then if DevAbs:get(Mikasa..'Abs:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المعرف -› "..lock_tag.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "المتحركه" or text == "الملصقات المتحركه" then if DevAbs:get(Mikasa..'Abs:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المتحركه -› "..mute_gifs.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الملصقات" then if DevAbs:get(Mikasa..'Abs:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الملصقات -› "..lock_sticker.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الصور" then if DevAbs:get(Mikasa..'Abs:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الصور -› "..mute_photo.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الفيديو" or text == "الفيديوهات" then if DevAbs:get(Mikasa..'Abs:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الفيديو -› "..mute_video.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الاونلاين" then if DevAbs:get(Mikasa..'Abs:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الاونلاين -› "..mute_in.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الدردشه" then if DevAbs:get(Mikasa..'Abs:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الدردشه -› "..mute_text.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "التوجيه" or text == "اعاده التوجيه" then if DevAbs:get(Mikasa..'Abs:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التوجيه -› "..lock_forward.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الاغاني" then if DevAbs:get(Mikasa..'Abs:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الاغاني -› "..mute_music.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الصوت" or text == "الصوتيات" then if DevAbs:get(Mikasa..'Abs:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الصوت -› "..mute_voice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الجهات" or text == "جهات الاتصال" then if DevAbs:get(Mikasa..'Abs:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الجهات -› "..lock_contact.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الماركداون" then if DevAbs:get(Mikasa..'Abs:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الماركداون -› "..markdown.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الهاشتاك" then if DevAbs:get(Mikasa..'Abs:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الهاشتاك -› "..lock_htag.."\n"Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "التعديل" then if DevAbs:get(Mikasa..'Abs:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التعديل -› "..mute_edit.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "التثبيت" then if DevAbs:get(Mikasa..'Abs:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التثبيت -› "..lock_pin.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الاشعارات" then if DevAbs:get(Mikasa..'Abs:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الاشعارات -› "..lock_tgservice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الكلايش" then if DevAbs:get(Mikasa..'Abs:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الكلايش -› "..lock_spam.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الدخول" then if DevAbs:get(Mikasa..'Abs:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الدخول -› "..lock_Join.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الشبكات" then if DevAbs:get(Mikasa..'Abs:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الشبكات -› "..lock_wp.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "المواقع" then if DevAbs:get(Mikasa..'Abs:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المواقع -› "..lock_location.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "العربيه" then if DevAbs:get(Mikasa..'Abs:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙العربيه -› "..lock_arabic.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الانكليزيه" then if DevAbs:get(Mikasa..'Abs:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الانكليزيه -› "..lock_english.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الكفر" then if DevAbs:get(Mikasa..'Abs:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local TeAmMikasa = "\n" .."꙳.︙الكفر -› "..lock_kaf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الفشار" then if DevAbs:get(Mikasa..'Abs:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local TeAmMikasa = "\n" .."꙳.︙الفشار -› "..lock_fshar.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
-if text == "الطائفيه" then if DevAbs:get(Mikasa..'Abs:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local TeAmMikasa = "\n" .."꙳.︙الطائفيه -› "..lock_taf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الروابط" then if DevAbs:get(Mikasa..'Abs:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الروابط » "..mute_links.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "المعرف" or text == "المعرفات" then if DevAbs:get(Mikasa..'Abs:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المعرف » "..lock_tag.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "المتحركه" or text == "الملصقات المتحركه" then if DevAbs:get(Mikasa..'Abs:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المتحركه » "..mute_gifs.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الملصقات" then if DevAbs:get(Mikasa..'Abs:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الملصقات » "..lock_sticker.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الصور" then if DevAbs:get(Mikasa..'Abs:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الصور » "..mute_photo.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الفيديو" or text == "الفيديوهات" then if DevAbs:get(Mikasa..'Abs:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الفيديو » "..mute_video.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الاونلاين" then if DevAbs:get(Mikasa..'Abs:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الاونلاين » "..mute_in.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الدردشه" then if DevAbs:get(Mikasa..'Abs:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الدردشه » "..mute_text.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "التوجيه" or text == "اعاده التوجيه" then if DevAbs:get(Mikasa..'Abs:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التوجيه » "..lock_forward.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الاغاني" then if DevAbs:get(Mikasa..'Abs:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الاغاني » "..mute_music.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الصوت" or text == "الصوتيات" then if DevAbs:get(Mikasa..'Abs:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الصوت » "..mute_voice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الجهات" or text == "جهات الاتصال" then if DevAbs:get(Mikasa..'Abs:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الجهات » "..lock_contact.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الماركداون" then if DevAbs:get(Mikasa..'Abs:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الماركداون » "..markdown.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الهاشتاك" then if DevAbs:get(Mikasa..'Abs:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الهاشتاك » "..lock_htag.."\n"Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "التعديل" then if DevAbs:get(Mikasa..'Abs:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التعديل » "..mute_edit.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "التثبيت" then if DevAbs:get(Mikasa..'Abs:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙التثبيت » "..lock_pin.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الاشعارات" then if DevAbs:get(Mikasa..'Abs:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الاشعارات » "..lock_tgservice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الكلايش" then if DevAbs:get(Mikasa..'Abs:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الكلايش » "..lock_spam.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الدخول" then if DevAbs:get(Mikasa..'Abs:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local TeAmMikasa = "\n" .."꙳.︙الدخول » "..lock_Join.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الشبكات" then if DevAbs:get(Mikasa..'Abs:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الشبكات » "..lock_wp.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "المواقع" then if DevAbs:get(Mikasa..'Abs:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙المواقع » "..lock_location.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "العربيه" then if DevAbs:get(Mikasa..'Abs:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙العربيه » "..lock_arabic.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الانكليزيه" then if DevAbs:get(Mikasa..'Abs:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local TeAmMikasa = "\n" .."꙳.︙الانكليزيه » "..lock_english.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الكفر" then if DevAbs:get(Mikasa..'Abs:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local TeAmMikasa = "\n" .."꙳.︙الكفر » "..lock_kaf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الفشار" then if DevAbs:get(Mikasa..'Abs:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local TeAmMikasa = "\n" .."꙳.︙الفشار » "..lock_fshar.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
+if text == "الطائفيه" then if DevAbs:get(Mikasa..'Abs:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local TeAmMikasa = "\n" .."꙳.︙الطائفيه » "..lock_taf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa, 1, 'md') end
 end
 --     Source Mikasa     --
 if text == 'تفعيل كشف الاعدادات' and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل كشف الاعدادات'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل كشف الاعدادات'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:LockSettings'..msg.chat_id_,true)  
 end
 if text == 'تعطيل كشف الاعدادات' and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل كشف الاعدادات'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل كشف الاعدادات'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:LockSettings'..msg.chat_id_) 
 end
 --     Source Mikasa     --
 if text == 'تفعيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل اوامر التحشيش'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل اوامر التحشيش'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Stupid'..msg.chat_id_)
 end
 if text == 'تعطيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل اوامر التحشيش'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل اوامر التحشيش'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Stupid'..msg.chat_id_,true)
 end
 --     Source Mikasa     --
 if text and (text == 'تعطيل التحقق' or text == 'قفل التحقق' or text == 'تعطيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل التحقق بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل التحقق بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Robot'..msg.chat_id_)
 end
 if text and (text == 'تفعيل التحقق' or text == 'فتح التحقق' or text == 'تفعيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل التحقق بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل التحقق بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Robot'..msg.chat_id_,true)
 end
 --     Source Mikasa     --
 if text == 'تفعيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل ردود المدير'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل ردود المدير'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:GpRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل ردود المدير'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل ردود المدير'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:GpRed'..msg.chat_id_,true)
 end
 --     Source Mikasa     --
 if text == 'تفعيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل ردود المطور'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل ردود المطور'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:AllRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل ردود المطور'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل ردود المطور'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:AllRed'..msg.chat_id_,true)
 end
 --     Source Mikasa     --
 if SecondSudo(msg) then
-if text == 'تفعيل المغادره' or text == '-› تفعيل المغادره ⌁' then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل المغادره بنجاح'
+if text == 'تفعيل المغادره' or text == '» تفعيل المغادره ⌁' then 
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل المغادره بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa.."Abs:Left:Bot"..Mikasa)
 end
-if text == 'تعطيل المغادره' or text == '-› تعطيل المغادره ⌁' then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل المغادره بنجاح'
+if text == 'تعطيل المغادره' or text == '» تعطيل المغادره ⌁' then 
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل المغادره بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa.."Abs:Left:Bot"..Mikasa,true) 
 end 
-if text == 'تفعيل الاذاعه' or text == '-› تفعيل الاذاعه ⌁' then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الاذاعه بنجاح'
+if text == 'تفعيل الاذاعه' or text == '» تفعيل الاذاعه ⌁' then 
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الاذاعه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa.."Abs:Send:Bot"..Mikasa)
 end
-if text == 'تعطيل الاذاعه' or text == '-› تعطيل الاذاعه ⌁' then 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الاذاعه بنجاح'
+if text == 'تعطيل الاذاعه' or text == '» تعطيل الاذاعه ⌁' then 
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الاذاعه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa.."Abs:Send:Bot"..Mikasa,true) 
 end
@@ -9353,7 +9353,7 @@ end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
 send(msg.chat_id_,msg.id_,"꙳.︙ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات")  
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تغير اسم المجموعه'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تغير اسم المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 end,nil) 
@@ -9375,7 +9375,7 @@ if data.message_ == "CHAT_ADMIN_REQUIRED" then
 send(msg.chat_id_, msg.id_,"꙳.︙ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات") 
 DevAbs:del(Mikasa..'Abs:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 else
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تغير صورة المجموعه'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تغير صورة المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end
 end,nil) 
@@ -9402,7 +9402,7 @@ end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
 DevAbs:del(Mikasa..'Abs:PinnedMsg'..msg.chat_id_)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم الغاء تثبيت الرساله'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم الغاء تثبيت الرساله'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false  
 end
@@ -9424,7 +9424,7 @@ return false
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم الغاء تثبيت الكل'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم الغاء تثبيت الكل'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 https.request('https://api.telegram.org/bot'..TokenBot..'/unpinAllChatMessages?chat_id='..msg.chat_id_)
 DevAbs:del(Mikasa.."Abs:PinnedMsg"..msg.chat_id_)
@@ -9449,7 +9449,7 @@ end
 local PinId = DevAbs:get(Mikasa..'Abs:PinnedMsg'..msg.chat_id_)
 if PinId then
 Pin(msg.chat_id_,PinId,0)
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم اعادة تثبيت الرساله'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم اعادة تثبيت الرساله'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end end
 end
@@ -9490,7 +9490,7 @@ if text and text:match("^معلومات المجموعه$") and ChCheck(msg) or 
 local Muted = DevAbs:scard(Mikasa.."Abs:Muted:"..msg.chat_id_) or "0"
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙المجموعه -› ❨ '..dp.title_..' ❩\n꙳.︙الايدي -› ❨ '..msg.chat_id_..' ❩\n꙳.︙عدد الاعضاء -› ❨ *'..data.member_count_..'* ❩\n꙳.︙عدد الادمنيه -› ❨ *'..data.administrator_count_..'* ❩\n꙳.︙عدد المطرودين -› ❨ *'..data.kicked_count_..'* ❩\n꙳.︙عدد المكتومين -› ❨ *'..Muted..'* ❩\n꙳.︙عدد رسائل المجموعه -› ❨ *'..(msg.id_/2097152/0.5)..'* ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙المجموعه » ❨ '..dp.title_..' ❩\n꙳.︙الايدي » ❨ '..msg.chat_id_..' ❩\n꙳.︙عدد الاعضاء » ❨ *'..data.member_count_..'* ❩\n꙳.︙عدد الادمنيه » ❨ *'..data.administrator_count_..'* ❩\n꙳.︙عدد المطرودين » ❨ *'..data.kicked_count_..'* ❩\n꙳.︙عدد المكتومين » ❨ *'..Muted..'* ❩\n꙳.︙عدد رسائل المجموعه » ❨ *'..(msg.id_/2097152/0.5)..'* ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n', 1, 'md') 
 end,nil)
 end,nil)
 end
@@ -9522,7 +9522,7 @@ ConstructorAbs = "["..Abs.first_name_.."](T.me/"..(Abs.username_ or "TeAmMikasa"
 else 
 ConstructorAbs = "حساب محذوف"
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙المجموعه -› ["..dp.title_.."]("..LinkGroup..")\n꙳.︙الايدي -› ( `"..ChatId.."` )\n꙳.︙المنشئ -› "..ConstructorAbs.."\n꙳.︙عدد المدراء -› ( *"..ManagerList.."* )\n꙳.︙عدد المنشئين -› ( *"..ConstructorList.."* )\n꙳.︙عدد الادمنيه -› ( *"..AdminsList.."* )\n꙳.︙عدد المميزين -› ( *"..VipList.."* )\n꙳.︙عدد المحظورين -› ( *"..BanedList.."* )\n꙳.︙عدد المقيدين -› ( *"..TkeedList.."* )\n꙳.︙عدد المكتومين -› ( *"..MutedList.."* )", 1,"md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙المجموعه » ["..dp.title_.."]("..LinkGroup..")\n꙳.︙الايدي » ( `"..ChatId.."` )\n꙳.︙المنشئ » "..ConstructorAbs.."\n꙳.︙عدد المدراء » ( *"..ManagerList.."* )\n꙳.︙عدد المنشئين » ( *"..ConstructorList.."* )\n꙳.︙عدد الادمنيه » ( *"..AdminsList.."* )\n꙳.︙عدد المميزين » ( *"..VipList.."* )\n꙳.︙عدد المحظورين » ( *"..BanedList.."* )\n꙳.︙عدد المقيدين » ( *"..TkeedList.."* )\n꙳.︙عدد المكتومين » ( *"..MutedList.."* )", 1,"md")
 end,nil)
 end
 end
@@ -9541,7 +9541,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط', 1
 else 
 tdcli_function({ID ="GetChat",chat_id_=Text[2]},function(arg,dp) 
 if dp.id_ then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙المجموعه -› ["..dp.title_.."]\n꙳.︙تمت المغادره منها بنجاح", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙المجموعه » ["..dp.title_.."]\n꙳.︙تمت المغادره منها بنجاح", 1, "md")
 Dev_Abs(Text[2], 0, 1, "꙳.︙بامر المطور تم مغادرة هذه المجموعه ", 1, "md")  
 ChatLeave(dp.id_, Mikasa)
 DevAbs:srem(Mikasa.."Abs:Groups", dp.id_)
@@ -9555,14 +9555,14 @@ end
 if text and text:match("^تعين عدد الاعضاء (%d+)$") and SecondSudo(msg) or text and text:match("^تعيين عدد الاعضاء (%d+)$") and SecondSudo(msg) then
 local Num = text:match("تعين عدد الاعضاء (%d+)$") or text:match("تعيين عدد الاعضاء (%d+)$")
 DevAbs:set(Mikasa..'Abs:Num:Add:Bot',Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد الاعضاء -› *'..Num..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم وضع عدد الاعضاء » *'..Num..'* عضو', 1, 'md')
 end
 --     Source Mikasa     --
 if text == 'تفعيل البوت الخدمي' then 
 if not Sudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط', 1, 'md')
 else 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل البوت الخدمي'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل البوت الخدمي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:FreeBot'..Mikasa) 
 end 
@@ -9571,25 +9571,25 @@ if text == 'تعطيل البوت الخدمي' then
 if not Sudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط', 1, 'md')
 else 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل البوت الخدمي'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل البوت الخدمي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:FreeBot'..Mikasa,true) 
 end 
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'تفعيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تفعيل اللعبه' and Manager(msg) and ChCheck(msg) then   
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل الالعاب بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الالعاب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa..'Abs:Lock:Games'..msg.chat_id_) 
 end
 if text == 'تعطيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تعطيل اللعبه' and Manager(msg) and ChCheck(msg) then  
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل الالعاب بنجاح'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل الالعاب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa..'Abs:Lock:Games'..msg.chat_id_,true)  
 end
 if text == "تفعيل الرابط" or text == "تفعيل جلب الرابط" then 
 if Admin(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تفعيل جلب رابط المجموعه'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل جلب رابط المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa.."Abs:Lock:GpLinks"..msg.chat_id_)
 return false  
@@ -9597,7 +9597,7 @@ end
 end
 if text == "تعطيل الرابط" or text == "تعطيل جلب الرابط" then 
 if Admin(msg) then
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم تعطيل جلب رابط المجموعه'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تعطيل جلب رابط المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa.."Abs:Lock:GpLinks"..msg.chat_id_,"ok")
 return false  
@@ -9615,7 +9615,7 @@ return false
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0) and not SecondSudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد اعضاء المجموعه اقل من -› *'..(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عدد اعضاء المجموعه اقل من » *'..(DevAbs:get(Mikasa..'Abs:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -9678,7 +9678,7 @@ LinkGroup = 'لا يوجد'
 end
 DevAbs:set(Mikasa.."Abs:Groups:Links"..msg.chat_id_,LinkGroup) 
 if not Sudo(msg) then
-SendText(DevId,"꙳.︙تم تفعيل مجموعه جديده -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة -› "..Name.."\n꙳.︙اسم المجموعه -› ["..NameChat.."]\n꙳.︙عدد اعضاء المجموعه -› ❨ *"..NumMem.."* ❩\n꙳.︙ايدي المجموعه -› ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه -› ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت -› "..os.date("%I:%M%p").."\n꙳.︙التاريخ -› "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"꙳.︙تم تفعيل مجموعه جديده » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة » "..Name.."\n꙳.︙اسم المجموعه » ["..NameChat.."]\n꙳.︙عدد اعضاء المجموعه » ❨ *"..NumMem.."* ❩\n꙳.︙ايدي المجموعه » ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه » ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت » "..os.date("%I:%M%p").."\n꙳.︙التاريخ » "..os.date("%Y/%m/%d").."",0,'md')
 end
 end
 end,nil)
@@ -9716,7 +9716,7 @@ LinkGroup = 'لا يوجد'
 end
 DevAbs:set(Mikasa.."Abs:Groups:Links"..msg.chat_id_,LinkGroup) 
 if not Sudo(msg) then
-SendText(DevId,"꙳.︙تم تعطيل مجموعه جديده -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة -› "..Name.."\n꙳.︙اسم المجموعه -› ["..NameChat.."]\n꙳.︙ايدي المجموعه -› ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه -› ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت -› "..os.date("%I:%M%p").."\n꙳.︙التاريخ -› "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"꙳.︙تم تعطيل مجموعه جديده » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙بواسطة » "..Name.."\n꙳.︙اسم المجموعه » ["..NameChat.."]\n꙳.︙ايدي المجموعه » ⤈ \n❨ `"..msg.chat_id_.."` ❩\n꙳.︙رابط المجموعه » ⤈\n❨ ["..LinkGroup.."] ❩\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت » "..os.date("%I:%M%p").."\n꙳.︙التاريخ » "..os.date("%Y/%m/%d").."",0,'md')
 end
 end
 end,nil)
@@ -9745,12 +9745,12 @@ local NameChat = NameChat:gsub("}","")
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if LinkGp.ok == true then 
 LinkGroup = LinkGp.result
-LinkGroup = "꙳.︙رابط المجموعه -› ⤈\n❨ ["..LinkGroup.."] ❩"
+LinkGroup = "꙳.︙رابط المجموعه » ⤈\n❨ ["..LinkGroup.."] ❩"
 else
 LinkGroup = '꙳.︙ليست لدي صلاحية الدعوه لهذه المجموعه !'
 end
 if not Sudo(msg) then
-SendText(DevId,"꙳.︙هناك من بحاجه الى مساعده -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الشخص -› "..Name.."\n꙳.︙اسم المجموعه -› ["..NameChat.."]\n꙳.︙ايدي المجموعه -› ⤈ \n❨ `"..msg.chat_id_.."` ❩\n"..LinkGroup.."\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت -› "..os.date("%I:%M%p").."\n꙳.︙التاريخ -› "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"꙳.︙هناك من بحاجه الى مساعده » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الشخص » "..Name.."\n꙳.︙اسم المجموعه » ["..NameChat.."]\n꙳.︙ايدي المجموعه » ⤈ \n❨ `"..msg.chat_id_.."` ❩\n"..LinkGroup.."\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الوقت » "..os.date("%I:%M%p").."\n꙳.︙التاريخ » "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
@@ -9771,7 +9771,7 @@ local List = DevAbs:smembers(Mikasa.."Abs:Groups")
 if #List == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لا توجد مجموعات مفعله', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙جاري ارسال نسخه تحتوي على -› '..#List..' مجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙جاري ارسال نسخه تحتوي على » '..#List..' مجموعه', 1, 'md')
 local Text = "꙳.︙Source Mikasa\n꙳.︙File Bot Groups\n≪━━━━━ꪑ𝙠━━━━━≫\n"
 for k,v in pairs(List) do
 local GroupsManagers = DevAbs:scard(Mikasa.."Abs:Managers:"..v) or 0
@@ -9788,13 +9788,13 @@ end
 end
 end
 --     Source Mikasa     --
-if text == "اذاعه خاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "-› اذاعه خاص ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه خاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه خاص ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevAbs:setex(Mikasa.."Abs:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء -› ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل -› ( الغاء ) \n ✓'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء » ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل » ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false
 end 
@@ -9851,17 +9851,17 @@ AbsText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بنجاح \n꙳.︙‏الى -› ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بنجاح \n꙳.︙‏الى » ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
 DevAbs:del(Mikasa.."Abs:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source Mikasa     --
-if text == "اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "-› اذاعه عام ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه عام ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevAbs:setex(Mikasa.."Abs:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء -› ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل -› ( الغاء ) \n ✓'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء » ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل » ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false
 end 
@@ -9918,17 +9918,17 @@ AbsText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بنجاح \n꙳.︙‏في -› ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بنجاح \n꙳.︙‏في » ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
 DevAbs:del(Mikasa.."Abs:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source Mikasa     --
-if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "-› اذاعه عام بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه عام بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevAbs:setex(Mikasa.."Abs:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙ارسل الرساله الان لتوجيها \n꙳.︙للخروج ارسل -› ( الغاء ) \n ✓'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ارسل الرساله الان لتوجيها \n꙳.︙للخروج ارسل » ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false
 end 
@@ -9942,17 +9942,17 @@ local List = DevAbs:smembers(Mikasa..'Abs:Groups')
 for k,v in pairs(List) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏في -› ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏في » ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
 DevAbs:del(Mikasa.."Abs:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source Mikasa     --
-if text == "اذاعه خاص بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "-› اذاعه خاص بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه خاص بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه خاص بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevAbs:setex(Mikasa.."Abs:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙ارسل الرساله الان لتوجيها \n꙳.︙للخروج ارسل -› ( الغاء ) \n ✓'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ارسل الرساله الان لتوجيها \n꙳.︙للخروج ارسل » ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false
 end 
@@ -9966,17 +9966,17 @@ local List = DevAbs:smembers(Mikasa..'Abs:Users')
 for k,v in pairs(List) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏الى -› ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة رسالتك بالتوجيه \n꙳.︙‏الى » ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
 DevAbs:del(Mikasa.."Abs:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source Mikasa     --
-if text == "اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "-› اذاعه بالتثبيت ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه بالتثبيت ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevAbs:setex(Mikasa.."Abs:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء -› ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل -› ( الغاء ) \n ✓'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ارسل لي سواء » ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙للخروج ارسل » ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 return false
 end 
@@ -10041,7 +10041,7 @@ sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)
 DevAbs:set(Mikasa..'Abs:PinnedMsgs'..v,msg.content_.sticker_.sticker_.persistent_id_) 
 end 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بالتثبيت \n꙳.︙‏في -› ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بالتثبيت \n꙳.︙‏في » ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
 DevAbs:del(Mikasa.."Abs:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end
@@ -10065,10 +10065,10 @@ DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
 if not DevAbs:sismember(Mikasa..'Abs:Manager:GpRedod'..msg.chat_id_,text) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لايوجد رد متعدد لهذه الكلمه -› "..text ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لايوجد رد متعدد لهذه الكلمه » "..text ,  1, "md")
 return false
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙قم بارسال الرد المتعدد الذي تريد حذفه من الكلمه -› "..text ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙قم بارسال الرد المتعدد الذي تريد حذفه من الكلمه » "..text ,  1, "md")
 DevAbs:set(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedods')
 DevAbs:set(Mikasa..'Abs:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
 return false
@@ -10099,13 +10099,13 @@ end
 if DevAbs:sismember(Mikasa..'Abs:Manager:GpRedod'..msg.chat_id_,text) then
 local Abs = "꙳.︙لاتستطيع اضافة رد بالتاكيد مضاف في القائمه قم بحذفه اولا !"
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="حذف الرد -› "..text,callback_data="/DelRed:"..msg.sender_user_id_..text}}} 
+keyboard.inline_keyboard = {{{text="حذف الرد » "..text,callback_data="/DelRed:"..msg.sender_user_id_..text}}} 
 Msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Abs).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ الامر ارسل الرد الاول\n꙳.︙للخروج ارسل -› ( الغاء )" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ الامر ارسل الرد الاول\n꙳.︙للخروج ارسل » ( الغاء )" ,  1, "md")
 DevAbs:set(Mikasa..'Abs:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SaveGpRedod')
 DevAbs:set(Mikasa..'Abs:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
 DevAbs:sadd(Mikasa..'Abs:Manager:GpRedod'..msg.chat_id_,text)
@@ -10135,7 +10135,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم الغاء الامر" ,  1, "md"
 DevAbs:del(Mikasa..'Abs:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ارسل لي الرد سواء كان -› ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙يمكنك اضافة الى النص -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙للخروج ارسل -› ( الغاء )\n ✓" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ارسل لي الرد سواء كان » ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙يمكنك اضافة الى النص » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙للخروج ارسل » ( الغاء )\n ✓" ,  1, "md")
 DevAbs:set(Mikasa..'Abs:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SaveGpRed')
 DevAbs:set(Mikasa..'Abs:Add:GpText'..msg.sender_user_id_..msg.chat_id_,text)
 DevAbs:sadd(Mikasa..'Abs:Manager:GpRed'..msg.chat_id_,text)
@@ -10143,7 +10143,7 @@ DevAbs:set(Mikasa..'DelManagerRep'..msg.chat_id_,text)
 return false
 end end
 --     Source Mikasa     --
-if text == 'حذف رد عام' and SecondSudo(msg) or text == '-› حذف رد عام ⌁' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
+if text == 'حذف رد عام' and SecondSudo(msg) or text == '» حذف رد عام ⌁' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
 local List = DevAbs:smembers(Mikasa.."Abs:Sudo:AllRed")
 if #List == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لا توجد ردود مضافه" ,  1, "md")
@@ -10153,7 +10153,7 @@ DevAbs:set(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
-if text == 'اضف رد عام' and SecondSudo(msg) or text == '-› اضف رد عام ⌁' and SecondSudo(msg) then
+if text == 'اضف رد عام' and SecondSudo(msg) or text == '» اضف رد عام ⌁' and SecondSudo(msg) then
 DevAbs:set(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_,'SetAllRed')
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙حسنا ارسل الكلمه الان " ,  1, "md")
 return false
@@ -10166,7 +10166,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم الغاء الامر" ,  1, "md"
 DevAbs:del(Mikasa..'Abs:Add:AllRed'..msg.sender_user_id_)
 return false
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ارسل لي الرد سواء كان -› ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙يمكنك اضافة الى النص -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙للخروج ارسل -› ( الغاء )\n ✓" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙ارسل لي الرد سواء كان » ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n꙳.︙يمكنك اضافة الى النص » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙للخروج ارسل » ( الغاء )\n ✓" ,  1, "md")
 DevAbs:set(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_,'SaveAllRed')
 DevAbs:set(Mikasa.."Abs:Add:AllText"..msg.sender_user_id_, text)
 DevAbs:sadd(Mikasa.."Abs:Sudo:AllRed",text)
@@ -10176,9 +10176,9 @@ end end
 --     Source Mikasa     --
 if text == 'الردود المتعدده' and Manager(msg) and ChCheck(msg) then
 local redod = DevAbs:smembers(Mikasa..'Abs:Manager:GpRedod'..msg.chat_id_)
-MsgRep = '꙳.︙قائمة الردود المتعدده -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
+MsgRep = '꙳.︙قائمة الردود المتعدده » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 for k,v in pairs(redod) do
-MsgRep = MsgRep..k..'~ (`'..v..'`) • {*العدد -› '..#DevAbs:smembers(Mikasa..'Abs:Text:GpTexts'..v..msg.chat_id_)..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) • {*العدد » '..#DevAbs:smembers(Mikasa..'Abs:Text:GpTexts'..v..msg.chat_id_)..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '꙳.︙لا توجد ردود متعدده مضافه'
@@ -10201,7 +10201,7 @@ end
 --     Source Mikasa     --
 if text == 'الردود' and Manager(msg) and ChCheck(msg) or text == 'ردود المدير' and Manager(msg) and ChCheck(msg) then
 local redod = DevAbs:smembers(Mikasa..'Abs:Manager:GpRed'..msg.chat_id_)
-MsgRep = '꙳.︙ردود المدير -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
+MsgRep = '꙳.︙ردود المدير » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 for k,v in pairs(redod) do
 if DevAbs:get(Mikasa.."Abs:Gif:GpRed"..v..msg.chat_id_) then
 dp = 'متحركه 🎭'
@@ -10220,7 +10220,7 @@ dp = 'ملف 📁'
 elseif DevAbs:get(Mikasa.."Abs:Audio:GpRed"..v..msg.chat_id_) then
 dp = 'اغنيه 🎶'
 end
-MsgRep = MsgRep..k..'~ (`'..v..'`) -› {*'..dp..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) » {*'..dp..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '꙳.︙لا توجد ردود مضافه'
@@ -10248,9 +10248,9 @@ return false
 end
 end
 --     Source Mikasa     --
-if  text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "-› الردود العام ⌁" and SecondSudo(msg) then
+if  text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "» الردود العام ⌁" and SecondSudo(msg) then
 local redod = DevAbs:smembers(Mikasa.."Abs:Sudo:AllRed")
-MsgRep = '꙳.︙ردود المطور -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
+MsgRep = '꙳.︙ردود المطور » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 for k,v in pairs(redod) do
 if DevAbs:get(Mikasa.."Abs:Gif:AllRed"..v) then
 dp = 'متحركه 🎭'
@@ -10269,7 +10269,7 @@ dp = 'ملف 📁'
 elseif DevAbs:get(Mikasa.."Abs:Audio:AllRed"..v) then
 dp = 'اغنيه 🎶'
 end
-MsgRep = MsgRep..k..'~ (`'..v..'`) -› {*'..dp..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) » {*'..dp..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '꙳.︙لا توجد ردود مضافه'
@@ -10312,7 +10312,7 @@ if not SecondSudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط ', 1, 'md')
 else
 DevAbs:del(Mikasa..'Abs:NameBot')
-local TeAmMikasa = '꙳.︙اهلا عزيزي -› '..AbsRank(msg)..' \n꙳.︙تم حذف اسم البوت'
+local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم حذف اسم البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 end end 
 --     Source Mikasa     --
@@ -10339,14 +10339,14 @@ end
 if text == "الاوامر" or text == "اوامر" or text == "مساعده" then
 local Help = DevAbs:get(Mikasa..'Abs:Help')
 local Text = [[
-꙳.︙اهلا بك في قائمة الاوامر -› ⤈ 
+꙳.︙اهلا بك في قائمة الاوامر » ⤈ 
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙م1 -› اوامر الحمايه
-꙳.︙م2 -› اوامر الادمنيه
-꙳.︙م3 -› اوامر المدراء
-꙳.︙م4 -› اوامر المنشئين
-꙳.︙م5 -› اوامر المطورين
-꙳.︙م6 -› اوامر الاعضاء
+꙳.︙م1 » اوامر الحمايه
+꙳.︙م2 » اوامر الادمنيه
+꙳.︙م3 » اوامر المدراء
+꙳.︙م4 » اوامر المنشئين
+꙳.︙م5 » اوامر المطورين
+꙳.︙م6 » اوامر الاعضاء
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
 ]] 
@@ -10370,48 +10370,48 @@ return false end
 end
 if text == "م1" or text == "م١" or text == "اوامر1" or text == "اوامر١" then
 if not Admin(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل -› (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل » (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAbs:get(Mikasa..'Abs:Help1')
 local Text = [[
-꙳.︙اوامر حماية المجموعه -› ⤈
+꙳.︙اوامر حماية المجموعه » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙قفل • فتح -› الروابط
-꙳.︙قفل • فتح -› المعرفات
-꙳.︙قفل • فتح -› البوتات
-꙳.︙قفل • فتح -› المتحركه
-꙳.︙قفل • فتح -› الملصقات
-꙳.︙قفل • فتح -› الملفات
-꙳.︙قفل • فتح -› الصور
-꙳.︙قفل • فتح -› الفيديو
-꙳.︙قفل • فتح -› الاونلاين
-꙳.︙قفل • فتح -› الدردشه
-꙳.︙قفل • فتح -› التوجيه
-꙳.︙قفل • فتح -› الاغاني
-꙳.︙قفل • فتح -› الصوت
-꙳.︙قفل • فتح -› الجهات
-꙳.︙قفل • فتح -› الماركداون
-꙳.︙قفل • فتح -› التكرار
-꙳.︙قفل • فتح -› الهاشتاك
-꙳.︙قفل • فتح -› التعديل
-꙳.︙قفل • فتح -› التثبيت
-꙳.︙قفل • فتح -› الاشعارات
-꙳.︙قفل • فتح -› الكلايش
-꙳.︙قفل • فتح -› الدخول
-꙳.︙قفل • فتح -› الشبكات
-꙳.︙قفل • فتح -› المواقع
-꙳.︙قفل • فتح -› الفشار
-꙳.︙قفل • فتح -› الكفر
-꙳.︙قفل • فتح -› الطائفيه
-꙳.︙قفل • فتح -› الكل
-꙳.︙قفل • فتح -› العربيه
-꙳.︙قفل • فتح -› الانكليزيه
-꙳.︙قفل • فتح -› الفارسيه
-꙳.︙قفل • فتح -› التفليش
+꙳.︙قفل • فتح » الروابط
+꙳.︙قفل • فتح » المعرفات
+꙳.︙قفل • فتح » البوتات
+꙳.︙قفل • فتح » المتحركه
+꙳.︙قفل • فتح » الملصقات
+꙳.︙قفل • فتح » الملفات
+꙳.︙قفل • فتح » الصور
+꙳.︙قفل • فتح » الفيديو
+꙳.︙قفل • فتح » الاونلاين
+꙳.︙قفل • فتح » الدردشه
+꙳.︙قفل • فتح » التوجيه
+꙳.︙قفل • فتح » الاغاني
+꙳.︙قفل • فتح » الصوت
+꙳.︙قفل • فتح » الجهات
+꙳.︙قفل • فتح » الماركداون
+꙳.︙قفل • فتح » التكرار
+꙳.︙قفل • فتح » الهاشتاك
+꙳.︙قفل • فتح » التعديل
+꙳.︙قفل • فتح » التثبيت
+꙳.︙قفل • فتح » الاشعارات
+꙳.︙قفل • فتح » الكلايش
+꙳.︙قفل • فتح » الدخول
+꙳.︙قفل • فتح » الشبكات
+꙳.︙قفل • فتح » المواقع
+꙳.︙قفل • فتح » الفشار
+꙳.︙قفل • فتح » الكفر
+꙳.︙قفل • فتح » الطائفيه
+꙳.︙قفل • فتح » الكل
+꙳.︙قفل • فتح » العربيه
+꙳.︙قفل • فتح » الانكليزيه
+꙳.︙قفل • فتح » الفارسيه
+꙳.︙قفل • فتح » التفليش
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر حمايه اخرى -› ⤈
+꙳.︙اوامر حمايه اخرى » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙قفل • فتح + الامر -› ⤈
+꙳.︙قفل • فتح + الامر » ⤈
 ꙳.︙التكرار بالطرد
 ꙳.︙التكرار بالكتم
 ꙳.︙التكرار بالتقيد
@@ -10438,11 +10438,11 @@ return false end
 end
 if text == "م2" or text == "م٢" or text == "اوامر2" or text == "اوامر٢" then
 if not Admin(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل -› (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل » (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAbs:get(Mikasa..'Abs:Help2')
 local Text = [[
-꙳.︙اوامر الادمنيه -› ⤈
+꙳.︙اوامر الادمنيه » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙الاعدادت
 ꙳.︙تاك للكل 
@@ -10458,9 +10458,9 @@ local Text = [[
 ꙳.︙تنظيف التعديل
 ꙳.︙كللهم + الكلمه
 ꙳.︙اسم البوت + الامر
-꙳.︙ضع • حذف -› ترحيب
-꙳.︙ضع • حذف -› قوانين
-꙳.︙اضف • حذف -› صلاحيه
+꙳.︙ضع • حذف » ترحيب
+꙳.︙ضع • حذف » قوانين
+꙳.︙اضف • حذف » صلاحيه
 ꙳.︙الصلاحيات • حذف الصلاحيات
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙ضع سبام + العدد
@@ -10475,14 +10475,14 @@ local Text = [[
 ꙳.︙قائمه المنع
 ꙳.︙حذف قائمه المنع
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تفعيل • تعطيل -› الرابط
-꙳.︙تفعيل • تعطيل -› الالعاب
-꙳.︙تفعيل • تعطيل -› الترحيب
-꙳.︙تفعيل • تعطيل -› التاك للكل
-꙳.︙تفعيل • تعطيل -› كشف الاعدادات
+꙳.︙تفعيل • تعطيل » الرابط
+꙳.︙تفعيل • تعطيل » الالعاب
+꙳.︙تفعيل • تعطيل » الترحيب
+꙳.︙تفعيل • تعطيل » التاك للكل
+꙳.︙تفعيل • تعطيل » كشف الاعدادات
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙طرد المحذوفين
-꙳.︙طرد -› بالرد • بالمعرف • بالايدي
+꙳.︙طرد » بالرد • بالمعرف • بالايدي
 ꙳.︙كتم • الغاء كتم
 ꙳.︙تقيد • الغاء تقيد
 ꙳.︙حظر • الغاء حظر
@@ -10493,7 +10493,7 @@ local Text = [[
 ꙳.︙تقييد دقيقه + عدد الدقائق
 ꙳.︙تقييد ساعه + عدد الساعات
 ꙳.︙تقييد يوم + عدد الايام
-꙳.︙الغاء تقييد -› لالغاء التقييد بالوقت
+꙳.︙الغاء تقييد » لالغاء التقييد بالوقت
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
 ]]
@@ -10514,24 +10514,24 @@ return false end
 end
 if text == "م3" or text == "م٣" or text == "اوامر3" or text == "اوامر٣" then
 if not Admin(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل -› (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل » (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAbs:get(Mikasa..'Abs:Help3')
 local Text = [[
-꙳.︙اوامر المدراء -› ⤈
+꙳.︙اوامر المدراء » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙فحص البوت
 ꙳.︙ضع اسم + الاسم
-꙳.︙اضف • حذف -› رد
+꙳.︙اضف • حذف » رد
 ꙳.︙ردود المدير
 ꙳.︙حذف ردود المدير
-꙳.︙اضف • حذف -› رد متعدد
+꙳.︙اضف • حذف » رد متعدد
 ꙳.︙حذف رد من متعدد
 ꙳.︙الردود المتعدده
 ꙳.︙حذف الردود المتعدده
 ꙳.︙حذف قوائم المنع
-꙳.︙منع -› بالرد على ( ملصق • صوره • متحركه )
-꙳.︙حذف قائمه منع + -› ⤈
+꙳.︙منع » بالرد على ( ملصق • صوره • متحركه )
+꙳.︙حذف قائمه منع + » ⤈
 ( الصور • المتحركات • الملصقات )
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تنزيل الكل
@@ -10543,17 +10543,17 @@ local Text = [[
 ꙳.︙اعاده التثبيت
 ꙳.︙الغاء تثبيت الكل
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تغير رد + اسم الرتبه + النص -› ⤈
+꙳.︙تغير رد + اسم الرتبه + النص » ⤈
 ꙳.︙المطور • منشئ الاساسي
 ꙳.︙المنشئ • المدير • الادمن
 ꙳.︙المميز • المنظف • العضو
 ꙳.︙حذف ردود الرتب
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تغيير الايدي -› لتغيير الكليشه
-꙳.︙تعيين الايدي -› لتعيين الكليشه
-꙳.︙حذف الايدي -› لحذف الكليشه
+꙳.︙تغيير الايدي » لتغيير الكليشه
+꙳.︙تعيين الايدي » لتعيين الكليشه
+꙳.︙حذف الايدي » لحذف الكليشه
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙اطردني • الايدي بالصوره • الابراج
 ꙳.︙معاني الاسماء • اوامر النسب • انطق
 ꙳.︙الايدي • تحويل الصيغ • اوامر التحشيش
@@ -10579,42 +10579,42 @@ return false end
 end
 if text == "م٤" or text == "م4" or text == "اوامر4" or text == "اوامر٤" then
 if not Admin(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل -› (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر يخص الرتب الاعلى فقط\n꙳.︙ارسل » (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
 local Help = DevAbs:get(Mikasa..'Abs:Help4')
 local Text = [[
-꙳.︙اوامر المنشئين -› ⤈
+꙳.︙اوامر المنشئين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تنزيل الكل
 ꙳.︙الميديا • امسح
 ꙳.︙تعين عدد الحذف
 ꙳.︙ترتيب الاوامر
-꙳.︙اضف • حذف -› امر
+꙳.︙اضف • حذف » امر
 ꙳.︙حذف الاوامر المضافه
 ꙳.︙الاوامر المضافه
-꙳.︙اضف نقاط -› بالرد • بالايدي
-꙳.︙اضف رسائل -› بالرد • بالايدي
+꙳.︙اضف نقاط » بالرد • بالايدي
+꙳.︙اضف رسائل » بالرد • بالايدي
 ꙳.︙رفع منظف • تنزيل منظف
 ꙳.︙المنظفين • حذف المنظفين
 ꙳.︙رفع مدير • تنزيل مدير
 ꙳.︙المدراء • حذف المدراء
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙نزلني • امسح
 ꙳.︙الحظر • الكتم
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المنشئين الاساسيين -› ⤈
+꙳.︙اوامر المنشئين الاساسيين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙وضع لقب + اللقب
-꙳.︙تفعيل • تعطيل -› الرفع
+꙳.︙تفعيل • تعطيل » الرفع
 ꙳.︙رفع منشئ • تنزيل منشئ
 ꙳.︙المنشئين • حذف المنشئين
-꙳.︙رفع • تنزيل -› مشرف
+꙳.︙رفع • تنزيل » مشرف
 ꙳.︙رفع بكل الصلاحيات
 ꙳.︙حذف القوائم
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المالكين -› ⤈
+꙳.︙اوامر المالكين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙رفع • تنزيل -› منشئ اساسي
+꙳.︙رفع • تنزيل » منشئ اساسي
 ꙳.︙حذف المنشئين الاساسيين 
 ꙳.︙المنشئين الاساسيين 
 ꙳.︙حذف جميع الرتب
@@ -10642,7 +10642,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙هذا الامر للمطورين ف�
 else
 local Help = DevAbs:get(Mikasa..'Abs:Help5')
 local Text = [[
-꙳.︙اوامر المطورين -› ⤈
+꙳.︙اوامر المطورين » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙الكروبات
 ꙳.︙المطورين
@@ -10655,14 +10655,14 @@ local Text = [[
 ꙳.︙رفع مالك • تنزيل مالك
 ꙳.︙المالكين • حذف المالكين
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙رفع • تنزيل -› مدير عام
+꙳.︙رفع • تنزيل » مدير عام
 ꙳.︙حذف • المدراء العامين 
-꙳.︙رفع • تنزيل -› ادمن عام
+꙳.︙رفع • تنزيل » ادمن عام
 ꙳.︙حذف • الادمنيه العامين 
-꙳.︙رفع • تنزيل -› مميز عام
+꙳.︙رفع • تنزيل » مميز عام
 ꙳.︙حذف • المميزين عام 
 ≪━━━━━ꪑ𝙠━━━━━≫
-꙳.︙اوامر المطور الاساسي -› ⤈
+꙳.︙اوامر المطور الاساسي » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تحديث
 ꙳.︙الملفات
@@ -10682,25 +10682,25 @@ local Text = [[
 ꙳.︙حظر عام • الغاء العام
 ꙳.︙كتم عام • الغاء العام
 ꙳.︙قائمه العام • حذف قائمه العام
-꙳.︙وضع • حذف -› اسم البوت
-꙳.︙اضف • حذف -› رد عام
+꙳.︙وضع • حذف » اسم البوت
+꙳.︙اضف • حذف » رد عام
 ꙳.︙ردود المطور • حذف ردود المطور
-꙳.︙تعيين • حذف • جلب -› رد الخاص
+꙳.︙تعيين • حذف • جلب » رد الخاص
 ꙳.︙جلب نسخه الكروبات
 ꙳.︙رفع النسخه + بالرد على الملف
-꙳.︙تعيين • حذف -› قناة الاشتراك
+꙳.︙تعيين • حذف » قناة الاشتراك
 ꙳.︙جلب كليشه الاشتراك
-꙳.︙تغيير • حذف -› كليشه الاشتراك
-꙳.︙رفع • تنزيل -› مطور
+꙳.︙تغيير • حذف » كليشه الاشتراك
+꙳.︙رفع • تنزيل » مطور
 ꙳.︙المطورين • حذف المطورين
-꙳.︙رفع • تنزيل -› مطور ثانوي
+꙳.︙رفع • تنزيل » مطور ثانوي
 ꙳.︙الثانويين • حذف الثانويين
-꙳.︙تعيين • حذف -› كليشة الايدي
-꙳.︙اذاعه للكل بالتوجيه -› بالرد
+꙳.︙تعيين • حذف » كليشة الايدي
+꙳.︙اذاعه للكل بالتوجيه » بالرد
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙تفعيل ملف + اسم الملف
 ꙳.︙تعطيل ملف + اسم الملف
-꙳.︙تفعيل • تعطيل + الامر -› ⤈
+꙳.︙تفعيل • تعطيل + الامر » ⤈
 ꙳.︙الاذاعه • الاشتراك الاجباري
 ꙳.︙ترحيب البوت • المغادره
 ꙳.︙البوت الخدمي • التواصل
@@ -10725,7 +10725,7 @@ end
 if text == "م٦" or text == "م6" or text == "اوامر6" or text == "اوامر٦" then
 local Help = DevAbs:get(Mikasa..'Abs:Help6')
 local Text = [[
-꙳.︙اوامر الاعضاء -› ⤈
+꙳.︙اوامر الاعضاء » ⤈
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙السورس • موقعي • رتبتي • معلوماتي 
 ꙳.︙رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
@@ -10743,14 +10743,14 @@ local Text = [[
 ꙳.︙زخرفه + اسمك
 ꙳.︙برج + نوع البرج
 ꙳.︙معنى اسم + الاسم
-꙳.︙بوسه • بوسها -› بالرد
+꙳.︙بوسه • بوسها » بالرد
 ꙳.︙احسب + تاريخ ميلادك
 ꙳.︙رفع مطي • تنزيل مطي • المطايه
-꙳.︙هينه • هينها -› بالرد • بالمعرف
-꙳.︙صيحه • صيحها -› بالرد • بالمعرف
-꙳.︙صلاحياته -› بالرد • بالمعرف • بالايدي
-꙳.︙ايدي • كشف  -› بالرد • بالمعرف • بالايدي
-꙳.︙تحويل + بالرد -› صوره • ملصق • صوت • بصمه
+꙳.︙هينه • هينها » بالرد • بالمعرف
+꙳.︙صيحه • صيحها » بالرد • بالمعرف
+꙳.︙صلاحياته » بالرد • بالمعرف • بالايدي
+꙳.︙ايدي • كشف  » بالرد • بالمعرف • بالايدي
+꙳.︙تحويل + بالرد » صوره • ملصق • صوت • بصمه
 ꙳.︙انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
@@ -10768,7 +10768,7 @@ io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n          ( تم تحديث السورس )          \n\27[0;34;49m\n") 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم التحديث الى الاصدار الجديد', 1, 'md') 
 end
-if text == 'تحديث' or text == 'تحديث البوت' or text == '-› تحديث ⌁' then  
+if text == 'تحديث' or text == 'تحديث البوت' or text == '» تحديث ⌁' then  
 dofile('Mikasa.lua') 
 io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\27[0;34;49m\n") 
@@ -10776,7 +10776,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم تحديث ملفات البوت"
 end 
 --     Source Mikasa     --
 if text == 'الملفات' then
-Files = '\n꙳.︙الملفات المفعله في البوت -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
+Files = '\n꙳.︙الملفات المفعله في البوت » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 i = 0
 for v in io.popen('ls Files'):lines() do
 if v:match(".lua$") then
@@ -10795,8 +10795,8 @@ if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n꙳.︙قائمة ملفات متجر سورس ميكاسا\n꙳.︙الملفات المتوفره حاليا -› ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
-local TextE = "≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙علامة -› (✔) تعني الملف مفعل\n꙳.︙علامة -› (✖️) تعني الملف معطل\n"
+local TextS = "\n꙳.︙قائمة ملفات متجر سورس ميكاسا\n꙳.︙الملفات المتوفره حاليا » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n"
+local TextE = "≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙علامة » (✔) تعني الملف مفعل\n꙳.︙علامة » (✖️) تعني الملف معطل\n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
 local CheckFileisFound = io.open("Files/"..name,"r")
@@ -10807,7 +10807,7 @@ else
 CheckFile = "(✖️)"
 end
 NumFile = NumFile + 1
-TextS = TextS.."꙳.︙"..Info..' -› ⤈\n'..NumFile.."~ : `"..name..'` ↬ '..CheckFile.."\n"
+TextS = TextS.."꙳.︙"..Info..' » ⤈\n'..NumFile.."~ : `"..name..'` ↬ '..CheckFile.."\n"
 end
 send(msg.chat_id_, msg.id_,TextS..TextE) 
 end
@@ -10825,7 +10825,7 @@ local FileName = FileGet[2]..'.lua'
 local GetJson, Res = https.request("https://raw.githubusercontent.com/Mikasa-TEAM/MikasaFiles/master/MikasaFiles/"..FileName)
 if Res == 200 then
 os.execute("rm -fr Files/"..FileName)
-send(msg.chat_id_, msg.id_,"\n꙳.︙الملف -› *"..FileName.."*\n꙳.︙تم تعطيله وحذفه من البوت بنجاح") 
+send(msg.chat_id_, msg.id_,"\n꙳.︙الملف » *"..FileName.."*\n꙳.︙تم تعطيله وحذفه من البوت بنجاح") 
 dofile('Mikasa.lua')  
 else
 send(msg.chat_id_, msg.id_,"꙳.︙لا يوجد ملف بهذا الاسم") 
@@ -10839,7 +10839,7 @@ if Res == 200 then
 local ChekAuto = io.open("Files/"..FileName,'w+')
 ChekAuto:write(GetJson)
 ChekAuto:close()
-send(msg.chat_id_, msg.id_,"\n꙳.︙الملف -› *"..FileName.."*\n꙳.︙تم تفعيله في البوت بنجاح") 
+send(msg.chat_id_, msg.id_,"\n꙳.︙الملف » *"..FileName.."*\n꙳.︙تم تفعيله في البوت بنجاح") 
 dofile('Mikasa.lua')  
 else
 send(msg.chat_id_, msg.id_,"꙳.︙لا يوجد ملف بهذا الاسم") 
@@ -10864,7 +10864,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙تم تعطيل الترحيب عند 
 DevAbs:set(Mikasa..'Abs:Lock:BotWelcome',true)
 return false
 end 
-if text and (text == 'تغير معلومات الترحيب' or text == 'تغيير معلومات الترحيب' or text == '-› تغير معلومات الترحيب ⌁') and SecondSudo(msg) then    
+if text and (text == 'تغير معلومات الترحيب' or text == 'تغيير معلومات الترحيب' or text == '» تغير معلومات الترحيب ⌁') and SecondSudo(msg) then    
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙ارسل لي نص الترحيب', 1, 'md') 
 DevAbs:del(Mikasa..'Abs:Text:BotWelcome')
 DevAbs:del(Mikasa..'Abs:Photo:BotWelcome')
@@ -10877,7 +10877,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم الغاء الامر", 1, "md")
 DevAbs:del(Mikasa.."Abs:Set:BotWelcome"..msg.sender_user_id_)   
 return false
 end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ النص ارسل لي صورة الترحيب\n꙳.︙ارسل -› الغاء لحفظ النص فقط", 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم حفظ النص ارسل لي صورة الترحيب\n꙳.︙ارسل » الغاء لحفظ النص فقط", 1, 'md')   
 DevAbs:set(Mikasa.."Abs:Text:BotWelcome",text) 
 DevAbs:set(Mikasa.."Abs:Set:BotWelcome"..msg.sender_user_id_,"Photo") 
 return false 
@@ -10940,7 +10940,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙للمطور الاساسي فقط ', 
 else
 local chtext = DevAbs:get(Mikasa.."Abs:ChText")
 if chtext then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙كليشة الاشتراك -› ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n['..chtext..']', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙كليشة الاشتراك » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n['..chtext..']', 1, 'md')
 else
 if DevAbs:get(Mikasa.."Abs:ChId") then
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..DevAbs:get(Mikasa.."Abs:ChId"))
@@ -10956,7 +10956,7 @@ keyboard.inline_keyboard = {{{text=GetInfo.result.title,url=User}}}
 Msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لم يتم تعيين قناة الاشتراك الاجباري \n꙳.︙ارسل -› تعيين قناة الاشتراك للتعيين ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙لم يتم تعيين قناة الاشتراك الاجباري \n꙳.︙ارسل » تعيين قناة الاشتراك للتعيين ', 1, 'md')
 end end end end
 --     Source Mikasa     --
 if text == 'القناة' or text == 'قناة السورس' or text == 'قناه السورس' or text == 'قنات السورس' then 
@@ -10973,12 +10973,12 @@ MemoryUsage=`free -m | awk 'NR==2{printf "%s/%sMB {%.2f%%}\n", $3,$2,$3*100/$2 }
 HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
 Percentage=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
 UpTime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}'`
-echo '꙳.︙نظام التشغيل -› ⤈\n`'"$LinuxVersion"'`' 
-echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الذاكره العشوائيه -› ⤈\n`'"$MemoryUsage"'`'
-echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙وحدة التخزين -› ⤈\n`'"$HardDisk"'`'
-echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙المعالج -› ⤈\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$Percentage%} "'`'
-echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الدخول -› ⤈\n`'`whoami`'`'
-echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙مدة تشغيل السيرفر -› ⤈\n`'"$UpTime"'`'
+echo '꙳.︙نظام التشغيل » ⤈\n`'"$LinuxVersion"'`' 
+echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الذاكره العشوائيه » ⤈\n`'"$MemoryUsage"'`'
+echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙وحدة التخزين » ⤈\n`'"$HardDisk"'`'
+echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙المعالج » ⤈\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$Percentage%} "'`'
+echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙الدخول » ⤈\n`'`whoami`'`'
+echo '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙مدة تشغيل السيرفر » ⤈\n`'"$UpTime"'`'
 ]]):read('*a'), 1, 'md')
 end
 end
@@ -11002,8 +11002,8 @@ elseif result.content_.ID == "MessageVideo" then Media = 'الفيديو'
 elseif result.content_.ID == "MessageAnimation" then Media = 'المتحركه'
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
-local absname = '꙳.︙العضو -› ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
-local absid = '꙳.︙ايديه -› `'..dp.id_..'`'
+local absname = '꙳.︙العضو » ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
+local absid = '꙳.︙ايديه » `'..dp.id_..'`'
 local abstext = '꙳.︙قام بالتعديل على '..Media
 local abstxt = '≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙تعالو يامشرفين اكو مخرب'
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,abbas) 

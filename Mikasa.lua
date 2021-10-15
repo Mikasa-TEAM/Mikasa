@@ -3560,19 +3560,19 @@ end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
-local TeAmMikasa = {'* كول حبيبي ؟ اني *'..NameBot..' ','*وياك القميل*'*..NameBot..*' ','*اسمي القميل *'*..NameBot..*' '}
+local TeAmMikasa = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') 
-local TeAmMikasa = {"*اسمي القميل *"*..NameBot..*" 😚♥️","*هلاا يروحيي وياكك *"*..NameBot..*" 😻♥️"} 
+local TeAmMikasa = {"اسمي القميل "..NameBot.." 😚♥️","هلاا يروحيي وياكك "..NameBot.." 😻♥️"} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false
 end
 if text and text == (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا') then 
 NameBot = (DevAbs:get(Mikasa..'Abs:NameBot') or 'ميكاسا')
-local TeAmMikasa = {'*كول حبيبي ؟ اني *'*..NameBot..*' ','* وياك القميل* '*..NameBot..*' '} 
+local TeAmMikasa = {'كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' '} 
 Dev_Abs(msg.chat_id_, msg.id_, 1, TeAmMikasa[math.random(#TeAmMikasa)] , 1, 'html') 
 return false 
 end

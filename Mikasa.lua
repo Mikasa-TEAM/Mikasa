@@ -4453,7 +4453,7 @@ end
 if text == "السورس" or text == "سورس" then
 Text = [[
 Welcome To Source
-[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](httpsك://t.me/TeAmMikasa)
+[˛ 𝙢𝓲𝙠𝙨𝙖ꪖ .](https://t.me/TeAmMikasa)
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {

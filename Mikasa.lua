@@ -4263,7 +4263,7 @@ else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙عذرا الالعاب معطله في المجموعه', 1, 'md')
 end
 end
-if text == "الالعاب المتطوره" or text == "الالعاب الاحترافيه" or text == "» الالعاب المتطوره ⌔" then
+if text == "العاب ميكاسا" or text == "الالعاب الاحترافيه" or text == "» الالعاب المتطوره ⌔" then
 if not DevAbs:get(Mikasa..'Abs:Lock:Gamesinline'..msg.chat_id_) then
 Text =[[
 *꙳.︙قائمه الالعاب المتطوره اضغط للعب*

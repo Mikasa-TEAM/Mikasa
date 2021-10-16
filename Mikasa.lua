@@ -1235,7 +1235,7 @@ end,nil)
 end
 if DataText and DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)') then
 local Abbs = DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)')
-EditMsg(Chat_Id2, Msg_Id2, "꙳.︙الكلمه » *"..Abbs.."* تم حذفها") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙الكلمه » "..Abbs.." تم حذفها") 
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..Abbs..data.chat_id_)
 DevAbs:srem(Mikasa..'Abs:Manager:GpRedod'..data.chat_id_,Abbs)
 end
@@ -1246,25 +1246,25 @@ if DevAbs:get(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_) th
 EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم انهاء وحفظ » "..#List.." من الردود المتعدده للامر » "..Abbs) 
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
 else
-EditMsg(Chat_Id2, Msg_Id2, "*꙳.︙عذرا صلاحية الامر منتهيه !*") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙عذرا صلاحية الامر منتهيه !") 
 end
 end
 if DataText and DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
 local Abbs = DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)')
 if DevAbs:get(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "*꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر » *"..Abbs) 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم الغاء عملية حفظ الردود المتعدده للامر » "..Abbs) 
 DevAbs:del(Mikasa..'Abs:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
 DevAbs:del(Mikasa..'Abs:Text:GpTexts'..Abbs..data.chat_id_)
 DevAbs:del(Mikasa..'Abs:Add:GpTexts'..data.sender_user_id_..data.chat_id_)
 DevAbs:srem(Mikasa..'Abs:Manager:GpRedod'..data.chat_id_,Abbs)
 else
-EditMsg(Chat_Id2, Msg_Id2, "*꙳.︙عذرا صلاحية الامر منتهيه !*") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙عذرا صلاحية الامر منتهيه !") 
 end
 end
 if DataText and DataText:match('/HideHelpList:(.*)') then
 local Abbs = DataText:match('/HideHelpList:(.*)')
 if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "*꙳.︙تم اخفاء كليشة الاوامر*") 
+EditMsg(Chat_Id2, Msg_Id2, "꙳.︙تم اخفاء كليشة الاوامر") 
 else
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
 end
@@ -1274,14 +1274,14 @@ local Abbs = DataText:match('/HelpList:(.*)')
 if tonumber(Abbs) == tonumber(data.sender_user_id_) then
 local Help = DevAbs:get(Mikasa..'Abs:Help')
 local Text = [[
-*꙳.︙اهلا بك في قائمة الاوامر » ⤈ *
+꙳.︙اهلا بك في قائمة الاوامر » ⤈ 
 ≪━━━━━ꪑ𝙠━━━━━≫
-*꙳.︙م1 » اوامر الحمايه*
-*꙳.︙م2 » اوامر الادمنيه*
-*꙳.︙م3 » اوامر المدراء*
-*꙳.︙م4 » اوامر المنشئين*
-*꙳.︙م5 » اوامر المطورين*
-*꙳.︙م6 » اوامر الاعضاء*
+꙳.︙م1 » اوامر الحمايه
+꙳.︙م2 » اوامر الادمنيه
+꙳.︙م3 » اوامر المدراء
+꙳.︙م4 » اوامر المنشئين
+꙳.︙م5 » اوامر المطورين
+꙳.︙م6 » اوامر الاعضاء
 ≪━━━━━ꪑ𝙠━━━━━≫
 ꙳.︙[˛ ꪑ𝓲𝙠ꪖ𝘴𝙖 𝙩ꫀꪖ𝙢 .](https://t.me/TeAmMikasa)
 ]] 

@@ -1956,7 +1956,7 @@ end
 end 
 --     Source Mikasa     --
 if ChatType == 'pv' then 
-if text == '/start' or text == 'رجوع ،🔙‘' then 
+if text == '/start' or text == 'رجوع ↪️' then 
 if SecondSudo(msg) then 
 local Sudo_Welcome = '꙳.︙مرحبا عزيزي المطور \n꙳.︙انت المطور الاساسي هنا \n꙳.︙اليك ازرار سورس ميكاسا \n꙳.︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
@@ -1969,14 +1969,14 @@ local key = {
 {'تعطيل ترحيب البوت','تفعيل ترحيب البوت'},
 {'تغير معلومات الترحيب ꙳.'},
 {'تعطيل المغادره ꙳.','تفعيل المغادره ꙳.'},
-{'تعطيل الاذاعه ꙳.','» تفعيل الاذاعه ⌁'},
+{'تعطيل الاذاعه ꙳.','تفعيل الاذاعه ꙳.'},
 {'اذاعه بالتثبيت ꙳.'},
 {'اذاعه عام ꙳.','اذاعه خاص ꙳.'},
-{'» اذاعه عام بالتوجيه ⌁','اذاعه خاص بالتوجيه ꙳.'},
+{'اذاعه عام بالتوجيه ꙳.','اذاعه خاص بالتوجيه ꙳.'},
 {'تعيين كلايش الاوامر ꙳.'},
 {'تعطيل البوت الخدمي','تفعيل البوت الخدمي'},
 {'جلب نسخه السورس','تحديث السورس','جلب نسخه الكروبات'},
-{'اضف رد عام ꙳.','» الردود العام ⌁','» اضف رد عام ⌁'},
+{'اضف رد عام ꙳.','الردود العام ꙳.','حذف رد عام ꙳.'},
 {'حذف رد الخاص ꙳.','تعيين رد الخاص ꙳.'},
 {'حذف قناة الاشتراك','قناة الاشتراك','تعيين قناة الاشتراك'},
 {'حذف كليشه الاشتراك','كليشه الاشتراك','تغير كليشه الاشتراك'},
@@ -1993,7 +1993,7 @@ local key = {
 {'تعيين امر م3','تعيين امر م2','تعيين امر م1'},
 {'تعيين امر م6','تعيين امر م5','تعيين امر م4'},
 {'استعادة كلايش الاوامر'},
-{'رجوع ،🔙‘'},
+{'رجوع ↪️'},
 }
 SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
@@ -2006,7 +2006,7 @@ local start = DevAbs:get(Mikasa.."Abs:Start:Bot")
 if start then 
 Start_Source = start
 else
-Start_Source = "꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر » تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+Start_Source = "*꙳.︙مرحبا انا بوت اسمي "..NameBot.."\n꙳.︙اختصاصي حماية المجموعات\n꙳.︙من التفليش والسبام والخخ .. . ،\n꙳.︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر » تفعيل\n꙳.︙سيتم رفع الادمنيه والمنشئ تلقائيا*"
 end 
 SendInline(msg.chat_id_,Start_Source,nil,inline)
 end,nil)
@@ -9331,7 +9331,7 @@ local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙ت
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:set(Mikasa.."Abs:Left:Bot"..Mikasa,true) 
 end 
-if text == 'تفعيل الاذاعه' or text == '» تفعيل الاذاعه ⌁' then 
+if text == 'تفعيل الاذاعه' or text == 'تفعيل الاذاعه ꙳.' then 
 local TeAmMikasa = '꙳.︙اهلا عزيزي » '..AbsRank(msg)..' \n꙳.︙تم تفعيل الاذاعه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, TeAmMikasa, 14, string.len(msg.sender_user_id_))
 DevAbs:del(Mikasa.."Abs:Send:Bot"..Mikasa)
@@ -9922,7 +9922,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙تم اذاعة "..AbsText.." بنجا
 DevAbs:del(Mikasa.."Abs:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source Mikasa     --
-if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "» اذاعه عام بالتوجيه ⌁" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
+if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "اذاعه عام بالتوجيه ꙳." and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevAbs:get(Mikasa.."Abs:Send:Bot"..Mikasa) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"꙳.︙الاذاعه معطله من قبل المطور الاساسي")
 return false
@@ -10143,7 +10143,7 @@ DevAbs:set(Mikasa..'DelManagerRep'..msg.chat_id_,text)
 return false
 end end
 --     Source Mikasa     --
-if text == 'حذف رد عام' and SecondSudo(msg) or text == 'اضف رد عام ꙳.' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
+if text == 'حذف رد عام' and SecondSudo(msg) or text == 'حذف رد عام ꙳.' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
 local List = DevAbs:smembers(Mikasa.."Abs:Sudo:AllRed")
 if #List == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙لا توجد ردود مضافه" ,  1, "md")
@@ -10153,7 +10153,7 @@ DevAbs:set(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
-if text == 'اضف رد عام' and SecondSudo(msg) or text == '» اضف رد عام ⌁' and SecondSudo(msg) then
+if text == 'اضف رد عام' and SecondSudo(msg) or text == 'اضف رد عام ꙳.' and SecondSudo(msg) then
 DevAbs:set(Mikasa.."Abs:Add:AllRed"..msg.sender_user_id_,'SetAllRed')
 Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙حسنا ارسل الكلمه الان " ,  1, "md")
 return false
@@ -10248,7 +10248,7 @@ return false
 end
 end
 --     Source Mikasa     --
-if  text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "» الردود العام ⌁" and SecondSudo(msg) then
+if  text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "الردود العام ꙳." and SecondSudo(msg) then
 local redod = DevAbs:smembers(Mikasa.."Abs:Sudo:AllRed")
 MsgRep = '꙳.︙ردود المطور » ⤈ \n≪━━━━━ꪑ𝙠━━━━━≫\n'
 for k,v in pairs(redod) do

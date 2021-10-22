@@ -1739,10 +1739,28 @@ DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ"
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"من")
 DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"اس")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":مط","رفع مطور")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"مط")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":ثانوي","رفع مطور ثانوي")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"ثانوي")
 DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
 DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
 DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":رد","اضف رد")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"رد")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائلي")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"رس")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":سح","مسح سحكاتي")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"سح")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":ر","الرابط")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"ر")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":رر","ردود المدير")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"رر")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":مسح المكتومين","،،")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"،،")
+DevAbs:set(Mikasa.."Set:Cmd:Group:New1"..msg.chat_id_..":غ","غنيلي")
+DevAbs:sadd(Mikasa.."List:Cmd:Group:New"..msg.chat_id_,"غ")
 send(msg.chat_id_, msg.id_,"꙳.︙تم ترتيب الاوامر بالشكل التالي » ⤈\n≪━━━━━ꪑ𝙠━━━━━≫\n꙳.︙ايدي » ا\n꙳.︙تنزيل الكل » تك\n꙳.︙رفع مميز » م\n꙳.︙رفع ادمن » اد \n꙳.︙رفع مدير » مد \n꙳.︙رفع منشئ » من \n꙳.︙رفع منشئ اساسي » اس  \n꙳.︙تفعيل الايدي بالصوره » تفع\n꙳.︙تعطيل الايدي بالصوره » تعط\n≪━━━━━ꪑ𝙠━━━━━≫")  
 end
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
@@ -4596,7 +4614,7 @@ end
 getUser(msg.sender_user_id_,get_firstname)
 end   
 --     Source Mikasa     --
-if text == "اهمس" or text == "همسه" or text == "اريد بوت الهمسه" or text == "دزلي بوت الهمسه" or  text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙@cCVCcBoT', 1, 'md') end
+if text == "اهمس" or text == "همسه" or text == "اريد بوت الهمسه" or text == "دزلي بوت الهمسه" or  text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '꙳.︙@Ykxbot', 1, 'md') end
 if text == "رابط حذف" or text == "رابط الحذف" or text == "اريد رابط الحذف" or  text == "شمرلي رابط الحذف" or text == "اريد رابط حذف" then local inline = {{{text="اضغط هنا",url="https://t.me/cClCcBoT"}}} SendInline(msg.chat_id_,'꙳.︙اضغط للحصول على الرابط',nil,inline) return false end
 if text == "بوت الحذف" or text == "اريد بوت الحذف" or text == "اريد بوت حذف" or text == "بوت حذف" or text == "بوت حذف حسابات" or text == "راح احذف" then local inline = {{{text="اضغط هنا",url="https://t.me/cClCcBoT"}}} SendInline(msg.chat_id_,'꙳.︙اضغط للحصول على البوت',nil,inline) return false end
 if text == "جهاتي" and ChCheck(msg) or text == "اضافاتي" and ChCheck(msg) then add = (tonumber(DevAbs:get(Mikasa..'Abs:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "꙳.︙عدد جهاتك المضافه » *❨ "..add.." ❩* ", 1, 'md') end
